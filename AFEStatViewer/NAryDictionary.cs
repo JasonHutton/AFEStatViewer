@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AFEStatViewer
+namespace NAryDictionary
 {
     // https://softwareengineering.stackexchange.com/questions/319264/dictionary-of-dictionaries-design-in-c
     public class NAryDictionary<TKey, TValue> :

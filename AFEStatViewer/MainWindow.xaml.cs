@@ -17,6 +17,8 @@ using System.IO;
 using System.Text.Json;
 using System.Diagnostics;
 
+using NAryDictionary;
+
 namespace AFEStatViewer
 {
     public class CampaignCompletion
