@@ -91,7 +91,7 @@ namespace AFEStatViewer
 
             LoadSavegame();
 
-            WatchForSaveGameChanges();
+            //WatchForSaveGameChanges();
         }
     }
 }
