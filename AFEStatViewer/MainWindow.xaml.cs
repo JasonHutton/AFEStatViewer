@@ -32,27 +32,34 @@ namespace AFEStatViewer
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string inputPath = @"..\..\..\..\char29.sav";
+            string inputPath = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Endeavor\Saved\SaveGames\char.sav");
 
-            BinaryReader reader = new BinaryReader(File.OpenRead(inputPath));
+            if (!File.Exists(inputPath))
+            {
+                MessageBox.Show(string.Format("Save game not found at: {0}", inputPath));
+                return;
+            }
 
             StringBuilder sb = new StringBuilder();
-            int bytesPerRead = 20;
-            byte[] byteArray;
-            do
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(inputPath)))
             {
-                byteArray = reader.ReadBytes(bytesPerRead);
-
-                for (int i = 0; i < byteArray.Count(); i++)
+                int bytesPerRead = 20;
+                byte[] byteArray;
+                do
                 {
-                    // Offset the byte's value by 1, and use modulo to wrap if it's more than an allowed value.
-                    byteArray[i] = (byte)((byteArray[i] + 1) % 127);
-                }
+                    byteArray = reader.ReadBytes(bytesPerRead);
 
-                // Add the bytes into our output string
-                sb.Append(Encoding.ASCII.GetString(byteArray));
+                    for (int i = 0; i < byteArray.Count(); i++)
+                    {
+                        // Offset the byte's value by 1, and use modulo to wrap if it's more than an allowed value.
+                        byteArray[i] = (byte)((byteArray[i] + 1) % 127);
+                    }
+
+                    // Add the bytes into our output string
+                    sb.Append(Encoding.ASCII.GetString(byteArray));
+                }
+                while (byteArray.Count() > 0);
             }
-            while (byteArray.Count() > 0);
             string jsonString = sb.ToString();
 
             var campaignCompletion = new CampaignCompletion();
