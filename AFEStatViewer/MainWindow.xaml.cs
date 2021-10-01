@@ -76,6 +76,7 @@ namespace AFEStatViewer
                     sb.Append(Encoding.ASCII.GetString(byteArray));
                 }
                 while (byteArray.Count() > 0);
+                reader.Close();
             }
 
             string jsonString = sb.ToString();
