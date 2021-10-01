@@ -69,6 +69,12 @@
             <CheckBox Grid.Row="4" Grid.Column="2" x:Name="Standard_C2M1" IsChecked="{Binding Standard_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="5" Grid.Column="2" x:Name="Standard_C2M2" IsChecked="{Binding Standard_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="6" Grid.Column="2" x:Name="Standard_C2M3" IsChecked="{Binding Standard_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="7" Grid.Column="2" x:Name="Standard_C3M1" IsChecked="{Binding Standard_C3M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="8" Grid.Column="2" x:Name="Standard_C3M2" IsChecked="{Binding Standard_C3M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="9" Grid.Column="2" x:Name="Standard_C3M3" IsChecked="{Binding Standard_C3M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="10" Grid.Column="2" x:Name="Standard_C4M1" IsChecked="{Binding Standard_C4M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="11" Grid.Column="2" x:Name="Standard_C4M2" IsChecked="{Binding Standard_C4M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="12" Grid.Column="2" x:Name="Standard_C4M3" IsChecked="{Binding Standard_C4M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <!-- Column 3 -->
             <TextBlock Grid.Row="0" Grid.Column="3" Text="Intense" HorizontalAlignment="Center"/>
             <CheckBox Grid.Row="1" Grid.Column="3" x:Name="Intense_C1M1" IsChecked="{Binding Intense_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
@@ -77,6 +83,12 @@
             <CheckBox Grid.Row="4" Grid.Column="3" x:Name="Intense_C2M1" IsChecked="{Binding Intense_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="5" Grid.Column="3" x:Name="Intense_C2M2" IsChecked="{Binding Intense_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="6" Grid.Column="3" x:Name="Intense_C2M3" IsChecked="{Binding Intense_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="7" Grid.Column="3" x:Name="Intense_C3M1" IsChecked="{Binding Intense_C3M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="8" Grid.Column="3" x:Name="Intense_C3M2" IsChecked="{Binding Intense_C3M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="9" Grid.Column="3" x:Name="Intense_C3M3" IsChecked="{Binding Intense_C3M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="10" Grid.Column="3" x:Name="Intense_C4M1" IsChecked="{Binding Intense_C4M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="11" Grid.Column="3" x:Name="Intense_C4M2" IsChecked="{Binding Intense_C4M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="12" Grid.Column="3" x:Name="Intense_C4M3" IsChecked="{Binding Intense_C4M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <!-- Column 4 -->
             <TextBlock Grid.Row="0" Grid.Column="4" Text="Extreme" HorizontalAlignment="Center"/>
             <CheckBox Grid.Row="1" Grid.Column="4" x:Name="Extreme_C1M1" IsChecked="{Binding Extreme_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
@@ -85,6 +97,12 @@
             <CheckBox Grid.Row="4" Grid.Column="4" x:Name="Extreme_C2M1" IsChecked="{Binding Extreme_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="5" Grid.Column="4" x:Name="Extreme_C2M2" IsChecked="{Binding Extreme_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="6" Grid.Column="4" x:Name="Extreme_C2M3" IsChecked="{Binding Extreme_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="7" Grid.Column="4" x:Name="Extreme_C3M1" IsChecked="{Binding Extreme_C3M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="8" Grid.Column="4" x:Name="Extreme_C3M2" IsChecked="{Binding Extreme_C3M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="9" Grid.Column="4" x:Name="Extreme_C3M3" IsChecked="{Binding Extreme_C3M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="10" Grid.Column="4" x:Name="Extreme_C4M1" IsChecked="{Binding Extreme_C4M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="11" Grid.Column="4" x:Name="Extreme_C4M2" IsChecked="{Binding Extreme_C4M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="12" Grid.Column="4" x:Name="Extreme_C4M3" IsChecked="{Binding Extreme_C4M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <!-- Column 5 -->
             <TextBlock Grid.Row="0" Grid.Column="5" Text="Insane" HorizontalAlignment="Center"/>
             <CheckBox Grid.Row="1" Grid.Column="5" x:Name="Insane_C1M1" IsChecked="{Binding Insane_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
@@ -93,6 +111,12 @@
             <CheckBox Grid.Row="4" Grid.Column="5" x:Name="Insane_C2M1" IsChecked="{Binding Insane_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="5" Grid.Column="5" x:Name="Insane_C2M2" IsChecked="{Binding Insane_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="6" Grid.Column="5" x:Name="Insane_C2M3" IsChecked="{Binding Insane_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="7" Grid.Column="5" x:Name="Insane_C3M1" IsChecked="{Binding Insane_C3M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="8" Grid.Column="5" x:Name="Insane_C3M2" IsChecked="{Binding Insane_C3M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="9" Grid.Column="5" x:Name="Insane_C3M3" IsChecked="{Binding Insane_C3M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="10" Grid.Column="5" x:Name="Insane_C4M1" IsChecked="{Binding Insane_C4M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="11" Grid.Column="5" x:Name="Insane_C4M2" IsChecked="{Binding Insane_C4M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="12" Grid.Column="5" x:Name="Insane_C4M3" IsChecked="{Binding Insane_C4M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
         </Grid>
     </StackPanel>
 </Window>
