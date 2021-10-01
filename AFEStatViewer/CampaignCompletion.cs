@@ -22,6 +22,11 @@ namespace AFEStatViewer
             data = new NAryDictionary<string, string, int>();
             Frontend = new CampaignCompletionFrontend();
 
+            Init();
+        }
+
+        public void Init()
+        {
             // Add all the maps
             AddMap("Campaign|SC-C1|SC-C1M1");
             //AddMap("Campaign|SC-C1|SC-C1M2");

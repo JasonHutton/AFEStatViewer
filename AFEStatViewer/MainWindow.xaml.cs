@@ -25,15 +25,32 @@ namespace AFEStatViewer
     /// </summary>
     public partial class MainWindow : Window
     {
+        private FileSystemWatcher fsw;
+        public static string inputPath = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Endeavor\Saved\SaveGames\char.sav");
+        private CampaignCompletion campaignCompletion;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public void Window_Loaded(object sender, RoutedEventArgs e)
+        public void WatchForSaveGameChanges()
         {
-            string inputPath = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Endeavor\Saved\SaveGames\char.sav");
+            fsw = new FileSystemWatcher();
+            fsw.Path = System.IO.Path.GetDirectoryName(inputPath);
+            fsw.Filter = System.IO.Path.GetFileName(inputPath);
+            fsw.NotifyFilter = NotifyFilters.LastWrite;
+            fsw.Changed += new FileSystemEventHandler(OnSaveGameChanged);
+            fsw.EnableRaisingEvents = true;
+        }
 
+        public void OnSaveGameChanged(object source, FileSystemEventArgs e)
+        {
+            LoadSavegame();
+        }
+
+        public void LoadSavegame()
+        {
             if (!File.Exists(inputPath))
             {
                 MessageBox.Show(string.Format("Save game not found at: {0}", inputPath));
@@ -60,12 +77,20 @@ namespace AFEStatViewer
                 }
                 while (byteArray.Count() > 0);
             }
+
             string jsonString = sb.ToString();
 
-            var campaignCompletion = new CampaignCompletion();
+            campaignCompletion.LoadCampaignMapData(jsonString);
+        }
+
+        public void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            campaignCompletion = new CampaignCompletion();
             DataContext = campaignCompletion.Frontend;
 
-            campaignCompletion.LoadCampaignMapData(jsonString);
+            LoadSavegame();
+
+            WatchForSaveGameChanges();
         }
     }
 }
