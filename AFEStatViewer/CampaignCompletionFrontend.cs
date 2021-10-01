@@ -234,6 +234,138 @@ namespace AFEStatViewer
                             break;
                     }
                     break;
+                case "Campaign|SC-C3|SC-C3M1":
+                    switch (difficulty)
+                    {
+                        case "Easy|Campaign":
+                            Casual_C3M1 = value;
+                            break;
+                        case "Normal|Campaign":
+                            Standard_C3M1 = value;
+                            break;
+                        case "Hard|Campaign":
+                            Intense_C3M1 = value;
+                            break;
+                        case "Extreme|Campaign":
+                            Extreme_C3M1 = value;
+                            break;
+                        case "Insane|Campaign":
+                            Insane_C3M1 = value;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Campaign|SC-C3|SC-C3M2":
+                    switch (difficulty)
+                    {
+                        case "Easy|Campaign":
+                            Casual_C3M2 = value;
+                            break;
+                        case "Normal|Campaign":
+                            Standard_C3M2 = value;
+                            break;
+                        case "Hard|Campaign":
+                            Intense_C3M2 = value;
+                            break;
+                        case "Extreme|Campaign":
+                            Extreme_C3M2 = value;
+                            break;
+                        case "Insane|Campaign":
+                            Insane_C3M2 = value;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Campaign|SC-C3|SC-C3M3":
+                    switch (difficulty)
+                    {
+                        case "Easy|Campaign":
+                            Casual_C3M3 = value;
+                            break;
+                        case "Normal|Campaign":
+                            Standard_C3M3 = value;
+                            break;
+                        case "Hard|Campaign":
+                            Intense_C3M3 = value;
+                            break;
+                        case "Extreme|Campaign":
+                            Extreme_C3M3 = value;
+                            break;
+                        case "Insane|Campaign":
+                            Insane_C3M3 = value;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Campaign|SC-C4|SC-C4M1":
+                    switch (difficulty)
+                    {
+                        case "Easy|Campaign":
+                            Casual_C4M1 = value;
+                            break;
+                        case "Normal|Campaign":
+                            Standard_C4M1 = value;
+                            break;
+                        case "Hard|Campaign":
+                            Intense_C4M1 = value;
+                            break;
+                        case "Extreme|Campaign":
+                            Extreme_C4M1 = value;
+                            break;
+                        case "Insane|Campaign":
+                            Insane_C4M1 = value;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Campaign|SC-C4|SC-C4M2":
+                    switch (difficulty)
+                    {
+                        case "Easy|Campaign":
+                            Casual_C4M2 = value;
+                            break;
+                        case "Normal|Campaign":
+                            Standard_C4M2 = value;
+                            break;
+                        case "Hard|Campaign":
+                            Intense_C4M2 = value;
+                            break;
+                        case "Extreme|Campaign":
+                            Extreme_C4M2 = value;
+                            break;
+                        case "Insane|Campaign":
+                            Insane_C4M2 = value;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Campaign|SC-C4|SC-C4M3":
+                    switch (difficulty)
+                    {
+                        case "Easy|Campaign":
+                            Casual_C4M3 = value;
+                            break;
+                        case "Normal|Campaign":
+                            Standard_C4M3 = value;
+                            break;
+                        case "Hard|Campaign":
+                            Intense_C4M3 = value;
+                            break;
+                        case "Extreme|Campaign":
+                            Extreme_C4M3 = value;
+                            break;
+                        case "Insane|Campaign":
+                            Insane_C4M3 = value;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
                 default:
                     break;
 
