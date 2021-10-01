@@ -130,9 +130,12 @@ namespace AFEStatViewer
         public MainWindow()
         {
             InitializeComponent();
+        }
 
+        public void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             string inputPath = @"..\..\..\..\char29.sav";
-            
+
             BinaryReader reader = new BinaryReader(File.OpenRead(inputPath));
 
             StringBuilder sb = new StringBuilder();
