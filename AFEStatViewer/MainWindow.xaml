@@ -35,70 +35,64 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!-- Column 0 -->
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Complete" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="1-1" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="1-2" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="1-3" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="5" Grid.Column="0" Text="2-1" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="6" Grid.Column="0" Text="2-2" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="7" Grid.Column="0" Text="2-3" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="8" Grid.Column="0" Text="3-1" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="9" Grid.Column="0" Text="3-2" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="10" Grid.Column="0" Text="3-3" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="11" Grid.Column="0" Text="4-1" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="12" Grid.Column="0" Text="4-2" Margin="10 0" HorizontalAlignment="Right"/>
-            <TextBlock Grid.Row="13" Grid.Column="0" Text="4-3" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="1-1" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="1-2" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="1-3" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="2-1" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="2-2" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="2-3" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="3-1" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="3-2" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="3-3" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="4-1" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="11" Grid.Column="0" Text="4-2" Margin="10 0" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="12" Grid.Column="0" Text="4-3" Margin="10 0" HorizontalAlignment="Right"/>
             <!-- Column 1 -->
             <TextBlock Grid.Row="0" Grid.Column="1" Text="Casual" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Row="1" Grid.Column="1" x:Name="Casual_Complete" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="2" Grid.Column="1" x:Name="Casual_C1M1" IsChecked="{Binding Casual_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="3" Grid.Column="1" x:Name="Casual_C1M2" IsChecked="{Binding Casual_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="4" Grid.Column="1" x:Name="Casual_C1M3" IsChecked="{Binding Casual_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="5" Grid.Column="1" x:Name="Casual_C2M1" IsChecked="{Binding Casual_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="6" Grid.Column="1" x:Name="Casual_C2M2" IsChecked="{Binding Casual_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="7" Grid.Column="1" x:Name="Casual_C2M3" IsChecked="{Binding Casual_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="8" Grid.Column="1" x:Name="Casual_C3M1" IsChecked="{Binding Casual_C3M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="9" Grid.Column="1" x:Name="Casual_C3M2" IsChecked="{Binding Casual_C3M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="10" Grid.Column="1" x:Name="Casual_C3M3" IsChecked="{Binding Casual_C3M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="11" Grid.Column="1" x:Name="Casual_C4M1" IsChecked="{Binding Casual_C4M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="12" Grid.Column="1" x:Name="Casual_C4M2" IsChecked="{Binding Casual_C4M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="13" Grid.Column="1" x:Name="Casual_C4M3" IsChecked="{Binding Casual_C4M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="1" Grid.Column="1" x:Name="Casual_C1M1" IsChecked="{Binding Casual_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="2" Grid.Column="1" x:Name="Casual_C1M2" IsChecked="{Binding Casual_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="3" Grid.Column="1" x:Name="Casual_C1M3" IsChecked="{Binding Casual_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="4" Grid.Column="1" x:Name="Casual_C2M1" IsChecked="{Binding Casual_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="5" Grid.Column="1" x:Name="Casual_C2M2" IsChecked="{Binding Casual_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="6" Grid.Column="1" x:Name="Casual_C2M3" IsChecked="{Binding Casual_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="7" Grid.Column="1" x:Name="Casual_C3M1" IsChecked="{Binding Casual_C3M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="8" Grid.Column="1" x:Name="Casual_C3M2" IsChecked="{Binding Casual_C3M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="9" Grid.Column="1" x:Name="Casual_C3M3" IsChecked="{Binding Casual_C3M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="10" Grid.Column="1" x:Name="Casual_C4M1" IsChecked="{Binding Casual_C4M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="11" Grid.Column="1" x:Name="Casual_C4M2" IsChecked="{Binding Casual_C4M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="12" Grid.Column="1" x:Name="Casual_C4M3" IsChecked="{Binding Casual_C4M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <!-- Column 2 -->
             <TextBlock Grid.Row="0" Grid.Column="2" Text="Standard" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Row="1" Grid.Column="2" x:Name="Standard_Complete" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="2" Grid.Column="2" x:Name="Standard_C1M1" IsChecked="{Binding Standard_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="3" Grid.Column="2" x:Name="Standard_C1M2" IsChecked="{Binding Standard_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="4" Grid.Column="2" x:Name="Standard_C1M3" IsChecked="{Binding Standard_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="5" Grid.Column="2" x:Name="Standard_C2M1" IsChecked="{Binding Standard_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="6" Grid.Column="2" x:Name="Standard_C2M2" IsChecked="{Binding Standard_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="7" Grid.Column="2" x:Name="Standard_C2M3" IsChecked="{Binding Standard_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="1" Grid.Column="2" x:Name="Standard_C1M1" IsChecked="{Binding Standard_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="2" Grid.Column="2" x:Name="Standard_C1M2" IsChecked="{Binding Standard_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="3" Grid.Column="2" x:Name="Standard_C1M3" IsChecked="{Binding Standard_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="4" Grid.Column="2" x:Name="Standard_C2M1" IsChecked="{Binding Standard_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="5" Grid.Column="2" x:Name="Standard_C2M2" IsChecked="{Binding Standard_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="6" Grid.Column="2" x:Name="Standard_C2M3" IsChecked="{Binding Standard_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <!-- Column 3 -->
             <TextBlock Grid.Row="0" Grid.Column="3" Text="Intense" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Row="1" Grid.Column="3" x:Name="Intense_Complete" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="2" Grid.Column="3" x:Name="Intense_C1M1" IsChecked="{Binding Intense_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="3" Grid.Column="3" x:Name="Intense_C1M2" IsChecked="{Binding Intense_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="4" Grid.Column="3" x:Name="Intense_C1M3" IsChecked="{Binding Intense_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="5" Grid.Column="3" x:Name="Intense_C2M1" IsChecked="{Binding Intense_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="6" Grid.Column="3" x:Name="Intense_C2M2" IsChecked="{Binding Intense_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="7" Grid.Column="3" x:Name="Intense_C2M3" IsChecked="{Binding Intense_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="1" Grid.Column="3" x:Name="Intense_C1M1" IsChecked="{Binding Intense_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="2" Grid.Column="3" x:Name="Intense_C1M2" IsChecked="{Binding Intense_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="3" Grid.Column="3" x:Name="Intense_C1M3" IsChecked="{Binding Intense_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="4" Grid.Column="3" x:Name="Intense_C2M1" IsChecked="{Binding Intense_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="5" Grid.Column="3" x:Name="Intense_C2M2" IsChecked="{Binding Intense_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="6" Grid.Column="3" x:Name="Intense_C2M3" IsChecked="{Binding Intense_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <!-- Column 4 -->
             <TextBlock Grid.Row="0" Grid.Column="4" Text="Extreme" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Row="1" Grid.Column="4" x:Name="Extreme_Complete" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="2" Grid.Column="4" x:Name="Extreme_C1M1" IsChecked="{Binding Extreme_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="3" Grid.Column="4" x:Name="Extreme_C1M2" IsChecked="{Binding Extreme_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="4" Grid.Column="4" x:Name="Extreme_C1M3" IsChecked="{Binding Extreme_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="5" Grid.Column="4" x:Name="Extreme_C2M1" IsChecked="{Binding Extreme_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="6" Grid.Column="4" x:Name="Extreme_C2M2" IsChecked="{Binding Extreme_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="7" Grid.Column="4" x:Name="Extreme_C2M3" IsChecked="{Binding Extreme_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="1" Grid.Column="4" x:Name="Extreme_C1M1" IsChecked="{Binding Extreme_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="2" Grid.Column="4" x:Name="Extreme_C1M2" IsChecked="{Binding Extreme_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="3" Grid.Column="4" x:Name="Extreme_C1M3" IsChecked="{Binding Extreme_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="4" Grid.Column="4" x:Name="Extreme_C2M1" IsChecked="{Binding Extreme_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="5" Grid.Column="4" x:Name="Extreme_C2M2" IsChecked="{Binding Extreme_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="6" Grid.Column="4" x:Name="Extreme_C2M3" IsChecked="{Binding Extreme_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <!-- Column 5 -->
             <TextBlock Grid.Row="0" Grid.Column="5" Text="Insane" HorizontalAlignment="Center"/>
-            <CheckBox Grid.Row="1" Grid.Column="5" x:Name="Insane_Complete" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="2" Grid.Column="5" x:Name="Insane_C1M1" IsChecked="{Binding Insane_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="3" Grid.Column="5" x:Name="Insane_C1M2" IsChecked="{Binding Insane_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="4" Grid.Column="5" x:Name="Insane_C1M3" IsChecked="{Binding Insane_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="5" Grid.Column="5" x:Name="Insane_C2M1" IsChecked="{Binding Insane_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="6" Grid.Column="5" x:Name="Insane_C2M2" IsChecked="{Binding Insane_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
-            <CheckBox Grid.Row="7" Grid.Column="5" x:Name="Insane_C2M3" IsChecked="{Binding Insane_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="1" Grid.Column="5" x:Name="Insane_C1M1" IsChecked="{Binding Insane_C1M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="2" Grid.Column="5" x:Name="Insane_C1M2" IsChecked="{Binding Insane_C1M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="3" Grid.Column="5" x:Name="Insane_C1M3" IsChecked="{Binding Insane_C1M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="4" Grid.Column="5" x:Name="Insane_C2M1" IsChecked="{Binding Insane_C2M1}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="5" Grid.Column="5" x:Name="Insane_C2M2" IsChecked="{Binding Insane_C2M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
+            <CheckBox Grid.Row="6" Grid.Column="5" x:Name="Insane_C2M3" IsChecked="{Binding Insane_C2M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
         </Grid>
     </StackPanel>
 </Window>
