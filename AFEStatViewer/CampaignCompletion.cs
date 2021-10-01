@@ -96,41 +96,6 @@ namespace AFEStatViewer
                         Frontend.Set(mapKey, difficulty, false);
                 }
             }
-
-                    //UpdateFrontend();
         }
-        /*
-        void UpdateFrontend()
-        {
-            if (data["Campaign|SC-C1|SC-C1M1"]["Easy|Campaign"] > 0)
-                Frontend.Casual_C1M1 = true;
-            else
-                Frontend.Casual_C1M1 = false;
-
-            if (data["Campaign|SC-C1|SC-C1M1"]["Normal|Campaign"] > 0)
-                Frontend.Standard_C1M1 = true;
-            else
-                Frontend.Standard_C1M1 = false;
-
-            if (data["Campaign|SC-C1|SC-C1M1"]["Hard|Campaign"] > 0)
-                Frontend.Intense_C1M1 = true;
-            else
-                Frontend.Intense_C1M1 = false;
-
-            if (data["Campaign|SC-C1|SC-C1M1"]["Insane|Campaign"] > 0)
-                Frontend.Insane_C1M1 = true;
-            else
-                Frontend.Insane_C1M1 = false;
-
-            if (data["Campaign|SC-C1|SC-C1M2"]["Insane|Campaign"] > 0)
-                Frontend.Insane_C1M2 = true;
-            else
-                Frontend.Insane_C1M2 = false;
-
-            if (data["Campaign|SC-C1|SC-C1M3"]["Insane|Campaign"] > 0)
-                Frontend.Insane_C1M3 = true;
-            else
-                Frontend.Insane_C1M3 = false;
-        }*/
     }
 }

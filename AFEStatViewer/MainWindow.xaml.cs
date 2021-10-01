@@ -58,40 +58,7 @@ namespace AFEStatViewer
             var campaignCompletion = new CampaignCompletion();
             DataContext = campaignCompletion.Frontend;
 
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C1|SC-C1M1"]["Easy|Campaign"]);
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C1|SC-C1M1"]["Hard|Campaign"]);
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C1|SC-C1M1"]["Insane|Campaign"]);
-
             campaignCompletion.LoadCampaignMapData(jsonString);
-
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C1|SC-C1M1"]["Easy|Campaign"]);
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C1|SC-C1M1"]["Hard|Campaign"]);
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C1|SC-C1M1"]["Insane|Campaign"]);
-
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C4|SC-C4M3"]["Hard|Campaign"]);
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C4|SC-C4M1"]["Easy|Campaign"]);
-            Debug.WriteLine(campaignCompletion.data["Campaign|SC-C4|SC-C4M3"]["Easy|Campaign"]);
-
-            /*Insane_C1M1.DataContext = campaignCompletion.Frontend.Data_Insane_C1M1;
-            Insane_C1M2.DataContext = campaignCompletion.Frontend.Data_Insane_C1M2;
-            Insane_C1M3.DataContext = campaignCompletion.Frontend.Data_Insane_C1M3;*/
-            
-
-
-            /*if (campaignCompletion.data["Campaign|SC-C1|SC-C1M1"]["Insane|Campaign"] > 0)
-                campaignCompletion.Data_Insane_C1M1 = true;
-            else
-                campaignCompletion.Data_Insane_C1M1 = false;
-
-            if (campaignCompletion.data["Campaign|SC-C1|SC-C1M2"]["Insane|Campaign"] > 0)
-                campaignCompletion.Data_Insane_C1M2 = true;
-            else
-                campaignCompletion.Data_Insane_C1M2 = false;
-
-            if (campaignCompletion.data["Campaign|SC-C1|SC-C1M3"]["Insane|Campaign"] > 0)
-                campaignCompletion.Data_Insane_C1M3 = true;
-            else
-                campaignCompletion.Data_Insane_C1M3 = false;*/
         }
     }
 }
