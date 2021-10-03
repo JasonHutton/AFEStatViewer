@@ -16,6 +16,8 @@ namespace AFEStatViewer
         public NAryDictionary<string, string, int> data { get; set; }
         private string[] difficultyKeys = { "Easy|Campaign", "Normal|Campaign", "Hard|Campaign", "Extreme|Campaign", "Insane|Campaign" };
         public CampaignCompletionFrontend Frontend { get; set; }
+        public AchievementCount AchHighVoltage;
+        public AchievementCount AchIThinkTheyLikeMe;
 
         public CampaignCompletion()
         {
@@ -44,6 +46,10 @@ namespace AFEStatViewer
             AddMap("Campaign|SC-C4|SC-C4M1");
             AddMap("Campaign|SC-C4|SC-C4M2");
             AddMap("Campaign|SC-C4|SC-C4M3");
+
+            // Default some properties
+            AchHighVoltage = new AchievementCount("High Voltage", "ElectricKills", 1000);
+            AchIThinkTheyLikeMe = new AchievementCount("I Think They Like Me", "MostGrapplesPerMission", 5);
         }
 
         /// <summary>
@@ -101,6 +107,49 @@ namespace AFEStatViewer
                         Frontend.Set(mapKey, difficulty, false);
                 }
             }
+        }
+
+        /// <summary>
+        /// Parse player statistics
+        /// </summary>
+        /// <param name="jsonString"></param>
+        public void LoadPlayerData(string jsonString)
+        {
+            using (JsonDocument document = JsonDocument.Parse(jsonString))
+            {
+                JsonElement root = document.RootElement;
+                JsonElement counterTrackerElement = root.GetProperty("CounterTracker");
+                JsonElement sets = counterTrackerElement.GetProperty("Sets");
+                JsonElement playerClass = sets.GetProperty("Any");
+                JsonElement vars = playerClass.GetProperty("Vars");
+                if (vars.TryGetProperty(AchHighVoltage.Key, out JsonElement electricKills))
+                {
+                    AchHighVoltage.Value = electricKills.GetInt32();
+                }
+                if (vars.TryGetProperty(AchIThinkTheyLikeMe.Key, out JsonElement iThinkTheyLikeMe))
+                {
+                    AchIThinkTheyLikeMe.Value = iThinkTheyLikeMe.GetInt32();
+                }
+
+
+                /*"MostGrapplesPerMission" // I Think They Like Me 5
+                "ExplosiveBarrelsKills" // Improvised Explosives 50
+                 "MedkitsUsedOnAllies"   // Suturing Expert 100
+                    "MissionsCompletedWithoutDownsOrDeaths" //Supportive Squad 50
+                "ConsumablesUsed" // Tower Defense 500
+                    "ThermalKills" // Burn 'em Out 1000
+                    // Those Things were Huge 2000
+                  "BasicKills|Xenos"  // Its a Bug Hunt 10000
+                "Kills|Pathogen"// Anti-Mutation Station 300
+                    "BasicKills|Synths" // Glorified Toasters 1000
+                    // Overwhelming Confidence 25
+                "HiddenCachesFound" // Keen Eye 50
+                    */
+
+            }
+
+            Frontend.AchHighVoltage = AchHighVoltage;
+            Frontend.AchIThinkTheyLikeMe = AchIThinkTheyLikeMe;
         }
     }
 }

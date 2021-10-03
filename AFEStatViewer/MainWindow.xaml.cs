@@ -82,6 +82,7 @@ namespace AFEStatViewer
             string jsonString = sb.ToString();
 
             campaignCompletion.LoadCampaignMapData(jsonString);
+            campaignCompletion.LoadPlayerData(jsonString);
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)

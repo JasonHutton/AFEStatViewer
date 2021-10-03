@@ -97,6 +97,10 @@ namespace AFEStatViewer
         public bool Insane_C4M2 { get; set; }
         public bool Insane_C4M3 { get; set; }
 
+        // Achievements
+        public AchievementCount AchHighVoltage { get; set; }
+        public AchievementCount AchIThinkTheyLikeMe { get; set; }
+
         // There's probably some better way to access all these properties without so much typing, but I don't know it offhand.
         public void Set(string map, string difficulty, bool value)
         {

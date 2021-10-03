@@ -118,5 +118,19 @@
             <CheckBox Grid.Row="11" Grid.Column="5" x:Name="Insane_C4M2" IsChecked="{Binding Insane_C4M2}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
             <CheckBox Grid.Row="12" Grid.Column="5" x:Name="Insane_C4M3" IsChecked="{Binding Insane_C4M3}" HorizontalAlignment="Center" IsHitTestVisible="False" Focusable="False"/>
         </Grid>
+        <TextBlock Text="Achievements" FontWeight="Bold" Margin="10 10"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding AchHighVoltage}" Margin="10 10"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding AchIThinkTheyLikeMe}" Margin="10 10"/>
+        </Grid>
     </StackPanel>
 </Window>
