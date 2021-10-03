@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AFEStatViewer"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="Aliens: Fireteam Elite - Statistics Viewer" Height="450" Width="800">
+        Title="Aliens: Fireteam Elite - Statistics Viewer" Height="500" Width="800">
     <StackPanel>
         <TextBlock Text="Campaign Completion" FontWeight="Bold" Margin="10 10"/>
         <Grid>
@@ -128,9 +128,20 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding AchHighVoltage}" Margin="10 10"/>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding AchIThinkTheyLikeMe}" Margin="10 10"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding AchImprovisedExplosives}" Margin="10 10"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding AchSuturingExpert}" Margin="10 10"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding AchSupportiveSquad}" Margin="10 10"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding AchTowerDefense}" Margin="10 10"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding AchBurnEmOut}" Margin="10 10"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding AchItsABugHunt}" Margin="10 10"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding AchAntiMutationStation}" Margin="10 10"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding AchGlorifiedToasters}" Margin="10 10"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding AchHiddenCachesFound}" Margin="10 10"/>
         </Grid>
     </StackPanel>
 </Window>

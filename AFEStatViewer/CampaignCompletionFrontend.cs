@@ -100,6 +100,15 @@ namespace AFEStatViewer
         // Achievements
         public AchievementCount AchHighVoltage { get; set; }
         public AchievementCount AchIThinkTheyLikeMe { get; set; }
+        public AchievementCount AchImprovisedExplosives { get; set; }
+        public AchievementCount AchSuturingExpert { get; set; }
+        public AchievementCount AchSupportiveSquad { get; set; }
+        public AchievementCount AchTowerDefense { get; set; }
+        public AchievementCount AchBurnEmOut { get; set; }
+        public AchievementCount AchItsABugHunt { get; set; }
+        public AchievementCount AchAntiMutationStation { get; set; }
+        public AchievementCount AchGlorifiedToasters { get; set; }
+        public AchievementCount AchHiddenCachesFound { get; set; }
 
         // There's probably some better way to access all these properties without so much typing, but I don't know it offhand.
         public void Set(string map, string difficulty, bool value)

@@ -18,6 +18,15 @@ namespace AFEStatViewer
         public CampaignCompletionFrontend Frontend { get; set; }
         public AchievementCount AchHighVoltage;
         public AchievementCount AchIThinkTheyLikeMe;
+        public AchievementCount AchImprovisedExplosives;
+        public AchievementCount AchSuturingExpert;
+        public AchievementCount AchSupportiveSquad;
+        public AchievementCount AchTowerDefense;
+        public AchievementCount AchBurnEmOut;
+        public AchievementCount AchItsABugHunt;
+        public AchievementCount AchAntiMutationStation;
+        public AchievementCount AchGlorifiedToasters;
+        public AchievementCount AchHiddenCachesFound;
 
         public CampaignCompletion()
         {
@@ -50,6 +59,15 @@ namespace AFEStatViewer
             // Default some properties
             AchHighVoltage = new AchievementCount("High Voltage", "ElectricKills", 1000);
             AchIThinkTheyLikeMe = new AchievementCount("I Think They Like Me", "MostGrapplesPerMission", 5);
+            AchImprovisedExplosives = new AchievementCount("Improvised Explosives", "ExplosiveBarrelsKills", 50);
+            AchSuturingExpert = new AchievementCount("Suturing Expert", "MedkitsUsedOnAllies", 100);
+            AchSupportiveSquad = new AchievementCount("Supportive Squad", "MissionsCompletedWithoutDownsOrDeaths", 50);
+            AchTowerDefense = new AchievementCount("Tower Defense", "ConsumablesUsed", 500);
+            AchBurnEmOut = new AchievementCount("Burn 'Em Out", "ThermalKills", 1000);
+            AchItsABugHunt = new AchievementCount("It's A Bug Hunt", "BasicKills|Xenos", 10000);
+            AchAntiMutationStation = new AchievementCount("Anti-Mutation Station", "Kills|Pathogen", 300);
+            AchGlorifiedToasters = new AchievementCount("Glorified Toasters", "BasicKills|Synths", 1000);
+            AchHiddenCachesFound = new AchievementCount("Hidden Caches Found", "HiddenCachesFound", 50);
         }
 
         /// <summary>
@@ -130,26 +148,55 @@ namespace AFEStatViewer
                 {
                     AchIThinkTheyLikeMe.Value = iThinkTheyLikeMe.GetInt32();
                 }
+                if (vars.TryGetProperty(AchImprovisedExplosives.Key, out JsonElement improvisedExplosives))
+                {
+                    AchImprovisedExplosives.Value = improvisedExplosives.GetInt32();
+                }
+                if (vars.TryGetProperty(AchSuturingExpert.Key, out JsonElement suturingExpert))
+                {
+                    AchSuturingExpert.Value = suturingExpert.GetInt32();
+                }
+                if (vars.TryGetProperty(AchSupportiveSquad.Key, out JsonElement supportiveSquad))
+                {
+                    AchSupportiveSquad.Value = supportiveSquad.GetInt32();
+                }
+                if (vars.TryGetProperty(AchTowerDefense.Key, out JsonElement towerDefense))
+                {
+                    AchTowerDefense.Value = towerDefense.GetInt32();
+                }
+                if (vars.TryGetProperty(AchBurnEmOut.Key, out JsonElement burnEmOut))
+                {
+                    AchBurnEmOut.Value = burnEmOut.GetInt32();
+                }
+                if (vars.TryGetProperty(AchItsABugHunt.Key, out JsonElement itsABugHunt))
+                {
+                    AchItsABugHunt.Value = itsABugHunt.GetInt32();
+                }
+                if (vars.TryGetProperty(AchAntiMutationStation.Key, out JsonElement antiMutationStation))
+                {
+                    AchAntiMutationStation.Value = antiMutationStation.GetInt32();
+                }
+                if (vars.TryGetProperty(AchGlorifiedToasters.Key, out JsonElement glorifiedToasters))
+                {
+                    AchGlorifiedToasters.Value = glorifiedToasters.GetInt32();
+                }
+                if (vars.TryGetProperty(AchHiddenCachesFound.Key, out JsonElement hiddenCachesFound))
+                {
+                    AchHiddenCachesFound.Value = hiddenCachesFound.GetInt32();
+                }
 
-
-                /*"MostGrapplesPerMission" // I Think They Like Me 5
-                "ExplosiveBarrelsKills" // Improvised Explosives 50
-                 "MedkitsUsedOnAllies"   // Suturing Expert 100
-                    "MissionsCompletedWithoutDownsOrDeaths" //Supportive Squad 50
-                "ConsumablesUsed" // Tower Defense 500
-                    "ThermalKills" // Burn 'em Out 1000
-                    // Those Things were Huge 2000
-                  "BasicKills|Xenos"  // Its a Bug Hunt 10000
-                "Kills|Pathogen"// Anti-Mutation Station 300
-                    "BasicKills|Synths" // Glorified Toasters 1000
-                    // Overwhelming Confidence 25
-                "HiddenCachesFound" // Keen Eye 50
-                    */
-
+                Frontend.AchHighVoltage = AchHighVoltage;
+                Frontend.AchIThinkTheyLikeMe = AchIThinkTheyLikeMe;
+                Frontend.AchImprovisedExplosives = AchImprovisedExplosives;
+                Frontend.AchSuturingExpert = AchSuturingExpert;
+                Frontend.AchSupportiveSquad = AchSupportiveSquad;
+                Frontend.AchTowerDefense = AchTowerDefense;
+                Frontend.AchBurnEmOut = AchBurnEmOut;
+                Frontend.AchItsABugHunt = AchItsABugHunt;
+                Frontend.AchAntiMutationStation = AchAntiMutationStation;
+                Frontend.AchGlorifiedToasters = AchGlorifiedToasters;
+                Frontend.AchHiddenCachesFound = AchHiddenCachesFound;
             }
-
-            Frontend.AchHighVoltage = AchHighVoltage;
-            Frontend.AchIThinkTheyLikeMe = AchIThinkTheyLikeMe;
         }
     }
 }
