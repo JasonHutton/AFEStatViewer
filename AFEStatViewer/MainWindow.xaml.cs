@@ -26,7 +26,11 @@ namespace AFEStatViewer
     public partial class MainWindow : Window
     {
         private FileSystemWatcher fsw;
-        public static string inputPath = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Endeavor\Saved\SaveGames\char.sav");
+        public static string basePath = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Endeavor\Saved\SaveGames\");
+        public static string saveFilename = "char.sav";
+        public static List<string> possiblePaths;
+        public static string saveGameFinalPath = string.Empty; // Our final result savegame path that we'll be processing.
+
         private CampaignCompletion campaignCompletion;
 
         public MainWindow()
@@ -34,11 +38,12 @@ namespace AFEStatViewer
             InitializeComponent();
         }
 
+        // Not used/updated currently
         public void WatchForSaveGameChanges()
         {
             fsw = new FileSystemWatcher();
-            fsw.Path = System.IO.Path.GetDirectoryName(inputPath);
-            fsw.Filter = System.IO.Path.GetFileName(inputPath);
+            fsw.Path = System.IO.Path.GetDirectoryName(saveGameFinalPath);
+            fsw.Filter = System.IO.Path.GetFileName(saveGameFinalPath);
             fsw.NotifyFilter = NotifyFilters.LastWrite;
             fsw.Changed += new FileSystemEventHandler(OnSaveGameChanged);
             fsw.EnableRaisingEvents = true;
@@ -49,16 +54,59 @@ namespace AFEStatViewer
             LoadSavegame();
         }
 
+        public string FindSaveGame()
+        {
+            string saveGamePath = string.Empty;
+
+            if (possiblePaths == null || possiblePaths.Count == 0)
+            {
+                possiblePaths = new List<string>();
+            }
+
+            // Timestamp gets updated when you load game to menu, then close the game.
+            possiblePaths.Add(basePath); // We want to check the basepath (Season 1 and earlier AFE behavior.)
+            possiblePaths.AddRange(Directory.GetDirectories(basePath)); // And we also want to check subdirectories within that. (Season 2 AFE behavior.)
+
+            // If a path doesn't exist, discard it
+            for (int i = 0; i < possiblePaths.Count; i++)
+            {
+                possiblePaths[i] = System.IO.Path.Combine(possiblePaths[i], saveFilename);
+                if (!File.Exists(possiblePaths[i]))
+                {
+                    possiblePaths.RemoveAt(i);
+                    i--; // Decrement counter so that the end of loop increment indexes the correct element, as one has been removed.
+                }
+            }
+
+            // Find the most recently accessed savegame from our paths.
+            DateTime mostRecentFileTime = DateTime.MinValue;
+            for (int i = 0; i < possiblePaths.Count; i++)
+            {
+                DateTime lastAccessedTime = File.GetLastWriteTimeUtc(possiblePaths[i]);
+                if (lastAccessedTime > mostRecentFileTime)
+                {
+                    mostRecentFileTime = lastAccessedTime;
+                    saveGamePath = possiblePaths[i];
+                }
+            }
+
+            return saveGamePath;
+        }
+
         public void LoadSavegame()
         {
-            if (!File.Exists(inputPath))
+            if(string.IsNullOrEmpty(saveGameFinalPath))
             {
-                MessageBox.Show(string.Format("Save game not found at: {0}", inputPath));
-                return;
+                saveGameFinalPath = FindSaveGame();
+                if (string.IsNullOrEmpty(saveGameFinalPath))
+                {
+                    MessageBox.Show(string.Format("Save game not found at: {0}", basePath));
+                    Application.Current.Shutdown();
+                }
             }
 
             StringBuilder sb = new StringBuilder();
-            using (BinaryReader reader = new BinaryReader(File.OpenRead(inputPath)))
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(saveGameFinalPath)))
             {
                 int bytesPerRead = 20;
                 byte[] byteArray;
