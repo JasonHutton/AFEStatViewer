@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using System.IO;
+using System.Text.Json;
 using System.Diagnostics;
 
 using NAryDictionary;
@@ -26,6 +27,7 @@ namespace AFEStatViewer
     public partial class MainWindow : Window
     {
         private FileSystemWatcher fsw;
+        //public static string basePath = Environment.ExpandEnvironmentVariables(@"./");
         public static string basePath = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Endeavor\Saved\SaveGames\");
         public static string saveFilename = "char.sav";
         public static List<string> possiblePaths;
@@ -105,6 +107,9 @@ namespace AFEStatViewer
                 }
             }
 
+            int offset = 1;
+            yuck:
+
             StringBuilder sb = new StringBuilder();
             using (BinaryReader reader = new BinaryReader(File.OpenRead(saveGameFinalPath)))
             {
@@ -117,7 +122,7 @@ namespace AFEStatViewer
                     for (int i = 0; i < byteArray.Count(); i++)
                     {
                         // Offset the byte's value by 1, and use modulo to wrap if it's more than an allowed value.
-                        byteArray[i] = (byte)((byteArray[i] + 1) % 127);
+                        byteArray[i] = (byte)((byteArray[i] + offset) % 127);
                     }
 
                     // Add the bytes into our output string
@@ -129,9 +134,28 @@ namespace AFEStatViewer
 
             string jsonString = sb.ToString();
 
+            //File.WriteAllText("savegame.json", jsonString);
+
+
+            try
+            {
+                JsonDocument document = JsonDocument.Parse(jsonString);
+            }
+            catch (JsonException ex)
+            {
+                offset++;
+                if (offset >= 128)
+                {
+                    throw new Exception("Unable to find working offset.");
+                }
+
+                goto yuck;
+            }
+
+
             campaignCompletion.LoadCampaignMapData(jsonString);
             campaignCompletion.LoadPlayerData(jsonString);
-        }
+            }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
