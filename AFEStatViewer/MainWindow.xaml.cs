@@ -104,10 +104,11 @@ namespace AFEStatViewer
                     Application.Current.Shutdown();
                 }
             }
-
+            byte key = 0x42;
             StringBuilder sb = new StringBuilder();
             using (BinaryReader reader = new BinaryReader(File.OpenRead(saveGameFinalPath)))
             {
+                
                 int bytesPerRead = 20;
                 byte[] byteArray;
                 do
@@ -116,8 +117,8 @@ namespace AFEStatViewer
 
                     for (int i = 0; i < byteArray.Count(); i++)
                     {
-                        // Offset the byte's value by 1, and use modulo to wrap if it's more than an allowed value.
-                        byteArray[i] = (byte)((byteArray[i] + 1) % 127);
+                        // Perform an XOR on the byte
+                        byteArray[i] ^= key;
                     }
 
                     // Add the bytes into our output string
@@ -127,7 +128,7 @@ namespace AFEStatViewer
                 reader.Close();
             }
 
-            string jsonString = sb.ToString();
+            string jsonString = sb.ToString().Replace("?","}");
 
             campaignCompletion.LoadCampaignMapData(jsonString);
             campaignCompletion.LoadPlayerData(jsonString);
