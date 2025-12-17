@@ -104,31 +104,13 @@ namespace AFEStatViewer
                     Application.Current.Shutdown();
                 }
             }
-            byte key = 0x42;
-            StringBuilder sb = new StringBuilder();
-            using (BinaryReader reader = new BinaryReader(File.OpenRead(saveGameFinalPath)))
-            {
-                
-                int bytesPerRead = 20;
-                byte[] byteArray;
-                do
-                {
-                    byteArray = reader.ReadBytes(bytesPerRead);
 
-                    for (int i = 0; i < byteArray.Count(); i++)
-                    {
-                        // Perform an XOR on the byte
-                        byteArray[i] ^= key;
-                    }
-
-                    // Add the bytes into our output string
-                    sb.Append(Encoding.ASCII.GetString(byteArray));
-                }
-                while (byteArray.Count() > 0);
-                reader.Close();
-            }
-
-            string jsonString = sb.ToString().Replace("?","}");
+            // Choose the algorithm you want to use right now.
+            //ISaveDecoder decoder = new Decoders.NOP();
+            //ISaveDecoder decoder = new Decoders.ShiftPlusOne();
+            ISaveDecoder decoder = new Decoders.XorAndReplace(0x42);
+            
+            string jsonString = ReadAndDecodeSaveFile(saveGameFinalPath, decoder);
 
             campaignCompletion.LoadCampaignMapData(jsonString);
             campaignCompletion.LoadPlayerData(jsonString);
@@ -142,6 +124,28 @@ namespace AFEStatViewer
             LoadSavegame();
 
             //WatchForSaveGameChanges();
+        }
+
+        private static string ReadAndDecodeSaveFile(string path, ISaveDecoder decoder)
+        {
+            byte[] encryptedBytes;
+            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                encryptedBytes = new byte[fs.Length];
+                int offset = 0;
+                while (offset < encryptedBytes.Length)
+                {
+                    int read = fs.Read(encryptedBytes, offset, encryptedBytes.Length - offset);
+                    if (read == 0) break;
+                    offset += read;
+                }
+            }
+
+            byte[] decodedBytes = decoder.DecodeBytes(encryptedBytes);
+
+            string decodedText = Encoding.ASCII.GetString(decodedBytes);
+
+            return decoder.PostProcessString(decodedText);
         }
     }
 }
