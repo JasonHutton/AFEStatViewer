@@ -108,8 +108,8 @@ namespace AFEStatViewer
             // Choose the algorithm you want to use right now.
             //ISaveDecoder decoder = new Decoders.NOP();
             //ISaveDecoder decoder = new Decoders.ShiftPlusOne();
-            ISaveDecoder decoder = new Decoders.XorAndReplace(0x42);
-            
+            ISaveDecoder decoder = new Decoders.XOR(0x42, new DecoderOptions(DecoderFlags.SkipLastByte));
+
             string jsonString = ReadAndDecodeSaveFile(saveGameFinalPath, decoder);
 
             campaignCompletion.LoadCampaignMapData(jsonString);
@@ -143,9 +143,24 @@ namespace AFEStatViewer
 
             byte[] decodedBytes = decoder.DecodeBytes(encryptedBytes);
 
-            string decodedText = Encoding.ASCII.GetString(decodedBytes);
+            // Trim trailing nulls
+            int length = decodedBytes.Length;
+            while (length > 0 && decodedBytes[length - 1] == 0x00)
+            {
+                length--;
+            }
 
-            return decoder.PostProcessString(decodedText);
+            string decodedText;
+            try
+            {
+                decodedText = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true).GetString(decodedBytes, 0, length);
+            }
+            catch (DecoderFallbackException)
+    {
+                decodedText = Encoding.Latin1.GetString(decodedBytes, 0, length);
+            }
+
+            return decodedText;
         }
     }
 }
