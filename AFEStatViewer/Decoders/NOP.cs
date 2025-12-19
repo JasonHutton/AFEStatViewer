@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 namespace AFEStatViewer.Decoders
 {
     // This is just a no operation mainly for debugging and assumes an already-decoded input file.
-    public sealed class NOP : ISaveDecoder
+    public sealed class NOP : DecoderBase
     {
-        public byte[] DecodeBytes(byte[] input) => input;
-
-        public string PostProcessString(string decodedText) => decodedText;
+        public NOP(DecoderOptions? options = null) : base(options)
+        {
+        }
+        protected override byte TransformByte(byte b) => b;
     }
 }

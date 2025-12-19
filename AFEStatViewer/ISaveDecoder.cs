@@ -8,7 +8,7 @@ namespace AFEStatViewer
 {
     public interface ISaveDecoder
     {
-        byte[] DecodeBytes(byte[] input);
-        string PostProcessString(string decodedText);
+        public DecoderOptions Options { get; }
+        public byte[] DecodeBytes(byte[] input);
     }
 }

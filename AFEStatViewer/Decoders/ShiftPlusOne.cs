@@ -7,18 +7,12 @@ using System.Threading.Tasks;
 namespace AFEStatViewer.Decoders
 {
     // This is for AFE versions prior to Season 4 or Pathogen/Hardcore. (Not fully sure, and don't exactly recall.)
-    public sealed class ShiftPlusOne : ISaveDecoder
+    public sealed class ShiftPlusOne : DecoderBase
     {
-        public byte[] DecodeBytes(byte[] input)
+        public ShiftPlusOne(DecoderOptions? options = null) : base(options)
         {
-            var output = new byte[input.Length];
-            for (int i = 0; i < input.Length; i++)
-            {
-                output[i] = (byte)((input[i] + 1) % 127);
-            }
-            return output;
         }
 
-        public string PostProcessString(string decodedText) => decodedText;
+        protected override byte TransformByte(byte b) => (byte)((b + 1) % 127);
     }
 }
