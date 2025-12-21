@@ -156,7 +156,7 @@ namespace AFEStatViewer
                 decodedText = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true).GetString(decodedBytes, 0, length);
             }
             catch (DecoderFallbackException)
-    {
+            {
                 decodedText = Encoding.Latin1.GetString(decodedBytes, 0, length);
             }
 
