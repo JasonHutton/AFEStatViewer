@@ -1,5 +1,9 @@
-﻿using System;
+﻿using AFEStatViewer.Models;
+using AFEStatViewer.Services;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-using System.IO;
-using System.Diagnostics;
-
 using Decoders = AFEStatViewer.Services.Decoders;
-using AFEStatViewer.Services;
 
 
 namespace AFEStatViewer
@@ -141,8 +140,15 @@ namespace AFEStatViewer
 
             string jsonString = result.Json;
 
-            campaignCompletion.LoadCampaignMapData(jsonString);
-            campaignCompletion.LoadPlayerData(jsonString);
+            //campaignCompletion.LoadCampaignMapData(jsonString);
+            //campaignCompletion.LoadPlayerData(jsonString);
+            var parser = new SaveGameParser();
+
+            var modeProgress = parser.ParseModeProgress(jsonString, GameDefinitions.AllMissions);
+            var achievementProgress = parser.ParseAchievementProgress(jsonString, GameDefinitions.Achievements);
+
+            // TEMP: adapt to existing frontend
+            FrontendAdapter.ApplyToFrontend(campaignCompletion.Frontend, modeProgress, achievementProgress);
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
