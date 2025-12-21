@@ -12,6 +12,7 @@ namespace AFEStatViewer.ViewModels
         public int MissionNumber => Mission.Number;
         public string MissionName => Mission.Name;
         public string SaveKey => Mission.SaveKey;
+        public string MissionCode => $"{CampaignNumber}-{MissionNumber}";
 
         private ModeProgress? _progress;
         public ModeProgress? Progress
