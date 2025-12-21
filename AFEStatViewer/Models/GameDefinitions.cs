@@ -35,20 +35,20 @@ namespace AFEStatViewer.Models
                 new MissionDefinition(2,    "Search",       "Campaign|SC-C4|SC-C4M2"),
                 new MissionDefinition(3,    "Regicide",     "Campaign|SC-C4|SC-C4M3"),
             }),
-            /*new CampaignDefinition(5, "Promise of a Flower", new[]
+            new CampaignDefinition(5, "Promise of a Flower", new[]
             {
-                new MissionDefinition(1,    "Scout",        "Campaign|SC-C2|SC-C2M1"),
-                new MissionDefinition(2,    "Approach",     "Campaign|SC-C2|SC-C2M2"),
-                new MissionDefinition(3,    "Strike",       "Campaign|SC-C2|SC-C2M3"),
+                new MissionDefinition(1,    "Scout",        "Campaign|SC-C5|SC-C5M1"),
+                new MissionDefinition(2,    "Approach",     "Campaign|SC-C5|SC-C5M2"),
+                new MissionDefinition(3,    "Strike",       "Campaign|SC-C5|SC-C5M3"),
             }),
             new CampaignDefinition(0, "Game Modes", new[]
             {
-                new MissionDefinition(1,    "Horde Mode: Likasi Tower",         "Campaign|SC-C2|SC-C2M1"),
-                new MissionDefinition(2,    "Horde Mode: Ruptured Cistern",     "Campaign|SC-C2|SC-C2M2"),
-                new MissionDefinition(3,    "Horde Mode: Terminal Containment", "Campaign|SC-C2|SC-C2M3"),
-                new MissionDefinition(4,    "Point Defense: Quake",             "Campaign|SC-C2|SC-C2M3"),
-                new MissionDefinition(5,    "Restock Turrets: Tower",           "Campaign|SC-C2|SC-C2M3"),
-            }),*/
+                new MissionDefinition(1,    "Horde Mode: Likasi Tower",         "Challenge|Challenge_Horde|Challenge_Horde_Xeno1"),
+                new MissionDefinition(2,    "Horde Mode: Ruptured Cistern",     "Challenge|Challenge_Horde_Cistern|Challenge_Horde_Cistern1"),
+                new MissionDefinition(3,    "Horde Mode: Terminal Containment", "Challenge|Challenge_Horde_Reactor|Challenge_Horde_Reactor1"),
+                new MissionDefinition(4,    "Point Defense: Quake",             "Challenge|Challenge_PD|GM_PD_Quake"),
+                new MissionDefinition(5,    "Restock Turrets: Tower",           "Challenge|Challenge_HM_RT|GM_HM_RT_Tower"),
+            }),
         };
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
