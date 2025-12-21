@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 using System.IO;
 using System.Text.Json;
-
-using NAryDictionary;
+using AFEStatViewer.Models;
 
 namespace AFEStatViewer
 {
     public class CampaignCompletion
     {
-        public NAryDictionary<string, string, int> data { get; set; }
-        private string[] difficultyKeys = { "Easy|Campaign", "Normal|Campaign", "Hard|Campaign", "Extreme|Campaign", "Insane|Campaign" };
+        public Dictionary<string, Dictionary<Difficulty, int>> data { get; private set; }
+
         public CampaignCompletionFrontend Frontend { get; set; }
         public AchievementCount AchHighVoltage;
         public AchievementCount AchIThinkTheyLikeMe;
@@ -30,7 +29,7 @@ namespace AFEStatViewer
 
         public CampaignCompletion()
         {
-            data = new NAryDictionary<string, string, int>();
+            data = new Dictionary<string, Dictionary<Difficulty, int>>();
             Frontend = new CampaignCompletionFrontend();
 
             Init();
@@ -76,12 +75,10 @@ namespace AFEStatViewer
         /// <param name="map"></param>
         public void AddMap(string map)
         {
-            data[map] = data.New();
+            data[map] = new Dictionary<Difficulty, int>();
 
-            foreach (string difficulty in difficultyKeys)
-            {
+            foreach (var difficulty in Difficulties.All)
                 data[map][difficulty] = 0;
-            }
         }
 
         /// <summary>
@@ -96,33 +93,30 @@ namespace AFEStatViewer
                 JsonElement counterTrackerElement = root.GetProperty("CounterTracker");
                 JsonElement sets = counterTrackerElement.GetProperty("Sets");
 
-                foreach (string difficulty in difficultyKeys)
+                foreach (var difficulty in Difficulties.All)
                 {
-                    // Parse the difficulty element
-                    if (sets.TryGetProperty(difficulty, out JsonElement campaignDifficulty))
-                    {
-                        JsonElement vars = campaignDifficulty.GetProperty("Vars");
+                    var difficultyKey = Difficulties.ToSaveKey[difficulty];
 
-                        foreach (string mapKey in data.Keys)
+                    if (sets.TryGetProperty(difficultyKey, out JsonElement campaignDifficulty))
+                    {
+                        var vars = campaignDifficulty.GetProperty("Vars");
+
+                        foreach (string mapKey in data.Keys.ToList())
                         {
-                            // Parse the map element
                             if (vars.TryGetProperty(mapKey, out JsonElement mapElement))
                             {
-                                data[mapKey][difficulty] = mapElement.GetInt32(); ;
+                                data[mapKey][difficulty] = mapElement.GetInt32();
                             }
                         }
                     }
                 }
             }
 
-            foreach (string mapKey in data.Keys)
+            foreach (var mapKey in data.Keys)
             {
-                foreach (string difficulty in difficultyKeys)
+                foreach (var difficulty in Difficulties.All)
                 {
-                    if (data[mapKey][difficulty] > 0)
-                        Frontend.Set(mapKey, difficulty, true);
-                    else
-                        Frontend.Set(mapKey, difficulty, false);
+                    Frontend.Set(mapKey, Difficulties.ToSaveKey[difficulty], data[mapKey][difficulty] > 0);
                 }
             }
         }
