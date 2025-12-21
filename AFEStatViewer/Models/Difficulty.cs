@@ -17,7 +17,8 @@ namespace AFEStatViewer.Models
 
     public static class Difficulties
     {
-        public static readonly IReadOnlyDictionary<Difficulty, string> ToSaveKey =
+        // Campaign
+        public static readonly IReadOnlyDictionary<Difficulty, string> ToCampaignSaveKey =
             new Dictionary<Difficulty, string>
             {
                 [Difficulty.Casual] = "Easy|Campaign",
@@ -27,6 +28,32 @@ namespace AFEStatViewer.Models
                 [Difficulty.Insane] = "Insane|Campaign",
             };
 
-        public static readonly IReadOnlyList<Difficulty> All = new[] { Difficulty.Casual, Difficulty.Standard, Difficulty.Intense, Difficulty.Extreme, Difficulty.Insane };
+        // Horde modes
+        public static readonly IReadOnlyDictionary<Difficulty, string> ToChallengeSaveKey =
+            new Dictionary<Difficulty, string>
+            {
+                [Difficulty.Casual] = "Easy|Challenge",
+                [Difficulty.Standard] = "Normal|Challenge",
+                [Difficulty.Intense] = "Hard|Challenge",
+                [Difficulty.Extreme] = "Extreme|Challenge",
+                [Difficulty.Insane] = "Insane|Challenge",
+            };
+
+        public static bool IsCampaignKey(string missionSaveKey) =>
+            missionSaveKey != null &&
+            missionSaveKey.StartsWith("Campaign|", StringComparison.OrdinalIgnoreCase);
+        public static bool IsChallengeKey(string missionSaveKey) =>
+            missionSaveKey != null &&
+            missionSaveKey.StartsWith("Challenge|", StringComparison.OrdinalIgnoreCase);
+
+        public static readonly IReadOnlyList<Difficulty> All = new[]
+{
+            Difficulty.Casual,
+            Difficulty.Standard,
+            Difficulty.Intense,
+            Difficulty.Extreme,
+            Difficulty.Insane
+        };
+
     }
 }

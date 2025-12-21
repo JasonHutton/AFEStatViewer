@@ -29,35 +29,64 @@ namespace AFEStatViewer.Services
                 return progress;
             }
 
+            // Materialize once (avoid re-enumerating IEnumerable multiple times)
+            var missionList = missions as IList<MissionDefinition> ?? missions.ToList();
+
+            // Split missions by type (Campaign vs Challenge)
+            var campaignMissions = missionList.Where(m => Difficulties.IsCampaignKey(m.SaveKey)).ToList();
+            var challengeMissions = missionList.Where(m => Difficulties.IsChallengeKey(m.SaveKey)).ToList();
+
+            // Ensure dictionary exists and set value
+            static void SetCount(ModeProgress p, string saveKey, Difficulty d, int value)
+            {
+                if (!p.Counts.TryGetValue(saveKey, out var byDifficulty))
+                {
+                    byDifficulty = new Dictionary<Difficulty, int>();
+                    p.Counts[saveKey] = byDifficulty;
+                }
+
+                byDifficulty[d] = value;
+            }
+
+            // Campaign missions: read from *|Campaign sets
             foreach (var difficulty in Difficulties.All)
             {
-                var difficultySetKey = Difficulties.ToSaveKey[difficulty];
+                var difficultySetKey = Difficulties.ToCampaignSaveKey[difficulty];
 
-                // Example: "Easy|Campaign", "Hard|Campaign", etc.
                 if (!sets.TryGetProperty(difficultySetKey, out var difficultySet))
                     continue;
 
                 if (!difficultySet.TryGetProperty("Vars", out var vars))
                     continue;
 
-                foreach (var mission in missions)
+                foreach (var mission in campaignMissions)
                 {
-                    if (!progress.Counts.TryGetValue(mission.SaveKey, out var byDifficulty))
-                    {
-                        byDifficulty = new Dictionary<Difficulty, int>();
-                        progress.Counts[mission.SaveKey] = byDifficulty;
-                    }
+                    int value = vars.TryGetProperty(mission.SaveKey, out var valueElement)
+                        ? valueElement.GetInt32()
+                        : 0;
 
-                    if (vars.TryGetProperty(mission.SaveKey, out var valueElement))
-                    {
-                        // Normal case: mission present in save
-                        byDifficulty[difficulty] = valueElement.GetInt32();
-                    }
-                    else
-                    {
-                        // Mission not present: treat as zero progress
-                        byDifficulty[difficulty] = 0;
-                    }
+                    SetCount(progress, mission.SaveKey, difficulty, value);
+                }
+            }
+
+            // Horde missions: read from *|Challenge sets
+            foreach (var difficulty in Difficulties.All)
+            {
+                var difficultySetKey = Difficulties.ToChallengeSaveKey[difficulty];
+
+                if (!sets.TryGetProperty(difficultySetKey, out var difficultySet))
+                    continue;
+
+                if (!difficultySet.TryGetProperty("Vars", out var vars))
+                    continue;
+
+                foreach (var mission in challengeMissions)
+                {
+                    int value = vars.TryGetProperty(mission.SaveKey, out var valueElement)
+                        ? valueElement.GetInt32()
+                        : 0;
+
+                    SetCount(progress, mission.SaveKey, difficulty, value);
                 }
             }
 
