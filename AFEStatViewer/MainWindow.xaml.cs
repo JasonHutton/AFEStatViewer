@@ -105,12 +105,39 @@ namespace AFEStatViewer
                 }
             }
 
-            // Choose the algorithm you want to use right now.
-            //ISaveDecoder decoder = new Decoders.NOP();
-            //ISaveDecoder decoder = new Decoders.ShiftModulo(1, 127);
-            ISaveDecoder decoder = new Decoders.XOR(0x42, new DecoderOptions(DecoderFlags.SkipLastByte));
+            // Read encrypted file bytes once
+            byte[] encryptedBytes;
+            using (var fs = new FileStream(saveGameFinalPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                encryptedBytes = new byte[fs.Length];
+                int offset = 0;
+                while (offset < encryptedBytes.Length)
+                {
+                    int read = fs.Read(encryptedBytes, offset, encryptedBytes.Length - offset);
+                    if (read == 0) break;
+                    offset += read;
+                }
+            }
 
-            string jsonString = ReadAndDecodeSaveFile(saveGameFinalPath, decoder);
+            // Try decoders in "most likely newest first" order
+            var decoders = new List<ISaveDecoder>
+            {
+                new Decoders.XOR(0x42, new DecoderOptions(DecoderFlags.SkipLastByte)),
+                new Decoders.ShiftModulo(1, 127),
+                new Decoders.NOP(),
+            };
+
+            var result = SaveGameDecoding.DecodeFirstValidJson(encryptedBytes, decoders);
+
+            if (!result.Success || result.Json == null || result.DecoderUsed == null)
+            {
+                MessageBox.Show($"Failed to decode save as valid JSON.\n\nLast error:\n{result.Error}");
+                return;
+            }
+
+            //Debug.WriteLine($"Decoder selected: {result.DecoderUsed.GetType().Name}");
+
+            string jsonString = result.Json;
 
             campaignCompletion.LoadCampaignMapData(jsonString);
             campaignCompletion.LoadPlayerData(jsonString);
@@ -124,43 +151,6 @@ namespace AFEStatViewer
             LoadSavegame();
 
             //WatchForSaveGameChanges();
-        }
-
-        private static string ReadAndDecodeSaveFile(string path, ISaveDecoder decoder)
-        {
-            byte[] encryptedBytes;
-            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            {
-                encryptedBytes = new byte[fs.Length];
-                int offset = 0;
-                while (offset < encryptedBytes.Length)
-                {
-                    int read = fs.Read(encryptedBytes, offset, encryptedBytes.Length - offset);
-                    if (read == 0) break;
-                    offset += read;
-                }
-            }
-
-            byte[] decodedBytes = decoder.DecodeBytes(encryptedBytes);
-
-            // Trim trailing nulls
-            int length = decodedBytes.Length;
-            while (length > 0 && decodedBytes[length - 1] == 0x00)
-            {
-                length--;
-            }
-
-            string decodedText;
-            try
-            {
-                decodedText = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true).GetString(decodedBytes, 0, length);
-            }
-            catch (DecoderFallbackException)
-            {
-                decodedText = Encoding.Latin1.GetString(decodedBytes, 0, length);
-            }
-
-            return decodedText;
         }
     }
 }
