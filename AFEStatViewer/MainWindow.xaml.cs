@@ -17,6 +17,9 @@ using System.IO;
 using System.Diagnostics;
 
 using NAryDictionary;
+using Decoders = AFEStatViewer.Services.Decoders;
+using AFEStatViewer.Services;
+
 
 namespace AFEStatViewer
 {

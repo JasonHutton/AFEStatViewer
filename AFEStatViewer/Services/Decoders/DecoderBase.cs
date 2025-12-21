@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AFEStatViewer.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AFEStatViewer.Decoders
+namespace AFEStatViewer.Services.Decoders
 {
     public abstract class DecoderBase : ISaveDecoder
     {

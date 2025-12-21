@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AFEStatViewer
+namespace AFEStatViewer.Services
 {
     [Flags]
     public enum DecoderFlags

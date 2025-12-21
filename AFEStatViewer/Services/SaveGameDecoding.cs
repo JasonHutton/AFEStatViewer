@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 
-namespace AFEStatViewer
+namespace AFEStatViewer.Services
 {
-    public sealed record DecodeAttemptResult(bool Success, string? Json, ISaveDecoder? DecoderUsed, string? Error);
+    public sealed record DecodeAttemptResult(bool Success, string Json, ISaveDecoder DecoderUsed, string Error);
 
     public static class SaveGameDecoding
     {
@@ -16,7 +16,7 @@ namespace AFEStatViewer
             if (decodersInPreferenceOrder == null || decodersInPreferenceOrder.Count == 0)
                 throw new ArgumentException("At least one decoder must be provided.", nameof(decodersInPreferenceOrder));
 
-            string? lastError = null;
+            string lastError = null;
 
             foreach (var decoder in decodersInPreferenceOrder)
             {

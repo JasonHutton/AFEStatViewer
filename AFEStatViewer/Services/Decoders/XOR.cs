@@ -1,11 +1,12 @@
-﻿using System;
+﻿using AFEStatViewer.Services;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AFEStatViewer.Decoders
+namespace AFEStatViewer.Services.Decoders
 {
     // This is for AFE versions after Season 4 or Pathogen/Hardcore. (Not fully sure, and don't exactly recall.)
     public sealed class XOR : DecoderBase
