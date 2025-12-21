@@ -50,7 +50,22 @@ namespace AFEStatViewer.Models
                 new MissionDefinition(5,    "Restock Turrets: Tower",           "Campaign|SC-C2|SC-C2M3"),
             }),*/
         };
-    
+
+        public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
+        {
+            new AchievementDefinition("High Voltage",           "ElectricKills",                            1000),
+            new AchievementDefinition("I Think They Like Me",   "MostGrapplesPerMission",                   5),
+            new AchievementDefinition("Improvised Explosives",  "ExplosiveBarrelsKills",                    50),
+            new AchievementDefinition("Suturing Expert",        "MedkitsUsedOnAllies",                      100),
+            new AchievementDefinition("Supportive Squad",       "MissionsCompletedWithoutDownsOrDeaths",    50),
+            new AchievementDefinition("Tower Defense",          "ConsumablesUsed",                          500),
+            new AchievementDefinition("Burn 'Em Out",           "ThermalKills",                             1000),
+            new AchievementDefinition("It's A Bug Hunt",        "BasicKills|Xenos",                         10000),
+            new AchievementDefinition("Anti-Mutation Station",  "Kills|Pathogen",                           300),
+            new AchievementDefinition("Glorified Toasters",     "BasicKills|Synths",                        1000),
+            new AchievementDefinition("Hidden Caches Found",    "HiddenCachesFound",                        50),
+        };
+
         public static IEnumerable<MissionDefinition> AllMissions => Campaigns.SelectMany(c => c.Missions);
     }
 
