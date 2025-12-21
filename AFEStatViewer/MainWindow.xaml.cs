@@ -32,7 +32,7 @@ namespace AFEStatViewer
         public static List<string> possiblePaths;
         public static string saveGameFinalPath = string.Empty; // Our final result savegame path that we'll be processing.
 
-        private CampaignCompletion campaignCompletion;
+        private ViewModels.MainViewModel _vm;
 
         public MainWindow()
         {
@@ -142,19 +142,21 @@ namespace AFEStatViewer
 
             //campaignCompletion.LoadCampaignMapData(jsonString);
             //campaignCompletion.LoadPlayerData(jsonString);
-            var parser = new SaveGameParser();
+            //var parser = new SaveGameParser();
 
-            var modeProgress = parser.ParseModeProgress(jsonString, GameDefinitions.AllMissions);
-            var achievementProgress = parser.ParseAchievementProgress(jsonString, GameDefinitions.Achievements);
+            //var modeProgress = parser.ParseModeProgress(jsonString, GameDefinitions.AllMissions);
+            //var achievementProgress = parser.ParseAchievementProgress(jsonString, GameDefinitions.Achievements);
 
             // TEMP: adapt to existing frontend
-            FrontendAdapter.ApplyToFrontend(campaignCompletion.Frontend, modeProgress, achievementProgress);
+            //FrontendAdapter.ApplyToFrontend(campaignCompletion.Frontend, modeProgress, achievementProgress);
+            _vm.ApplyJson(jsonString, parseAchievements: true);
+
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            campaignCompletion = new CampaignCompletion();
-            DataContext = campaignCompletion.Frontend;
+            _vm = new ViewModels.MainViewModel(new SaveGameParser());
+            DataContext = _vm;
 
             LoadSavegame();
 
