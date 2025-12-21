@@ -107,7 +107,7 @@ namespace AFEStatViewer
 
             // Choose the algorithm you want to use right now.
             //ISaveDecoder decoder = new Decoders.NOP();
-            //ISaveDecoder decoder = new Decoders.ShiftPlusOne();
+            //ISaveDecoder decoder = new Decoders.ShiftModulo(1, 127);
             ISaveDecoder decoder = new Decoders.XOR(0x42, new DecoderOptions(DecoderFlags.SkipLastByte));
 
             string jsonString = ReadAndDecodeSaveFile(saveGameFinalPath, decoder);
