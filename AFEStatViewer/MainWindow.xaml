@@ -191,11 +191,6 @@
                     </DataGrid.Resources>
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Mission"
-                                Binding="{Binding MissionCode}"
-                                Width="Auto"
-                                CanUserSort="False" />
-
                         <DataGridTextColumn Header="Name"
                                 Binding="{Binding MissionName}"
                                 Width="*"
