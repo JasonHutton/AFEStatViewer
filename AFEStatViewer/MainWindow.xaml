@@ -250,36 +250,80 @@
             </GroupBox>
 
             <!-- Achievements -->
-            <GroupBox Grid.Row="2" Header="Achievements">
-                <ItemsControl ItemsSource="{Binding Achievements.Items}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <DockPanel Margin="0,4">
-                                <!-- Name -->
-                                <TextBlock DockPanel.Dock="Left"
-                                           Width="220"
-                                           Text="{Binding Name}" />
+            <GroupBox Grid.Row="2"
+                      Header="Achievements"
+                      Margin="0">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Achievements.Items}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
 
-                                <!-- Description -->
-                                <TextBlock DockPanel.Dock="Left"
-                                           Width="420"
-                                           Text="{Binding Description}"
-                                           TextWrapping="Wrap" />
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#33000000"
+                                        BorderThickness="1"
+                                        CornerRadius="6"
+                                        Padding="8"
+                                        Margin="6"
+                                        Width="260">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-                                <!-- Percent complete (formatted in XAML) -->
-                                <TextBlock DockPanel.Dock="Left"
-                                           Width="90"
-                                           Text="{Binding PercentComplete, StringFormat={}{0:0.#}%}" />
+                                        <!-- Name (left) + Percent (right) -->
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                <!-- ProgressDisplay (progress/target) -->
-                                <TextBlock DockPanel.Dock="Left"
-                                           Width="110"
-                                           Text="{Binding ProgressDisplay}" />
-                            </DockPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                                            <TextBlock Grid.Column="0"
+                                                       Text="{Binding Name}"
+                                                       FontWeight="SemiBold"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       VerticalAlignment="Center">
+                                                <TextBlock.ToolTip>
+                                                    <ToolTip MaxWidth="420">
+                                                        <TextBlock Text="{Binding Description}"
+                                                                   TextWrapping="Wrap" />
+                                                    </ToolTip>
+                                                </TextBlock.ToolTip>
+                                            </TextBlock>
+
+                                            <TextBlock Grid.Column="1"
+                                                       Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
+                                                       FontWeight="SemiBold"
+                                                       Margin="8,0,0,0"
+                                                       VerticalAlignment="Center" />
+                                        </Grid>
+
+                                        <!-- Progress bar with overlay text -->
+                                        <Grid Grid.Row="1" Margin="0,6,0,0">
+                                            <ProgressBar Minimum="0"
+                                                         Maximum="{Binding Target}"
+                                                         Value="{Binding Value}"
+                                                         Height="14" />
+
+                                            <!-- Overlay: (Value/Target) -->
+                                            <TextBlock Text="{Binding ProgressDisplay}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="11"
+                                                       FontWeight="SemiBold" />
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
             </GroupBox>
+
 
         </Grid>
 
