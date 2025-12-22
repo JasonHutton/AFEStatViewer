@@ -3,7 +3,7 @@ A statistics viewer for Aliens: Fireteam Elite
 
 Expects savegame file to be at the default location: "%LOCALAPPDATA%\Endeavor\Saved\SaveGames\"
 In AFE prior to Season 2, this was always: "%LOCALAPPDATA%\Endeavor\Saved\SaveGames\char.sav"
-In AFE Season 2 (and later?) this can be: "%LOCALAPPDATA%\Endeavor\Saved\SaveGames\<SteamID>\char.sav"
+In AFE Season 2 (and later) this can be: "%LOCALAPPDATA%\Endeavor\Saved\SaveGames\<SteamID>\char.sav"
 
 AFE Statistics Viewer will automatically search for the most recently-accessed savegame, and read that.
 
@@ -21,11 +21,14 @@ has become (Thankfully! This should heve been in AFE from day one!) obsolete, as
 available in game. However, AFE presently still does not show progress towards several achievements.
 AFE Statistics Viewer allows players to check that information still.
 
-Presently displays which campaign missions, on which difficulties you have completed or not.
+Presently displays which campaign missions, on which difficulties you have completed or not. It doesn't
+presently track Hardcore, or which class kit has completed a difficulty, just that the difficulty has been completed
+on the map.
 Also displays progress towards SOME achievements.
 (Mostly has been made obsolete with the release of AFE Season 2.)
 
 Run program. Observe window with information that pops up.
 Does not refresh in real time, restart program to get an updated readout.
 
-You MAY need to install .NET 5.0 to get this to work. Download link here should work: https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-desktop-5.0.0-windows-x64-installer
+Special thanks to:
+HourOfOblivion
