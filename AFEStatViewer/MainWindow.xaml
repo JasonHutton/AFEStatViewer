@@ -80,7 +80,7 @@
 
 
                         <DataGridTextColumn Header="Name"
-                                            Binding="{Binding MissionName}"
+                                            Binding="{Binding CampaignMissionName}"
                                             Width="*"
                                             CanUserSort="False" />
 
