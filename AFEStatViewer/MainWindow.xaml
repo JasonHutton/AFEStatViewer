@@ -11,12 +11,6 @@
 
     <DockPanel Margin="10">
 
-        <!-- Optional status -->
-        <TextBlock DockPanel.Dock="Top"
-                   Text="{Binding StatusText}"
-                   Margin="0,0,0,8"
-                   FontStyle="Italic" />
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
