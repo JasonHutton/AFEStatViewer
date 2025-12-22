@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace AFEStatViewer.Models
 {
-    public sealed record AchievementDefinition(string Name, string Key, int Target);
+    public sealed record AchievementDefinition(string Name, string Description, string Key, int Target);
 }
 

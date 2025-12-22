@@ -57,17 +57,17 @@ namespace AFEStatViewer.Models
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
         {
-            new AchievementDefinition("High Voltage",           "ElectricKills",                            1000),
-            new AchievementDefinition("I Think They Like Me",   "MostGrapplesPerMission",                   5),
-            new AchievementDefinition("Improvised Explosives",  "ExplosiveBarrelsKills",                    50),
-            new AchievementDefinition("Suturing Expert",        "MedkitsUsedOnAllies",                      100),
-            new AchievementDefinition("Supportive Squad",       "MissionsCompletedWithoutDownsOrDeaths",    50),
-            new AchievementDefinition("Tower Defense",          "ConsumablesUsed",                          500),
-            new AchievementDefinition("Burn 'Em Out",           "ThermalKills",                             1000),
-            new AchievementDefinition("It's A Bug Hunt",        "BasicKills|Xenos",                         10000),
-            new AchievementDefinition("Anti-Mutation Station",  "Kills|Pathogen",                           300),
-            new AchievementDefinition("Glorified Toasters",     "BasicKills|Synths",                        1000),
-            new AchievementDefinition("Hidden Caches Found",    "HiddenCachesFound",                        50),
+            new AchievementDefinition("High Voltage",           "Kill 1000 enemies with electricity.",                  "ElectricKills",                            1000),
+            new AchievementDefinition("I Think They Like Me",   "Get grappled five times in the same mission.",         "MostGrapplesPerMission",                   5),
+            new AchievementDefinition("Improvised Explosives",  "Kill 50 enemeis with explosive barrels or pods.",      "ExplosiveBarrelsKills",                    50),
+            new AchievementDefinition("Suturing Expert",        "Heal your fireatm with an aid kit 100 times.",         "MedkitsUsedOnAllies",                      100),
+            new AchievementDefinition("Supportive Squad",       "Complete 50 missions without anyone being downed.",    "MissionsCompletedWithoutDownsOrDeaths",    50),
+            new AchievementDefinition("Tower Defense",          "Use 500 consumables.",                                 "ConsumablesUsed",                          500),
+            new AchievementDefinition("Burn 'Em Out",           "Kill 1000 enemies with fire.",                         "ThermalKills",                             1000),
+            new AchievementDefinition("It's A Bug Hunt",        "Kill 10000 Xenomorphs.",                               "BasicKills|Xenos",                         10000),
+            new AchievementDefinition("Anti-Mutation Station",  "Eliminate 500 Pathogen.",                              "Kills|Pathogen",                           300),
+            new AchievementDefinition("Glorified Toasters",     "Eliminate 1000 Synthetics.",                           "BasicKills|Synths",                        1000),
+            new AchievementDefinition("Keen Eye",               "Open 50 hidden caches.",                               "HiddenCachesFound",                        50),
         };
 
         public static IEnumerable<MissionDefinition> CampaignOnlyMissions => Campaigns.SelectMany(c => c.Missions);
