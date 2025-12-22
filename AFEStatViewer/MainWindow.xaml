@@ -255,19 +255,26 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <DockPanel Margin="0,4">
+                                <!-- Name -->
                                 <TextBlock DockPanel.Dock="Left"
-                                           Text="{Binding Name}"
-                                           Width="240" />
+                                           Width="220"
+                                           Text="{Binding Name}" />
+
+                                <!-- Description -->
                                 <TextBlock DockPanel.Dock="Left"
-                                           Text="{Binding Value}"
-                                           Width="80" />
+                                           Width="420"
+                                           Text="{Binding Description}"
+                                           TextWrapping="Wrap" />
+
+                                <!-- Percent complete (formatted in XAML) -->
                                 <TextBlock DockPanel.Dock="Left"
-                                           Text="/"
-                                           Width="20"
-                                           TextAlignment="Center" />
+                                           Width="90"
+                                           Text="{Binding PercentComplete, StringFormat={}{0:0.#}%}" />
+
+                                <!-- ProgressDisplay (progress/target) -->
                                 <TextBlock DockPanel.Dock="Left"
-                                           Text="{Binding Target}"
-                                           Width="80" />
+                                           Width="110"
+                                           Text="{Binding ProgressDisplay}" />
                             </DockPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
