@@ -1,4 +1,5 @@
 ﻿using AFEStatViewer.Models;
+using System.Collections.Generic;
 
 namespace AFEStatViewer.ViewModels
 {

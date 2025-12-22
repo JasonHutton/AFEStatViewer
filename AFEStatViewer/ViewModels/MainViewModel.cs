@@ -13,6 +13,7 @@ namespace AFEStatViewer.ViewModels
         public AchievementsViewModel Achievements { get; }
 
         public ObservableCollection<MissionRowViewModel> Missions { get; }
+        public ObservableCollection<MissionRowViewModel> GameModeMissions { get; }
 
         private ModeProgress? _progress;
         public ModeProgress? Progress
@@ -24,6 +25,9 @@ namespace AFEStatViewer.ViewModels
 
                 foreach (var row in Missions)
                     row.Progress = value;
+
+                foreach (var row in GameModeMissions)
+                    row.Progress = value;
             }
         }
 
@@ -31,9 +35,25 @@ namespace AFEStatViewer.ViewModels
         {
             _parser = parser ?? throw new ArgumentNullException(nameof(parser));
 
-            var rows = GameDefinitions.Campaigns.OrderBy(c => c.Number).SelectMany(c => c.Missions.OrderBy(m => m.Number).Select(m => new MissionRowViewModel(c, m))).ToList();
+            var campaignRows =
+                GameDefinitions.Campaigns
+                    .OrderBy(c => c.Number)
+                    .SelectMany(c => c.Missions
+                        .OrderBy(m => m.Number)
+                        .Select(m => new MissionRowViewModel(c, m)))
+                    .ToList();
 
-            Missions = new ObservableCollection<MissionRowViewModel>(rows);
+            Missions = new ObservableCollection<MissionRowViewModel>(campaignRows);
+
+            var gameModeRows =
+                GameDefinitions.GameModes
+                    .OrderBy(c => c.Number)
+                    .SelectMany(c => c.Missions
+                        .OrderBy(m => m.Number)
+                        .Select(m => new MissionRowViewModel(c, m)))
+                    .ToList();
+
+            GameModeMissions = new ObservableCollection<MissionRowViewModel>(gameModeRows);
 
             Achievements = new AchievementsViewModel(GameDefinitions.Achievements);
         }

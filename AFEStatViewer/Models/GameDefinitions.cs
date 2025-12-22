@@ -41,6 +41,10 @@ namespace AFEStatViewer.Models
                 new MissionDefinition(2,    "Approach",     "Campaign|SC-C5|SC-C5M2"),
                 new MissionDefinition(3,    "Strike",       "Campaign|SC-C5|SC-C5M3"),
             }),
+        };
+
+        public static readonly IReadOnlyList<CampaignDefinition> GameModes = new[]
+        {
             new CampaignDefinition(0, "Game Modes", new[]
             {
                 new MissionDefinition(1,    "Horde Mode: Likasi Tower",         "Challenge|Challenge_Horde|Challenge_Horde_Xeno1"),
@@ -66,7 +70,9 @@ namespace AFEStatViewer.Models
             new AchievementDefinition("Hidden Caches Found",    "HiddenCachesFound",                        50),
         };
 
-        public static IEnumerable<MissionDefinition> AllMissions => Campaigns.SelectMany(c => c.Missions);
+        public static IEnumerable<MissionDefinition> CampaignOnlyMissions => Campaigns.SelectMany(c => c.Missions);
+        public static IEnumerable<MissionDefinition> HordeOnlyMissions => GameModes.SelectMany(c => c.Missions);
+        public static IEnumerable<MissionDefinition> AllMissions => CampaignOnlyMissions.Concat(HordeOnlyMissions);
     }
 
 }
