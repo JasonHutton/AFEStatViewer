@@ -34,8 +34,6 @@ namespace AFEStatViewer
 
         public static string basePath = Environment.ExpandEnvironmentVariables(Properties.Settings.Default.AFE1_SaveGame_Path);
         public static string saveFilename = Properties.Settings.Default.AFE1_SaveGame_Filename;
-
-        public static List<string> possiblePaths;
         public static string saveGameFinalPath = string.Empty; // Our final result savegame path that we'll be processing.
 
         private ViewModels.MainViewModel _vm;
@@ -137,10 +135,11 @@ namespace AFEStatViewer
         public string FindSaveGame()
         {
             string saveGamePath = string.Empty;
+            List<string> possiblePaths = new List<string>();
 
-            if (possiblePaths == null || possiblePaths.Count == 0)
+            if (!Directory.Exists(basePath))
             {
-                possiblePaths = new List<string>();
+                return string.Empty;
             }
 
             // Timestamp gets updated when you load game to menu, then close the game.
