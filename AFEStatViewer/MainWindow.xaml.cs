@@ -27,8 +27,9 @@ namespace AFEStatViewer
     public partial class MainWindow : Window
     {
         private FileSystemWatcher fsw;
-        public static string basePath = Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Endeavor\Saved\SaveGames\");
-        public static string saveFilename = "char.sav";
+        public static string basePath = Environment.ExpandEnvironmentVariables(Properties.Settings.Default.AFE1_SaveGame_Path);
+        public static string saveFilename = Properties.Settings.Default.AFE1_SaveGame_Filename;
+
         public static List<string> possiblePaths;
         public static string saveGameFinalPath = string.Empty; // Our final result savegame path that we'll be processing.
 
