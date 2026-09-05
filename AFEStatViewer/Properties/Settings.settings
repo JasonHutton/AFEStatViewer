@@ -26,5 +26,8 @@
     <Setting Name="SaveGame_Read_RetryDelayMS" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">200</Value>
     </Setting>
+    <Setting Name="SaveGame_Change_DebounceMS" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

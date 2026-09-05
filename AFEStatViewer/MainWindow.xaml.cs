@@ -31,7 +31,6 @@ namespace AFEStatViewer
         private Timer saveGameChangeTimer;
         private readonly object saveGameChangeLock = new object();
         private bool saveGameLoadInProgress = false;
-        private const int SaveGameChangeDebounceMs = 500;
 
         public static string basePath = Environment.ExpandEnvironmentVariables(Properties.Settings.Default.AFE1_SaveGame_Path);
         public static string saveFilename = Properties.Settings.Default.AFE1_SaveGame_Filename;
@@ -71,7 +70,7 @@ namespace AFEStatViewer
             {
                 saveGameChangeTimer?.Dispose();
 
-                saveGameChangeTimer = new System.Threading.Timer(_ => ReloadSaveGameAfterChange(), null, SaveGameChangeDebounceMs, Timeout.Infinite);
+                saveGameChangeTimer = new System.Threading.Timer(_ => ReloadSaveGameAfterChange(), null, Properties.Settings.Default.SaveGame_Change_DebounceMS, Timeout.Infinite);
             }
         }
 

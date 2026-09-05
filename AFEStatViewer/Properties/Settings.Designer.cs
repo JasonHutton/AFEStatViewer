@@ -94,5 +94,14 @@ namespace AFEStatViewer.Properties {
                 return ((int)(this["SaveGame_Read_RetryDelayMS"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int SaveGame_Change_DebounceMS {
+            get {
+                return ((int)(this["SaveGame_Change_DebounceMS"]));
+            }
+        }
     }
 }
