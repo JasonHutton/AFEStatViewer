@@ -91,27 +91,39 @@ namespace AFEStatViewer
                 var maxAttempts = Properties.Settings.Default.SaveGame_Read_MaxAttempts;
                 var retryDelayMs = Properties.Settings.Default.SaveGame_Read_RetryDelayMS;
 
+                SaveGameLoadResult lastResult = null;
+
                 for (int attempt = 1; attempt <= maxAttempts; attempt++)
                 {
-                    try
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
-                        await Application.Current.Dispatcher.InvokeAsync(() =>
-                        {
-                            LoadSavegame();
-                        });
+                        lastResult = LoadSavegame();
+                    });
 
+                    if (lastResult.Success)
+                    {
                         return;
                     }
-                    catch (IOException)
-                    {
-                        if (attempt == maxAttempts)
-                        {
-                            throw;
-                        }
 
+                    bool retryable = lastResult.Failure == SaveGameLoadFailure.ReadFailed || lastResult.Failure == SaveGameLoadFailure.DecodeFailed;
+
+                    if (!retryable)
+                    {
+                        break;
+                    }
+
+                    if (attempt < maxAttempts)
+                    {
                         await Task.Delay(retryDelayMs);
                     }
                 }
+
+#if DEBUG
+                if (lastResult != null)
+                {
+                    Debug.WriteLine($"Save game reload failed: {lastResult.Failure}: {lastResult.Error}");
+                }
+#endif
             }
             finally
             {
@@ -255,14 +267,7 @@ namespace AFEStatViewer
             File.WriteAllText(outputPath, decodeResult.Json, Encoding.UTF8);
 #endif
 
-            try
-            {
-                ApplySaveGame(decodeResult.Json);
-            }
-            catch (Exception ex)
-            {
-                return SaveGameLoadResult.Failed(SaveGameLoadFailure.ApplyFailed, ex.Message, ex);
-            }
+            ApplySaveGame(decodeResult.Json);
 
             return SaveGameLoadResult.Successful();
         }
