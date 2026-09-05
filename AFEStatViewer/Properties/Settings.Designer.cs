@@ -58,5 +58,23 @@ namespace AFEStatViewer.Properties {
                 return ((string)(this["AFE2_SaveGame_Path"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("char_afe1.json")]
+        public string AFE1_SaveGame_Output_Filename {
+            get {
+                return ((string)(this["AFE1_SaveGame_Output_Filename"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("char_afe2.json")]
+        public string AFE2_SaveGame_Output_FIlename {
+            get {
+                return ((string)(this["AFE2_SaveGame_Output_FIlename"]));
+            }
+        }
     }
 }

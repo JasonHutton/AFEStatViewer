@@ -141,6 +141,11 @@ namespace AFEStatViewer
 
             string jsonString = result.Json;
 
+#if DEBUG && SAVE_JSON
+            string outputPath = System.IO.Path.Combine(AppContext.BaseDirectory, Properties.Settings.Default.AFE1_SaveGame_Output_Filename);
+            File.WriteAllText(outputPath, jsonString, Encoding.UTF8);
+#endif
+
             //campaignCompletion.LoadCampaignMapData(jsonString);
             //campaignCompletion.LoadPlayerData(jsonString);
             //var parser = new SaveGameParser();
