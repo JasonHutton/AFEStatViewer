@@ -55,7 +55,7 @@ namespace AFEStatViewer
 
             fsw = new FileSystemWatcher(directory, filename);
 
-            fsw.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.FileName;
+            fsw.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size;
 
             fsw.Changed += OnSaveGameChanged;
 
