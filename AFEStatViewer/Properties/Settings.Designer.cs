@@ -76,5 +76,23 @@ namespace AFEStatViewer.Properties {
                 return ((string)(this["AFE2_SaveGame_Output_FIlename"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int SaveGame_Read_MaxAttempts {
+            get {
+                return ((int)(this["SaveGame_Read_MaxAttempts"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int SaveGame_Read_RetryDelayMS {
+            get {
+                return ((int)(this["SaveGame_Read_RetryDelayMS"]));
+            }
+        }
     }
 }

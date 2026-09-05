@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,11 @@ namespace AFEStatViewer
     public partial class MainWindow : Window
     {
         private FileSystemWatcher fsw;
+        private Timer saveGameChangeTimer;
+        private readonly object saveGameChangeLock = new object();
+        private bool saveGameLoadInProgress = false;
+        private const int SaveGameChangeDebounceMs = 500;
+
         public static string basePath = Environment.ExpandEnvironmentVariables(Properties.Settings.Default.AFE1_SaveGame_Path);
         public static string saveFilename = Properties.Settings.Default.AFE1_SaveGame_Filename;
 
@@ -40,20 +46,81 @@ namespace AFEStatViewer
             InitializeComponent();
         }
 
-        // Not used/updated currently
         public void WatchForSaveGameChanges()
         {
-            fsw = new FileSystemWatcher();
-            fsw.Path = System.IO.Path.GetDirectoryName(saveGameFinalPath);
-            fsw.Filter = System.IO.Path.GetFileName(saveGameFinalPath);
-            fsw.NotifyFilter = NotifyFilters.LastWrite;
-            fsw.Changed += new FileSystemEventHandler(OnSaveGameChanged);
+            if (string.IsNullOrEmpty(saveGameFinalPath))
+            {
+                return;
+            }
+
+            string directory = System.IO.Path.GetDirectoryName(saveGameFinalPath);
+            string filename = System.IO.Path.GetFileName(saveGameFinalPath);
+
+            fsw = new FileSystemWatcher(directory, filename);
+
+            fsw.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.FileName;
+
+            fsw.Changed += OnSaveGameChanged;
+
             fsw.EnableRaisingEvents = true;
         }
 
         public void OnSaveGameChanged(object source, FileSystemEventArgs e)
         {
-            LoadSavegame();
+            lock (saveGameChangeLock)
+            {
+                saveGameChangeTimer?.Dispose();
+
+                saveGameChangeTimer = new System.Threading.Timer(_ => ReloadSaveGameAfterChange(), null, SaveGameChangeDebounceMs, Timeout.Infinite);
+            }
+        }
+
+        private async void ReloadSaveGameAfterChange()
+        {
+            lock (saveGameChangeLock)
+            {
+                if (saveGameLoadInProgress)
+                {
+                    return;
+                }
+
+                saveGameLoadInProgress = true;
+            }
+
+            try
+            {
+                var maxAttempts = Properties.Settings.Default.SaveGame_Read_MaxAttempts;
+                var retryDelayMs = Properties.Settings.Default.SaveGame_Read_RetryDelayMS;
+
+                for (int attempt = 1; attempt <= maxAttempts; attempt++)
+                {
+                    try
+                    {
+                        await Application.Current.Dispatcher.InvokeAsync(() =>
+                        {
+                            LoadSavegame();
+                        });
+
+                        return;
+                    }
+                    catch (IOException)
+                    {
+                        if (attempt == maxAttempts)
+                        {
+                            throw;
+                        }
+
+                        await Task.Delay(retryDelayMs);
+                    }
+                }
+            }
+            finally
+            {
+                lock (saveGameChangeLock)
+                {
+                    saveGameLoadInProgress = false;
+                }
+            }
         }
 
         public string FindSaveGame()
@@ -166,7 +233,7 @@ namespace AFEStatViewer
 
             LoadSavegame();
 
-            //WatchForSaveGameChanges();
+            WatchForSaveGameChanges();
         }
     }
 }
