@@ -161,23 +161,24 @@ namespace AFEStatViewer
             return saveGamePath;
         }
 
-        public void LoadSavegame()
+        private string GetSaveGamePath()
         {
-            if(string.IsNullOrEmpty(saveGameFinalPath))
+            if (!string.IsNullOrEmpty(saveGameFinalPath))
             {
-                saveGameFinalPath = FindSaveGame();
-                if (string.IsNullOrEmpty(saveGameFinalPath))
-                {
-                    MessageBox.Show(string.Format("Save game not found at: {0}", basePath));
-                    Application.Current.Shutdown();
-                }
+                return saveGameFinalPath;
             }
 
-            // Read encrypted file bytes once
-            byte[] encryptedBytes;
-            using (var fs = new FileStream(saveGameFinalPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            saveGameFinalPath = FindSaveGame();
+
+            return saveGameFinalPath;
+        }
+
+        private byte[] ReadSaveGame(string saveGamePath)
+        {
+            using (var fs = new FileStream(saveGamePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                encryptedBytes = new byte[fs.Length];
+                byte[] encryptedBytes = new byte[fs.Length];
+
                 int offset = 0;
                 while (offset < encryptedBytes.Length)
                 {
@@ -185,8 +186,18 @@ namespace AFEStatViewer
                     if (read == 0) break;
                     offset += read;
                 }
-            }
 
+                if (offset != encryptedBytes.Length)
+                {
+                    throw new IOException($"Expected to read {encryptedBytes.Length} bytes, but only read {offset}.");
+                }
+
+                return encryptedBytes;
+            }
+        }
+
+        private DecodeAttemptResult DecodeSaveGame(byte[] encryptedBytes)
+        {
             // Try decoders in "most likely newest first" order
             var decoders = new List<ISaveDecoder>
             {
@@ -195,34 +206,65 @@ namespace AFEStatViewer
                 new Decoders.NOP(),
             };
 
-            var result = SaveGameDecoding.DecodeFirstValidJson(encryptedBytes, decoders);
+            return SaveGameDecoding.DecodeFirstValidJson(encryptedBytes, decoders);
+        }
 
-            if (!result.Success || result.Json == null || result.DecoderUsed == null)
+        private void ApplySaveGame(string jsonString)
+        {
+            _vm.ApplyJson(jsonString, parseAchievements: true);
+        }
+
+        public SaveGameLoadResult LoadSavegame()
+        {
+            string saveGamePath = GetSaveGamePath();
+
+            if (string.IsNullOrEmpty(saveGamePath))
             {
-                MessageBox.Show($"Failed to decode save as valid JSON.\n\nLast error:\n{result.Error}");
-                return;
+                return SaveGameLoadResult.Failed(SaveGameLoadFailure.SaveGameNotFound, $"Save game not found at: {basePath}");
             }
 
-            //Debug.WriteLine($"Decoder selected: {result.DecoderUsed.GetType().Name}");
+            byte[] encryptedBytes;
 
-            string jsonString = result.Json;
+            try
+            {
+                encryptedBytes = ReadSaveGame(saveGamePath);
+            }
+            catch (IOException ex)
+            {
+                return SaveGameLoadResult.Failed(SaveGameLoadFailure.ReadFailed, ex.Message, ex);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return SaveGameLoadResult.Failed(SaveGameLoadFailure.ReadFailed, ex.Message, ex);
+            }
+
+            DecodeAttemptResult decodeResult = DecodeSaveGame(encryptedBytes);
+
+            if (!decodeResult.Success || decodeResult.Json == null || decodeResult.DecoderUsed == null)
+            {
+                return SaveGameLoadResult.Failed(SaveGameLoadFailure.DecodeFailed, decodeResult.Error);
+            }
+
+#if DEBUG
+            Debug.WriteLine($"Decoder selected: {decodeResult.DecoderUsed.GetType().Name}");
+#endif
 
 #if DEBUG && SAVE_JSON
             string outputPath = System.IO.Path.Combine(AppContext.BaseDirectory, Properties.Settings.Default.AFE1_SaveGame_Output_Filename);
-            File.WriteAllText(outputPath, jsonString, Encoding.UTF8);
+
+            File.WriteAllText(outputPath, decodeResult.Json, Encoding.UTF8);
 #endif
 
-            //campaignCompletion.LoadCampaignMapData(jsonString);
-            //campaignCompletion.LoadPlayerData(jsonString);
-            //var parser = new SaveGameParser();
+            try
+            {
+                ApplySaveGame(decodeResult.Json);
+            }
+            catch (Exception ex)
+            {
+                return SaveGameLoadResult.Failed(SaveGameLoadFailure.ApplyFailed, ex.Message, ex);
+            }
 
-            //var modeProgress = parser.ParseModeProgress(jsonString, GameDefinitions.AllMissions);
-            //var achievementProgress = parser.ParseAchievementProgress(jsonString, GameDefinitions.Achievements);
-
-            // TEMP: adapt to existing frontend
-            //FrontendAdapter.ApplyToFrontend(campaignCompletion.Frontend, modeProgress, achievementProgress);
-            _vm.ApplyJson(jsonString, parseAchievements: true);
-
+            return SaveGameLoadResult.Successful();
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
@@ -230,9 +272,51 @@ namespace AFEStatViewer
             _vm = new ViewModels.MainViewModel(new SaveGameParser());
             DataContext = _vm;
 
-            LoadSavegame();
+            SaveGameLoadResult result = LoadSavegame();
+
+            if (!result.Success)
+            {
+                ShowSaveGameLoadError(result);
+                return;
+            }
 
             WatchForSaveGameChanges();
+        }
+
+        private void ShowSaveGameLoadError(SaveGameLoadResult result)
+        {
+            string title;
+            MessageBoxImage icon;
+
+            switch (result.Failure)
+            {
+                case SaveGameLoadFailure.SaveGameNotFound:
+                    title = "Save Game Not Found";
+                    icon = MessageBoxImage.Warning;
+                    break;
+
+                case SaveGameLoadFailure.ReadFailed:
+                    title = "Save Game Read Error";
+                    icon = MessageBoxImage.Warning;
+                    break;
+
+                case SaveGameLoadFailure.DecodeFailed:
+                    title = "Save Game Decode Error";
+                    icon = MessageBoxImage.Error;
+                    break;
+
+                case SaveGameLoadFailure.ApplyFailed:
+                    title = "Save Game Processing Error";
+                    icon = MessageBoxImage.Error;
+                    break;
+
+                default:
+                    title = "Save Game Error";
+                    icon = MessageBoxImage.Error;
+                    break;
+            }
+
+            MessageBox.Show(result.Error, title, MessageBoxButton.OK, icon);
         }
     }
 }
