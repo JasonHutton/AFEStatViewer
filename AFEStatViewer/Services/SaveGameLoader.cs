@@ -10,11 +10,13 @@ namespace AFEStatViewer.Services
     {
         private readonly string basePath;
         private readonly string saveFilename;
+        private readonly string outputFilename;
         public string SaveGamePath { get; private set; } = string.Empty;
-        public SaveGameLoader(string basePath, string saveFilename)
+        public SaveGameLoader(string basePath, string saveFilename, string outputFilename)
         {
             this.basePath = basePath;
             this.saveFilename = saveFilename;
+            this.outputFilename = outputFilename;
         }
         private string FindSaveGame()
         {
@@ -140,9 +142,12 @@ namespace AFEStatViewer.Services
 #endif
 
 #if DEBUG && SAVE_JSON
-            string outputPath = System.IO.Path.Combine(AppContext.BaseDirectory, Properties.Settings.Default.AFE1_SaveGame_Output_Filename);
+            if (!string.IsNullOrEmpty(outputFilename))
+            {
+                string outputPath = Path.Combine(AppContext.BaseDirectory, outputFilename);
 
-            File.WriteAllText(outputPath, decodeResult.Json, Encoding.UTF8);
+                File.WriteAllText(outputPath, decodeResult.Json, Encoding.UTF8);
+            }
 #endif
 
             return SaveGameLoadResult.Successful(decodeResult.Json);

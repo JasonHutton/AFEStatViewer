@@ -17,7 +17,7 @@
     <Setting Name="AFE1_SaveGame_Output_Filename" Type="System.String" Scope="Application">
       <Value Profile="(Default)">char_afe1.json</Value>
     </Setting>
-    <Setting Name="AFE2_SaveGame_Output_FIlename" Type="System.String" Scope="Application">
+    <Setting Name="AFE2_SaveGame_Output_Filename" Type="System.String" Scope="Application">
       <Value Profile="(Default)">char_afe2.json</Value>
     </Setting>
     <Setting Name="SaveGame_Read_MaxAttempts" Type="System.Int32" Scope="Application">

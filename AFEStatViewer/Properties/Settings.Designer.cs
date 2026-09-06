@@ -71,9 +71,9 @@ namespace AFEStatViewer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("char_afe2.json")]
-        public string AFE2_SaveGame_Output_FIlename {
+        public string AFE2_SaveGame_Output_Filename {
             get {
-                return ((string)(this["AFE2_SaveGame_Output_FIlename"]));
+                return ((string)(this["AFE2_SaveGame_Output_Filename"]));
             }
         }
         

@@ -36,14 +36,16 @@ namespace AFEStatViewer
                 Environment.ExpandEnvironmentVariables(
                     Properties.Settings.Default.AFE1_SaveGame_Path
                 ),
-                Properties.Settings.Default.AFE1_SaveGame_Filename
+                Properties.Settings.Default.AFE1_SaveGame_Filename,
+                Properties.Settings.Default.AFE1_SaveGame_Output_Filename
             );
 
             afe2SaveGameLoader = new SaveGameLoader(
                 Environment.ExpandEnvironmentVariables(
                     Properties.Settings.Default.AFE2_SaveGame_Path
                 ),
-                Properties.Settings.Default.AFE2_SaveGame_Filename
+                Properties.Settings.Default.AFE2_SaveGame_Filename,
+                Properties.Settings.Default.AFE2_SaveGame_Output_Filename
             );
         }
 
