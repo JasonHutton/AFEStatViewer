@@ -11,6 +11,7 @@ namespace AFEStatViewer.ViewModels
         private readonly SaveGameParser _parser;
 
         public AchievementsViewModel Achievements { get; }
+        public AchievementsViewModel AFE2Achievements { get; }
 
         public ObservableCollection<MissionRowViewModel> Missions { get; }
         public ObservableCollection<MissionRowViewModel> GameModeMissions { get; }
@@ -81,6 +82,7 @@ namespace AFEStatViewer.ViewModels
             AFE2Missions = new ObservableCollection<MissionRowViewModel>(afe2CampaignRows);
 
             Achievements = new AchievementsViewModel(AFE1GameDefinitions.Achievements);
+            AFE2Achievements = new AchievementsViewModel(AFE2GameDefinitions.Achievements);
         }
 
         public void ApplyAFE1Json(string jsonString, bool parseAchievements)
@@ -104,8 +106,8 @@ namespace AFEStatViewer.ViewModels
 
             if (parseAchievements)
             {
-                //var ap = _parser.ParseAchievementProgress(jsonString, GameDefinitions.Achievements);
-                //Achievements.Apply(ap);
+                var ap = _parser.ParseAchievementProgress(jsonString, AFE2GameDefinitions.Achievements);
+                AFE2Achievements.Apply(ap);
             }
         }
     }

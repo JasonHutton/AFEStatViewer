@@ -57,6 +57,51 @@ namespace AFEStatViewer.Models
             }),
         };
 
+        public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
+        {
+            new AchievementDefinition("Spilled Milk", "Eliminate 1000 Synthetics.", "BasicKills|Synths", 1000),
+            //new AchievementDefinition("Well Stocked Arsenal", "Level 10 weapons to at least two stars.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Reckoning", "Complete the \"Final Endeavor\" Campaign.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Legionnaire's Service Medal", "Complete all Campaigns on Casual or higher difficulty.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("The Story of the Quarry", "Complete the \"Ancient Anomaly\" Campaign.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("", "", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Voided Warranty", "Collect 5 Augments.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Canary", "Complete the \"Rock Bottom\" campaign.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Next Top Marine", "Equip cosmetics on your head, torso and legs.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Worst Party Ever", "Complete the \"Boarding Party\" campaign.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Hell and Back", "Level a weapon to four stars.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Worthiness Tested", "Attempt a Challenge run.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("How Do You See Out Of These Things?", "Collect 10 hats.", "[PLACEHOLDER]", 10),
+
+            //new AchievementDefinition("Not Just For Decoration", "Equip at least one attachment on a sidearm.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("It's a rescue mission, you'll love it!", "Complete the \"Rescue and Recovery\" campaign.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Welcoming Committee", "Complete the \"Prologue\" campaign.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Hardened Trooper", "Complete a mission on Intense difficulty.", "[PLACEHOLDER]", XX),
+
+            //new AchievementDefinition("Yellow Makes It Shoot Better", "Equip a colorway and three decals onto a gun.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Fully Loaded", "Equip a weapon with all attachments, including an Augment.", "[PLACEHOLDER]", XX),
+
+            new AchievementDefinition("Seasoned Veteran", "Level a Kit to Rank 10.", "HighestKitLevelReached", 10),
+
+
+            //new AchievementDefinition("Maxed Out", "Fill every slot in a perk board.", "[PLACEHOLDER]", XX),
+
+            new AchievementDefinition("Purge the Unclean", "Eliminate 1000 Pathogen.", "Kills|Pathogen", 1000),
+            new AchievementDefinition("Head Hunter", "Get 1000 Headshot kills.", "HeadshotKills", 1000),
+            
+            //new AchievementDefinition("Wave Goodbye", "Survive 5 waves in Horde Mode.", "[PLACEHOLDER]", XX),
+
+            //new AchievementDefinition("Overly Attached", "Collect 50 weapon attachments.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Custom Made Marine", "Complete 5 missions with the Specialist kit.", "[PLACEHOLDER]", XX),
+            new AchievementDefinition("Another Bug Hunt", "Eliminate 10000 Xenomorphs.", "BasicKills|Xenos", 10000),
+
+            //new AchievementDefinition("Noble Soldier", "Complete a mission on Extreme difficulty.", "[PLACEHOLDER]", XX),
+            new AchievementDefinition("Decommission Mission", "Eliminate 1000 Combat Automatons.", "BasicKills|Hyperdyne", 1000),
+
+            //new AchievementDefinition("Fervent Warrior", "Complete a mission on Insane Difficulty.", "[PLACEHOLDER]", XX),
+            //new AchievementDefinition("Pure Professionals", "Complete a mission on Intense Difficulty or above without anyone taking friendly fire damage.", "[PLACEHOLDER]", XX),
+        };
+
         public static IEnumerable<MissionDefinition> CampaignOnlyMissions => Campaigns.SelectMany(c => c.Missions);
 
         public static IEnumerable<MissionDefinition> GameModeMissions => GameModes.SelectMany(c => c.Missions);
