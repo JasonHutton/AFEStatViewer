@@ -11,321 +11,400 @@
 
     <DockPanel Margin="10">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <TabControl>
 
-            <!-- Campaign completion -->
-            <GroupBox Grid.Row="0"
-                      Header="Campaign Completion"
-                      Margin="0,0,0,8">
+            <!-- Aliens: Fireteam Elite -->
+            <TabItem Header="Aliens: Fireteam Elite">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <DataGrid ItemsSource="{Binding Missions}"
-                          AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          CanUserAddRows="False"
-                          HeadersVisibility="Column"
-                          GridLinesVisibility="None"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          CanUserSortColumns="False"
-                          SelectionUnit="Cell"
-                          SelectionMode="Single"
-                          SelectedIndex="-1">
+                    <!-- Campaign completion -->
+                    <GroupBox Grid.Row="0"
+                              Header="Campaign Completion"
+                              Margin="0,0,0,8">
 
-                    <!-- Kill the visual selection highlight, but still allow clicking/focus -->
-                    <DataGrid.Resources>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Setter Property="IsHitTestVisible" Value="True" />
-                            <Setter Property="Focusable" Value="False" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="BorderBrush" Value="Transparent" />
-                            <Setter Property="BorderThickness" Value="0" />
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
+                        <DataGrid ItemsSource="{Binding Missions}"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="None"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  CanUserSortColumns="False"
+                                  SelectionUnit="Cell"
+                                  SelectionMode="Single"
+                                  SelectedIndex="-1">
+
+                            <!-- Kill the visual selection highlight, but still allow clicking/focus -->
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Setter Property="IsHitTestVisible" Value="True" />
+                                    <Setter Property="Focusable" Value="False" />
                                     <Setter Property="Background" Value="Transparent" />
                                     <Setter Property="BorderBrush" Value="Transparent" />
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Focusable" Value="False" />
+                                    <Setter Property="BorderThickness" Value="0" />
                                     <Setter Property="Background" Value="Transparent" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
 
-                        <Style TargetType="{x:Type DataGridCell}">
-                            <Setter Property="Focusable" Value="False" />
-                            <Setter Property="BorderThickness" Value="0" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="BorderBrush" Value="Transparent" />
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Transparent" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <!-- Combined Campaign-Mission column -->
+                                <DataGridTextColumn Header="Mission"
+                                                    Binding="{Binding MissionCode}"
+                                                    Width="Auto"
+                                                    CanUserSort="False" />
 
-                    <DataGrid.Columns>
-                        <!-- Combined Campaign-Mission column -->
-                        <DataGridTextColumn Header="Mission"
-                                            Binding="{Binding MissionCode}"
-                                            Width="Auto"
-                                            CanUserSort="False" />
+                                <DataGridTextColumn Header="Name"
+                                                    Binding="{Binding CampaignMissionName}"
+                                                    Width="*"
+                                                    CanUserSort="False" />
 
+                                <DataGridTemplateColumn Header="Casual"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Header="Name"
-                                            Binding="{Binding CampaignMissionName}"
-                                            Width="*"
-                                            CanUserSort="False" />
+                                <DataGridTemplateColumn Header="Standard"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="Casual" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Intense"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="Standard" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Extreme"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="Intense" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Insane"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
 
-                        <DataGridTemplateColumn Header="Extreme" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <!-- Game Modes completion -->
+                    <GroupBox Grid.Row="1"
+                              Header="Game Modes Completion"
+                              Margin="0,0,0,8">
 
-                        <DataGridTemplateColumn Header="Insane" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </GroupBox>
+                        <DataGrid ItemsSource="{Binding GameModeMissions}"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="None"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  CanUserSortColumns="False"
+                                  SelectionUnit="Cell"
+                                  SelectionMode="Single"
+                                  SelectedIndex="-1">
 
-            <!-- Game Modes completion -->
-            <GroupBox Grid.Row="1"
-                      Header="Game Modes Completion"
-                      Margin="0,0,0,8">
-
-                <DataGrid ItemsSource="{Binding GameModeMissions}"
-                          AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          CanUserAddRows="False"
-                          HeadersVisibility="Column"
-                          GridLinesVisibility="None"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          CanUserSortColumns="False"
-                          SelectionUnit="Cell"
-                          SelectionMode="Single"
-                          SelectedIndex="-1">
-
-                    <!-- Reuse the exact same selection-killing styles -->
-                    <DataGrid.Resources>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Setter Property="IsHitTestVisible" Value="True" />
-                            <Setter Property="Focusable" Value="False" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="BorderBrush" Value="Transparent" />
-                            <Setter Property="BorderThickness" Value="0" />
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="BorderBrush" Value="Transparent" />
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Transparent" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-
-                        <Style TargetType="{x:Type DataGridCell}">
-                            <Setter Property="Focusable" Value="False" />
-                            <Setter Property="BorderThickness" Value="0" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
+                            <!-- Reuse the exact same selection-killing styles -->
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Setter Property="IsHitTestVisible" Value="True" />
+                                    <Setter Property="Focusable" Value="False" />
                                     <Setter Property="Background" Value="Transparent" />
                                     <Setter Property="BorderBrush" Value="Transparent" />
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Focusable" Value="False" />
+                                    <Setter Property="BorderThickness" Value="0" />
                                     <Setter Property="Background" Value="Transparent" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.Resources>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
 
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name"
-                                Binding="{Binding MissionName}"
-                                Width="*"
-                                CanUserSort="False" />
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name"
+                                                    Binding="{Binding MissionName}"
+                                                    Width="*"
+                                                    CanUserSort="False" />
 
-                        <DataGridTemplateColumn Header="Casual" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
-                                  IsEnabled="False"
-                                  HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Casual"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="Standard" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
-                                  IsEnabled="False"
-                                  HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Standard"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="Intense" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
-                                  IsEnabled="False"
-                                  HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Intense"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="Extreme" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
-                                  IsEnabled="False"
-                                  HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Extreme"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="Insane" Width="Auto" CanUserSort="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
-                                  IsEnabled="False"
-                                  HorizontalAlignment="Center" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </GroupBox>
+                                <DataGridTemplateColumn Header="Insane"
+                                                        Width="Auto"
+                                                        CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
+                                                      IsEnabled="False"
+                                                      HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
 
-            <!-- Achievements -->
-            <GroupBox Grid.Row="2"
-                      Header="Achievements"
-                      Margin="0">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding Achievements.Items}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
+                    <!-- Achievements -->
+                    <GroupBox Grid.Row="2"
+                              Header="Achievements"
+                              Margin="0">
 
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="#33000000"
-                                        BorderThickness="1"
-                                        CornerRadius="6"
-                                        Padding="8"
-                                        Margin="6"
-                                        Width="260">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding Achievements.Items}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
 
-                                        <!-- Name (left) + Percent (right) -->
-                                        <Grid Grid.Row="0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="#33000000"
+                                                BorderThickness="1"
+                                                CornerRadius="6"
+                                                Padding="8"
+                                                Margin="6"
+                                                Width="250">
 
-                                            <TextBlock Grid.Column="0"
-                                                       Text="{Binding Name}"
-                                                       FontWeight="SemiBold"
-                                                       TextTrimming="CharacterEllipsis"
-                                                       VerticalAlignment="Center">
-                                                <TextBlock.ToolTip>
-                                                    <ToolTip MaxWidth="420">
-                                                        <TextBlock Text="{Binding Description}"
-                                                                   TextWrapping="Wrap" />
-                                                    </ToolTip>
-                                                </TextBlock.ToolTip>
-                                            </TextBlock>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
 
-                                            <TextBlock Grid.Column="1"
-                                                       Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
-                                                       FontWeight="SemiBold"
-                                                       Margin="8,0,0,0"
-                                                       VerticalAlignment="Center" />
-                                        </Grid>
+                                                <!-- Name (left) + Percent (right) -->
+                                                <Grid Grid.Row="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
 
-                                        <!-- Progress bar with overlay text -->
-                                        <Grid Grid.Row="1" Margin="0,6,0,0">
-                                            <ProgressBar Minimum="0"
-                                                         Maximum="{Binding Target}"
-                                                         Value="{Binding Value}"
-                                                         Height="14" />
+                                                    <TextBlock Grid.Column="0"
+                                                               Text="{Binding Name}"
+                                                               FontWeight="SemiBold"
+                                                               TextTrimming="CharacterEllipsis"
+                                                               VerticalAlignment="Center">
 
-                                            <!-- Overlay: (Value/Target) -->
-                                            <TextBlock Text="{Binding ProgressDisplay}"
-                                                       HorizontalAlignment="Center"
-                                                       VerticalAlignment="Center"
-                                                       FontSize="11"
-                                                       FontWeight="SemiBold" />
-                                        </Grid>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
-            </GroupBox>
+                                                        <TextBlock.ToolTip>
+                                                            <ToolTip MaxWidth="420">
+                                                                <TextBlock Text="{Binding Description}"
+                                                                           TextWrapping="Wrap" />
+                                                            </ToolTip>
+                                                        </TextBlock.ToolTip>
+                                                    </TextBlock>
 
+                                                    <TextBlock Grid.Column="1"
+                                                               Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
+                                                               FontWeight="SemiBold"
+                                                               Margin="8,0,0,0"
+                                                               VerticalAlignment="Center" />
+                                                </Grid>
 
-        </Grid>
+                                                <!-- Progress bar with overlay text -->
+                                                <Grid Grid.Row="1"
+                                                      Margin="0,6,0,0">
+
+                                                    <ProgressBar Minimum="0"
+                                                                 Maximum="{Binding Target}"
+                                                                 Value="{Binding Value}"
+                                                                 Height="14" />
+
+                                                    <!-- Overlay: (Value/Target) -->
+                                                    <TextBlock Text="{Binding ProgressDisplay}"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               FontSize="11"
+                                                               FontWeight="SemiBold" />
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- Aliens: Fireteam Elite 2 -->
+            <TabItem Header="Aliens: Fireteam Elite 2">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Campaign completion -->
+                    <GroupBox Grid.Row="0"
+                              Header="Campaign Completion"
+                              Margin="0,0,0,8">
+
+                        <Grid MinHeight="220">
+                            <TextBlock Text="AFE2 campaign completion"
+                                       Foreground="Gray"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Game Modes completion -->
+                    <GroupBox Grid.Row="1"
+                              Header="Game Modes Completion"
+                              Margin="0,0,0,8">
+
+                        <Grid MinHeight="100">
+                            <TextBlock Text="AFE2 game modes completion"
+                                       Foreground="Gray"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Achievements -->
+                    <GroupBox Grid.Row="2"
+                              Header="Achievements"
+                              Margin="0">
+
+                        <Grid>
+                            <TextBlock Text="AFE2 achievements"
+                                       Foreground="Gray"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
 
     </DockPanel>
 </Window>
