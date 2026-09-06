@@ -195,13 +195,12 @@ namespace AFEStatViewer
 
         private void ApplyAFE1SaveGame(string jsonString)
         {
-            //_vm.ApplyAFE1Json(jsonString, parseAchievements: true);
-            _vm.ApplyJson(jsonString, parseAchievements: true);
+            _vm.ApplyAFE1Json(jsonString, parseAchievements: true);
         }
 
         private void ApplyAFE2SaveGame(string jsonString)
         {
-            //_vm.ApplyAFE2Json(jsonString, parseAchievements: true);
+            _vm.ApplyAFE2Json(jsonString, parseAchievements: true);
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)

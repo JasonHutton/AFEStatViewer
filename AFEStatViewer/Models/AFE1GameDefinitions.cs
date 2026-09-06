@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AFEStatViewer.Models
 {
-    public static class GameDefinitions
+    public static class AFE1GameDefinitions
     {
         public static readonly IReadOnlyList<CampaignDefinition> Campaigns = new[]
         {

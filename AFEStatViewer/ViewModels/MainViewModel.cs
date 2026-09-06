@@ -15,6 +15,8 @@ namespace AFEStatViewer.ViewModels
         public ObservableCollection<MissionRowViewModel> Missions { get; }
         public ObservableCollection<MissionRowViewModel> GameModeMissions { get; }
 
+        public ObservableCollection<MissionRowViewModel> AFE2Missions { get; }
+
         private ModeProgress? _progress;
         public ModeProgress? Progress
         {
@@ -31,12 +33,25 @@ namespace AFEStatViewer.ViewModels
             }
         }
 
+        private ModeProgress? _afe2Progress;
+        public ModeProgress? AFE2Progress
+        {
+            get => _afe2Progress;
+            private set
+            {
+                if (!SetProperty(ref _afe2Progress, value)) return;
+
+                foreach (var row in AFE2Missions)
+                    row.Progress = value;
+            }
+        }
+
         public MainViewModel(SaveGameParser parser)
         {
             _parser = parser ?? throw new ArgumentNullException(nameof(parser));
 
             var campaignRows =
-                GameDefinitions.Campaigns
+                AFE1GameDefinitions.Campaigns
                     .OrderBy(c => c.Number)
                     .SelectMany(c => c.Missions
                         .OrderBy(m => m.Number)
@@ -46,7 +61,7 @@ namespace AFEStatViewer.ViewModels
             Missions = new ObservableCollection<MissionRowViewModel>(campaignRows);
 
             var gameModeRows =
-                GameDefinitions.GameModes
+                AFE1GameDefinitions.GameModes
                     .OrderBy(c => c.Number)
                     .SelectMany(c => c.Missions
                         .OrderBy(m => m.Number)
@@ -55,19 +70,42 @@ namespace AFEStatViewer.ViewModels
 
             GameModeMissions = new ObservableCollection<MissionRowViewModel>(gameModeRows);
 
-            Achievements = new AchievementsViewModel(GameDefinitions.Achievements);
+            var afe2CampaignRows =
+                AFE2GameDefinitions.Campaigns
+                    .OrderBy(c => c.Number)
+                    .SelectMany(c => c.Missions
+                        .OrderBy(m => m.Number)
+                        .Select(m => new MissionRowViewModel(c, m)))
+                    .ToList();
+
+            AFE2Missions = new ObservableCollection<MissionRowViewModel>(afe2CampaignRows);
+
+            Achievements = new AchievementsViewModel(AFE1GameDefinitions.Achievements);
         }
 
-        public void ApplyJson(string jsonString, bool parseAchievements)
+        public void ApplyAFE1Json(string jsonString, bool parseAchievements)
         {
             if (jsonString == null) throw new ArgumentNullException(nameof(jsonString));
 
-            Progress = _parser.ParseModeProgress(jsonString, GameDefinitions.AllMissions);
+            Progress = _parser.ParseModeProgress(jsonString, AFE1GameDefinitions.AllMissions);
 
             if (parseAchievements)
             {
-                var ap = _parser.ParseAchievementProgress(jsonString, GameDefinitions.Achievements);
+                var ap = _parser.ParseAchievementProgress(jsonString, AFE1GameDefinitions.Achievements);
                 Achievements.Apply(ap);
+            }
+        }
+
+        public void ApplyAFE2Json(string jsonString, bool parseAchievements)
+        {
+            if (jsonString == null) throw new ArgumentNullException(nameof(jsonString));
+
+            AFE2Progress = _parser.ParseModeProgress(jsonString, AFE2GameDefinitions.CampaignOnlyMissions);
+
+            if (parseAchievements)
+            {
+                //var ap = _parser.ParseAchievementProgress(jsonString, GameDefinitions.Achievements);
+                //Achievements.Apply(ap);
             }
         }
     }
