@@ -8,7 +8,6 @@ namespace AFEStatViewer
         SaveGameNotFound,
         ReadFailed,
         DecodeFailed,
-        ApplyFailed,
     }
 
     public sealed class SaveGameLoadResult
@@ -17,18 +16,20 @@ namespace AFEStatViewer
         public SaveGameLoadFailure Failure { get; }
         public string Error { get; }
         public Exception Exception { get; }
+        public string Json { get; }
 
-        private SaveGameLoadResult(bool success, SaveGameLoadFailure failure = SaveGameLoadFailure.None, string error = null, Exception exception = null)
+        private SaveGameLoadResult(bool success, SaveGameLoadFailure failure = SaveGameLoadFailure.None, string error = null, Exception exception = null, string json = null)
         {
             Success = success;
             Failure = failure;
             Error = error;
             Exception = exception;
+            Json = json;
         }
 
-        public static SaveGameLoadResult Successful()
+        public static SaveGameLoadResult Successful(string json)
         {
-            return new SaveGameLoadResult(true);
+            return new SaveGameLoadResult(true, json: json);
         }
 
         public static SaveGameLoadResult Failed(SaveGameLoadFailure failure, string error, Exception exception = null)

@@ -8,7 +8,15 @@ namespace AFEStatViewer.Services
 {
     internal class SaveGameLoader
     {
-        public string FindSaveGame()
+        private readonly string basePath;
+        private readonly string saveFilename;
+        public string SaveGamePath { get; private set; } = string.Empty;
+        public SaveGameLoader(string basePath, string saveFilename)
+        {
+            this.basePath = basePath;
+            this.saveFilename = saveFilename;
+        }
+        private string FindSaveGame()
         {
             string saveGamePath = string.Empty;
             List<string> possiblePaths = new List<string>();
@@ -48,19 +56,19 @@ namespace AFEStatViewer.Services
             return saveGamePath;
         }
 
-        public string GetSaveGamePath()
+        private string GetSaveGamePath()
         {
-            if (!string.IsNullOrEmpty(saveGameFinalPath))
+            if (!string.IsNullOrEmpty(SaveGamePath))
             {
-                return saveGameFinalPath;
+                return SaveGamePath;
             }
 
-            saveGameFinalPath = FindSaveGame();
+            SaveGamePath = FindSaveGame();
 
-            return saveGameFinalPath;
+            return SaveGamePath;
         }
 
-        public byte[] ReadSaveGame(string saveGamePath)
+        private byte[] ReadSaveGame(string saveGamePath)
         {
             using (var fs = new FileStream(saveGamePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
@@ -83,7 +91,7 @@ namespace AFEStatViewer.Services
             }
         }
 
-        public DecodeAttemptResult DecodeSaveGame(byte[] encryptedBytes)
+        private DecodeAttemptResult DecodeSaveGame(byte[] encryptedBytes)
         {
             // Try decoders in "most likely newest first" order
             var decoders = new List<ISaveDecoder>
@@ -137,9 +145,7 @@ namespace AFEStatViewer.Services
             File.WriteAllText(outputPath, decodeResult.Json, Encoding.UTF8);
 #endif
 
-            ApplySaveGame(decodeResult.Json);
-
-            return SaveGameLoadResult.Successful();
+            return SaveGameLoadResult.Successful(decodeResult.Json);
         }
     }
 }

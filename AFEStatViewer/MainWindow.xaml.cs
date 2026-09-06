@@ -19,27 +19,31 @@ namespace AFEStatViewer
         private Timer saveGameChangeTimer;
         private readonly object saveGameChangeLock = new object();
         private bool saveGameLoadInProgress = false;
-
-        public static string basePath = Environment.ExpandEnvironmentVariables(Properties.Settings.Default.AFE1_SaveGame_Path);
-        public static string saveFilename = Properties.Settings.Default.AFE1_SaveGame_Filename;
-        public static string saveGameFinalPath = string.Empty; // Our final result savegame path that we'll be processing.
+        private SaveGameLoader saveGameLoader;
 
         private ViewModels.MainViewModel _vm;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            saveGameLoader = new SaveGameLoader(
+                Environment.ExpandEnvironmentVariables(
+                    Properties.Settings.Default.AFE1_SaveGame_Path
+                ),
+                Properties.Settings.Default.AFE1_SaveGame_Filename
+            );
         }
 
         public void WatchForSaveGameChanges()
         {
-            if (string.IsNullOrEmpty(saveGameFinalPath))
+            if (string.IsNullOrEmpty(saveGameLoader.SaveGamePath))
             {
                 return;
             }
 
-            string directory = System.IO.Path.GetDirectoryName(saveGameFinalPath);
-            string filename = System.IO.Path.GetFileName(saveGameFinalPath);
+            string directory = System.IO.Path.GetDirectoryName(saveGameLoader.SaveGamePath);
+            string filename = System.IO.Path.GetFileName(saveGameLoader.SaveGamePath);
 
             fsw = new FileSystemWatcher(directory, filename);
 
@@ -83,7 +87,12 @@ namespace AFEStatViewer
                 {
                     await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
-                        lastResult = LoadSavegame();
+                        lastResult = saveGameLoader.LoadSavegame();
+
+                        if (lastResult.Success)
+                        {
+                            ApplySaveGame(lastResult.Json);
+                        }
                     });
 
                     if (lastResult.Success)
@@ -130,13 +139,15 @@ namespace AFEStatViewer
             _vm = new ViewModels.MainViewModel(new SaveGameParser());
             DataContext = _vm;
 
-            SaveGameLoadResult result = LoadSavegame();
+            SaveGameLoadResult result = saveGameLoader.LoadSavegame();
 
             if (!result.Success)
             {
                 ShowSaveGameLoadError(result);
                 return;
             }
+
+            ApplySaveGame(result.Json);
 
             WatchForSaveGameChanges();
         }
@@ -160,11 +171,6 @@ namespace AFEStatViewer
 
                 case SaveGameLoadFailure.DecodeFailed:
                     title = "Save Game Decode Error";
-                    icon = MessageBoxImage.Error;
-                    break;
-
-                case SaveGameLoadFailure.ApplyFailed:
-                    title = "Save Game Processing Error";
                     icon = MessageBoxImage.Error;
                     break;
 
