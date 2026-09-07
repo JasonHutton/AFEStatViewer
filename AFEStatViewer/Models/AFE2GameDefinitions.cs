@@ -9,9 +9,12 @@ namespace AFEStatViewer.Models
         public static readonly ClassKitVisualStyle ClassKitStyle = new(
             CompleteColorHex: "#66FF66",
             IncompleteColorHex: "#7A837A",
-            IconBackgroundColorHex: "#FF101010",
+            IconBackgroundColorHex: "#101010",
+            CompletionSectionBackgroundColorHex: "#555855",
+            CompletionTextColorHex: "#66FF66",
             CompleteOpacity: 1.0,
             IncompleteOpacity: 0.35,
+            IconBackgroundOpacity: 1.0,
             IconSize: 18.0
         );
 

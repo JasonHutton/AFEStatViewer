@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Media;
 
 namespace AFEStatViewer.ViewModels
 {
@@ -20,6 +21,8 @@ namespace AFEStatViewer.ViewModels
         public string CampaignMissionName => $"{CampaignName}: {MissionName}";
 
         public ObservableCollection<ClassKitCompletionViewModel> ClassKits { get; }
+        public Brush CompletionSectionBackgroundBrush { get; }
+        public Brush CompletionTextBrush { get; }
 
         private ModeProgress? _progress;
         public ModeProgress? Progress
@@ -46,10 +49,24 @@ namespace AFEStatViewer.ViewModels
             CampaignName = campaign.Name;
             Mission = mission;
 
+            CompletionSectionBackgroundBrush = CreateFrozenBrush(classKitStyle.CompletionSectionBackgroundColorHex);
+
+            CompletionTextBrush = CreateFrozenBrush(classKitStyle.CompletionTextColorHex);
+
             ClassKits = new ObservableCollection<ClassKitCompletionViewModel>(
                 classKits.Select(classKit =>
                     new ClassKitCompletionViewModel(classKit, mission.SaveKey, classKitStyle))
             );
+        }
+
+
+        private static Brush CreateFrozenBrush(string colorHex)
+        {
+            var color = (Color)ColorConverter.ConvertFromString(colorHex);
+            var brush = new SolidColorBrush(color);
+            brush.Freeze();
+
+            return brush;
         }
     }
 }

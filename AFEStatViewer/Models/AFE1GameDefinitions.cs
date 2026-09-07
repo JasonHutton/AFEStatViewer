@@ -10,11 +10,14 @@ namespace AFEStatViewer.Models
     public static class AFE1GameDefinitions
     {
         public static readonly ClassKitVisualStyle ClassKitStyle = new(
-            CompleteColorHex: "#66FF66",
-            IncompleteColorHex: "#7A837A",
-            IconBackgroundColorHex: "#FF101010",
+            CompleteColorHex: "#1F6F3D",
+            IncompleteColorHex: "#16351F",
+            IconBackgroundColorHex: "#00000000",
+            CompletionSectionBackgroundColorHex: "#00000000",
+            CompletionTextColorHex: "#000000",
             CompleteOpacity: 1.0,
-            IncompleteOpacity: 0.35,
+            IncompleteOpacity: 0.18,
+            IconBackgroundOpacity: 0.0,
             IconSize: 18.0
         );
 
