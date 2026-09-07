@@ -66,7 +66,7 @@ namespace AFEStatViewer.Models
             new AchievementDefinition("AFE1_Tower_Defense", "Tower Defense", "Use 500 consumables.", 500, AchievementValueResolvers.CounterTracker("Any", "ConsumablesUsed")),
             new AchievementDefinition("AFE1_Burn_Em_Out", "Burn 'Em Out", "Kill 1000 enemies with fire.", 1000, AchievementValueResolvers.CounterTracker("Any", "ThermalKills")),
             new AchievementDefinition("AFE1_It_s_A_Bug_Hunt", "It's A Bug Hunt", "Kill 10000 Xenomorphs.", 10000, AchievementValueResolvers.CounterTracker("Any", "BasicKills|Xenos")),
-            new AchievementDefinition("AFE1_Anti_Mutation_Station", "Anti-Mutation Station", "Eliminate 500 Pathogen.", 500, AchievementValueResolvers.CounterTracker("Any", "Kills|Pathogen")),
+            new AchievementDefinition("AFE1_Anti_Mutation_Station", "Anti-Mutation Station", "Eliminate 300 Pathogen.", 300, AchievementValueResolvers.CounterTracker("Any", "Kills|Pathogen")),
             new AchievementDefinition("AFE1_Glorified_Toasters", "Glorified Toasters", "Eliminate 1000 Synthetics.", 1000, AchievementValueResolvers.CounterTracker("Any", "BasicKills|Synths")),
             new AchievementDefinition("AFE1_Keen_Eye", "Keen Eye", "Open 50 hidden caches.", 50, AchievementValueResolvers.CounterTracker("Any", "HiddenCachesFound")),
 
