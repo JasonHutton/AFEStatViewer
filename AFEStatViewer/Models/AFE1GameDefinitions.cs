@@ -82,7 +82,7 @@ namespace AFEStatViewer.Models
             new AchievementDefinition("LV-895 Campaign Medal",          "Finish all Campaigns on Extreme Difficulty.",                  "Any",          "XXXX",                             1), // This doesn't include Promise of a Flower
             new AchievementDefinition("Got All I Need",                 "Complete a mission wtihout using aid kits, ammo crates, or consumables.",                          "Any",          "XXXX",                             1),
             new AchievementDefinition("Expeditionary Service Ribbon",   "Finish all Campaigns on Standard Difficulty.",                 "Any",          "XXXX",                             1), // This doesn't include Promise of a Flower
-            new AchievementDefinition("Those Things Were Huge",         "Eliminate 2000 elite enemies.",                                "Any",          "XXXX",                             1000),
+            new AchievementDefinition("Those Things Were Huge",         "Eliminate 2000 elite enemies.",                                "Any",          "XXXX",                             2000),
             new AchievementDefinition("My Kind of Crazy",               "Finish a mission on Insane Difficulty.",                       "Any",          "XXXX",                             1),
             new AchievementDefinition("A Stand Up Fight",               "Finish a mission on Extreme Difficulty.",                      "Any",          "XXXX",                             1),
             new AchievementDefinition("It's a Cover, not a Hat",        "Collect 20 hats on a single character.",                       "Any",          "XXXX",                             20),
