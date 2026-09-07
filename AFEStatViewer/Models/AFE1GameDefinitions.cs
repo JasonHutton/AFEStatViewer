@@ -61,7 +61,7 @@ namespace AFEStatViewer.Models
             new AchievementDefinition("AFE1_High_Voltage", "High Voltage", "Kill 1000 enemies with electricity.", 1000, AchievementValueResolvers.CounterTracker("Any", "ElectricKills")),
             new AchievementDefinition("AFE1_Get_Grappled", "I Think They Like Me", "Get grappled five times in the same mission.", 5, AchievementValueResolvers.CounterTracker("Any", "MostGrapplesPerMission")),
             new AchievementDefinition("AFE1_Improvised_Explosives", "Improvised Explosives", "Kill 50 enemies with explosive barrels or pods.", 50, AchievementValueResolvers.CounterTracker("Any", "ExplosiveBarrelsKills")),
-            new AchievementDefinition("AFE1_Suturing_Expert", "Suturing Expert", "Heal your firearm with an aid kit 100 times.", 100, AchievementValueResolvers.CounterTracker("Any", "MedkitsUsedOnAllies")),
+            new AchievementDefinition("AFE1_Suturing_Expert", "Suturing Expert", "Heal your fireteam with an aid kit 100 times.", 100, AchievementValueResolvers.CounterTracker("Any", "MedkitsUsedOnAllies")),
             new AchievementDefinition("AFE1_Supportive_Squad", "Supportive Squad", "Complete 50 missions without anyone being downed.", 50, AchievementValueResolvers.CounterTracker("Any", "MissionsCompletedWithoutDownsOrDeaths")),
             new AchievementDefinition("AFE1_Tower_Defense", "Tower Defense", "Use 500 consumables.", 500, AchievementValueResolvers.CounterTracker("Any", "ConsumablesUsed")),
             new AchievementDefinition("AFE1_Burn_Em_Out", "Burn 'Em Out", "Kill 1000 enemies with fire.", 1000, AchievementValueResolvers.CounterTracker("Any", "ThermalKills")),
