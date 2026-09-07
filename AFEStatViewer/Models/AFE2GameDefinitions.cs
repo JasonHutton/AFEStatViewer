@@ -59,7 +59,7 @@ namespace AFEStatViewer.Models
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
         {
-            new AchievementDefinition("Spilled Milk", "Eliminate 1000 Synthetics.", "BasicKills|Synths", 1000),
+            new AchievementDefinition("Spilled Milk", "Eliminate 1000 Synthetics.", "Any", "BasicKills|Synths", 1000),
             //new AchievementDefinition("Well Stocked Arsenal", "Level 10 weapons to at least two stars.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Reckoning", "Complete the \"Final Endeavor\" Campaign.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Legionnaire's Service Medal", "Complete all Campaigns on Casual or higher difficulty.", "[PLACEHOLDER]", XX),
@@ -81,22 +81,22 @@ namespace AFEStatViewer.Models
             //new AchievementDefinition("Yellow Makes It Shoot Better", "Equip a colorway and three decals onto a gun.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Fully Loaded", "Equip a weapon with all attachments, including an Augment.", "[PLACEHOLDER]", XX),
 
-            new AchievementDefinition("Seasoned Veteran", "Level a Kit to Rank 10.", "HighestKitLevelReached", 10),
+            new AchievementDefinition("Seasoned Veteran", "Level a Kit to Rank 10.", "Any", "HighestKitLevelReached", 10),
 
 
             //new AchievementDefinition("Maxed Out", "Fill every slot in a perk board.", "[PLACEHOLDER]", XX),
 
-            new AchievementDefinition("Purge the Unclean", "Eliminate 1000 Pathogen.", "Kills|Pathogen", 1000),
-            new AchievementDefinition("Head Hunter", "Get 1000 Headshot kills.", "HeadshotKills", 1000),
+            new AchievementDefinition("Purge the Unclean", "Eliminate 1000 Pathogen.", "Any",   "Kills|Pathogen", 1000),
+            new AchievementDefinition("Head Hunter", "Get 1000 Headshot kills.", "Any", "HeadshotKills", 1000),
             
             //new AchievementDefinition("Wave Goodbye", "Survive 5 waves in Horde Mode.", "[PLACEHOLDER]", XX),
 
             //new AchievementDefinition("Overly Attached", "Collect 50 weapon attachments.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Custom Made Marine", "Complete 5 missions with the Specialist kit.", "[PLACEHOLDER]", XX),
-            new AchievementDefinition("Another Bug Hunt", "Eliminate 10000 Xenomorphs.", "BasicKills|Xenos", 10000),
+            new AchievementDefinition("Another Bug Hunt", "Eliminate 10000 Xenomorphs.", "Any", "BasicKills|Xenos", 10000),
 
             //new AchievementDefinition("Noble Soldier", "Complete a mission on Extreme difficulty.", "[PLACEHOLDER]", XX),
-            new AchievementDefinition("Decommission Mission", "Eliminate 1000 Combat Automatons.", "BasicKills|Hyperdyne", 1000),
+            new AchievementDefinition("Decommission Mission", "Eliminate 1000 Combat Automatons.", "Any", "BasicKills|Hyperdyne", 1000),
 
             //new AchievementDefinition("Fervent Warrior", "Complete a mission on Insane Difficulty.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Pure Professionals", "Complete a mission on Intense Difficulty or above without anyone taking friendly fire damage.", "[PLACEHOLDER]", XX),

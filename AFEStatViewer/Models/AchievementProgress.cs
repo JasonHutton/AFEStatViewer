@@ -8,12 +8,36 @@ namespace AFEStatViewer.Models
 {
     public sealed class AchievementProgress
     {
-        // key -> current value
-        public Dictionary<string, int> Counters { get; } = new();
+        // set -> key -> current value
+        public Dictionary<string, Dictionary<string, int>> Counters { get; } = new();
 
-        public int GetValue(string key) => Counters.TryGetValue(key, out var value) ? value : 0;
+        public void SetValue(string set, string key, int value)
+        {
+            if (!Counters.TryGetValue(set, out var setCounters))
+            {
+                setCounters = new Dictionary<string, int>();
+                Counters[set] = setCounters;
+            }
 
-        public bool IsComplete(AchievementDefinition def) => def.Target > 0 && GetValue(def.Key) >= def.Target;
+            setCounters[key] = value;
+        }
+
+        public int GetValue(string set, string key)
+        {
+            if (!Counters.TryGetValue(set, out var setCounters))
+            {
+                return 0;
+            }
+
+            return setCounters.TryGetValue(key, out var value) ? value : 0;
+        }
+
+        public int GetValue(AchievementDefinition def)
+        {
+            return GetValue(def.Set, def.Key);
+        }
+
+        public bool IsComplete(AchievementDefinition def) => def.Target > 0 && GetValue(def) >= def.Target;
 
         /// <summary>
         /// Completion percentage in the range [0, 100].
@@ -22,12 +46,12 @@ namespace AFEStatViewer.Models
         {
             if (def.Target <= 0) return 0;
 
-            double percent = (double)GetValue(def.Key) / def.Target * 100.0;
+            double percent = (double)GetValue(def) / def.Target * 100.0;
+
             if (percent < 0) return 0;
             if (percent > 100) return 100;
+
             return percent;
         }
-
     }
 }
-

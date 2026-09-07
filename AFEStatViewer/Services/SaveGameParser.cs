@@ -96,22 +96,32 @@ namespace AFEStatViewer.Services
 
         public AchievementProgress ParseAchievementProgress(string jsonString, IEnumerable<AchievementDefinition> definitions)
         {
+            if (jsonString == null)
+                throw new ArgumentNullException(nameof(jsonString));
+
+            if (definitions == null)
+                throw new ArgumentNullException(nameof(definitions));
+
             var progress = new AchievementProgress();
 
             using var document = JsonDocument.Parse(jsonString);
             var root = document.RootElement;
-            var sets = root.GetProperty("CounterTracker").GetProperty("Sets");
 
-            // Your current logic assumes "Any" exists.
-            // If it ever doesn't, this should throw or just return empty.
-            var vars = sets.GetProperty("Any").GetProperty("Vars");
+            if (!root.TryGetProperty("CounterTracker", out var counterTracker) || !counterTracker.TryGetProperty("Sets", out var sets))
+            {
+                return progress;
+            }
 
             foreach (var def in definitions)
             {
-                if (vars.TryGetProperty(def.Key, out var el))
-                    progress.Counters[def.Key] = el.GetInt32();
-                else
-                    progress.Counters[def.Key] = 0;
+                int value = 0;
+
+                if (sets.TryGetProperty(def.Set, out var set) && set.TryGetProperty("Vars", out var vars) && vars.TryGetProperty(def.Key, out var valueElement))
+                {
+                    value = valueElement.GetInt32();
+                }
+
+                progress.SetValue(def.Set, def.Key, value);
             }
 
             return progress;

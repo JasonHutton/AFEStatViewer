@@ -7,8 +7,9 @@ namespace AFEStatViewer.ViewModels
         public AchievementDefinition Definition { get; }
         public string Name => Definition.Name;
         public string Description => Definition.Description;
-        public int Target => Definition.Target;
+        public string Set => Definition.Set;
         public string Key => Definition.Key;
+        public int Target => Definition.Target;
 
         private int _value;
         public int Value
@@ -36,11 +37,14 @@ namespace AFEStatViewer.ViewModels
                 if (Target <= 0) return 0;
 
                 double percent = (double)Value / Target * 100.0;
+
                 if (percent < 0) return 0;
                 if (percent > 100) return 100;
+
                 return percent;
             }
         }
+
         /// <summary>
         /// Format: "(progress/target)"
         /// </summary>

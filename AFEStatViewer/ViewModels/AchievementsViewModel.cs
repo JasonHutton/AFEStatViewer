@@ -17,7 +17,9 @@ namespace AFEStatViewer.ViewModels
         public void Apply(AchievementProgress progress)
         {
             foreach (var vm in Items)
-                vm.Value = progress.GetValue(vm.Key);
+            {
+                vm.Value = progress.GetValue(vm.Definition);
+            }
         }
     }
 }
