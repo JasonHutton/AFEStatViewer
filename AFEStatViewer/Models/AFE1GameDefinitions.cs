@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AFEStatViewer.Services;
 
 namespace AFEStatViewer.Models
 {
@@ -57,17 +58,17 @@ namespace AFEStatViewer.Models
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
         {
-            new AchievementDefinition("High Voltage",                   "Kill 1000 enemies with electricity.",                  "Any",          "ElectricKills",                            1000),
-            new AchievementDefinition("I Think They Like Me",           "Get grappled five times in the same mission.",         "Any",          "MostGrapplesPerMission",                   5),
-            new AchievementDefinition("Improvised Explosives",          "Kill 50 enemeis with explosive barrels or pods.",      "Any",          "ExplosiveBarrelsKills",                    50),
-            new AchievementDefinition("Suturing Expert",                "Heal your fireatm with an aid kit 100 times.",         "Any",          "MedkitsUsedOnAllies",                      100),
-            new AchievementDefinition("Supportive Squad",               "Complete 50 missions without anyone being downed.",    "Any",          "MissionsCompletedWithoutDownsOrDeaths",    50),
-            new AchievementDefinition("Tower Defense",                  "Use 500 consumables.",                                 "Any",          "ConsumablesUsed",                          500),
-            new AchievementDefinition("Burn 'Em Out",                   "Kill 1000 enemies with fire.",                         "Any",          "ThermalKills",                             1000),
-            new AchievementDefinition("It's A Bug Hunt",                "Kill 10000 Xenomorphs.",                               "Any",          "BasicKills|Xenos",                         10000),
-            new AchievementDefinition("Anti-Mutation Station",          "Eliminate 500 Pathogen.",                              "Any",          "Kills|Pathogen",                           300),
-            new AchievementDefinition("Glorified Toasters",             "Eliminate 1000 Synthetics.",                           "Any",          "BasicKills|Synths",                        1000),
-            new AchievementDefinition("Keen Eye",                       "Open 50 hidden caches.",                               "Any",          "HiddenCachesFound",                        50),
+            new AchievementDefinition("AFE1_High_Voltage", "High Voltage", "Kill 1000 enemies with electricity.", 1000, AchievementValueResolvers.CounterTracker("Any", "ElectricKills")),
+            new AchievementDefinition("AFE1_Get_Grappled", "I Think They Like Me", "Get grappled five times in the same mission.", 5, AchievementValueResolvers.CounterTracker("Any", "MostGrapplesPerMission")),
+            new AchievementDefinition("AFE1_Improvised_Explosives", "Improvised Explosives", "Kill 50 enemies with explosive barrels or pods.", 50, AchievementValueResolvers.CounterTracker("Any", "ExplosiveBarrelsKills")),
+            new AchievementDefinition("AFE1_Suturing_Expert", "Suturing Expert", "Heal your firearm with an aid kit 100 times.", 100, AchievementValueResolvers.CounterTracker("Any", "MedkitsUsedOnAllies")),
+            new AchievementDefinition("AFE1_Supportive_Squad", "Supportive Squad", "Complete 50 missions without anyone being downed.", 50, AchievementValueResolvers.CounterTracker("Any", "MissionsCompletedWithoutDownsOrDeaths")),
+            new AchievementDefinition("AFE1_Tower_Defense", "Tower Defense", "Use 500 consumables.", 500, AchievementValueResolvers.CounterTracker("Any", "ConsumablesUsed")),
+            new AchievementDefinition("AFE1_Burn_Em_Out", "Burn 'Em Out", "Kill 1000 enemies with fire.", 1000, AchievementValueResolvers.CounterTracker("Any", "ThermalKills")),
+            new AchievementDefinition("AFE1_It_s_A_Bug_Hunt", "It's A Bug Hunt", "Kill 10000 Xenomorphs.", 10000, AchievementValueResolvers.CounterTracker("Any", "BasicKills|Xenos")),
+            new AchievementDefinition("AFE1_Anti_Mutation_Station", "Anti-Mutation Station", "Eliminate 500 Pathogen.", 500, AchievementValueResolvers.CounterTracker("Any", "Kills|Pathogen")),
+            new AchievementDefinition("AFE1_Glorified_Toasters", "Glorified Toasters", "Eliminate 1000 Synthetics.", 1000, AchievementValueResolvers.CounterTracker("Any", "BasicKills|Synths")),
+            new AchievementDefinition("AFE1_Keen_Eye", "Keen Eye", "Open 50 hidden caches.", 50, AchievementValueResolvers.CounterTracker("Any", "HiddenCachesFound")),
 
             /*
             new AchievementDefinition("I Can't Lie About Your Chances", "Finish a mission on Hardcore 10 Difficulty.",                  "Any",          "XXXX",                             1),

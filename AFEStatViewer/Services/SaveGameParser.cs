@@ -93,7 +93,6 @@ namespace AFEStatViewer.Services
             return progress;
         }
 
-
         public AchievementProgress ParseAchievementProgress(string jsonString, IEnumerable<AchievementDefinition> definitions)
         {
             if (jsonString == null)
@@ -107,25 +106,14 @@ namespace AFEStatViewer.Services
             using var document = JsonDocument.Parse(jsonString);
             var root = document.RootElement;
 
-            if (!root.TryGetProperty("CounterTracker", out var counterTracker) || !counterTracker.TryGetProperty("Sets", out var sets))
-            {
-                return progress;
-            }
-
             foreach (var def in definitions)
             {
-                int value = 0;
+                int value = def.ValueResolver(root);
 
-                if (sets.TryGetProperty(def.Set, out var set) && set.TryGetProperty("Vars", out var vars) && vars.TryGetProperty(def.Key, out var valueElement))
-                {
-                    value = valueElement.GetInt32();
-                }
-
-                progress.SetValue(def.Set, def.Key, value);
+                progress.SetValue(def.Id, value);
             }
 
             return progress;
         }
     }
-
 }

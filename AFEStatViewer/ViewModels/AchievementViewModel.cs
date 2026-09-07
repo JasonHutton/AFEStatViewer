@@ -5,10 +5,9 @@ namespace AFEStatViewer.ViewModels
     public sealed class AchievementViewModel : ViewModelBase
     {
         public AchievementDefinition Definition { get; }
+        public string Id => Definition.Id;
         public string Name => Definition.Name;
         public string Description => Definition.Description;
-        public string Set => Definition.Set;
-        public string Key => Definition.Key;
         public int Target => Definition.Target;
 
         private int _value;
