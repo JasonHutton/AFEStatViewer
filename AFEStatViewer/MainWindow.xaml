@@ -288,61 +288,79 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border BorderBrush="#33000000"
-                                                BorderThickness="1"
-                                                CornerRadius="6"
-                                                Padding="8"
-                                                Margin="6"
-                                                Width="250">
+        BorderThickness="1"
+        CornerRadius="6"
+        Padding="8"
+        Margin="6"
+        Width="250">
 
                                             <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="48" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
 
-                                                <!-- Name (left) + Percent (right) -->
-                                                <Grid Grid.Row="0">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
+                                                <!-- Achievement icon -->
+                                                <Image Grid.Column="0"
+               Source="{Binding Icon}"
+                                                       Opacity="{Binding IconOpacity}"
+               Width="40"
+               Height="40"
+               Margin="0,0,8,0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Stretch="Uniform" />
 
-                                                    <TextBlock Grid.Column="0"
-                                                               Text="{Binding Name}"
-                                                               FontWeight="SemiBold"
-                                                               TextTrimming="CharacterEllipsis"
-                                                               VerticalAlignment="Center">
+                                                <!-- Achievement information -->
+                                                <Grid Grid.Column="1">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
 
-                                                        <TextBlock.ToolTip>
-                                                            <ToolTip MaxWidth="420">
-                                                                <TextBlock Text="{Binding Description}"
-                                                                           TextWrapping="Wrap" />
-                                                            </ToolTip>
-                                                        </TextBlock.ToolTip>
-                                                    </TextBlock>
+                                                    <!-- Name (left) + Percent (right) -->
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <TextBlock Grid.Column="1"
-                                                               Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
-                                                               FontWeight="SemiBold"
-                                                               Margin="8,0,0,0"
-                                                               VerticalAlignment="Center" />
-                                                </Grid>
+                                                        <TextBlock Grid.Column="0"
+                           Text="{Binding Name}"
+                           FontWeight="SemiBold"
+                           TextTrimming="CharacterEllipsis"
+                           VerticalAlignment="Center">
 
-                                                <!-- Progress bar with overlay text -->
-                                                <Grid Grid.Row="1"
-                                                      Margin="0,6,0,0">
+                                                            <TextBlock.ToolTip>
+                                                                <ToolTip MaxWidth="420">
+                                                                    <TextBlock Text="{Binding Description}"
+                                       TextWrapping="Wrap" />
+                                                                </ToolTip>
+                                                            </TextBlock.ToolTip>
+                </TextBlock>
 
-                                                    <ProgressBar Minimum="0"
-                                                                 Maximum="{Binding Target}"
-                                                                 Value="{Binding Value}"
-                                                                 Height="14" />
+                                                        <TextBlock Grid.Column="1"
+                           Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
+                           FontWeight="SemiBold"
+                           Margin="8,0,0,0"
+                           VerticalAlignment="Center" />
+                                                    </Grid>
 
-                                                    <!-- Overlay: (Value/Target) -->
-                                                    <TextBlock Text="{Binding ProgressDisplay}"
-                                                               HorizontalAlignment="Center"
-                                                               VerticalAlignment="Center"
-                                                               FontSize="11"
-                                                               FontWeight="SemiBold" />
+                                                    <!-- Progress bar with overlay text -->
+                                                    <Grid Grid.Row="1"
+                  Margin="0,6,0,0">
+
+                                                        <ProgressBar Minimum="0"
+                             Maximum="{Binding Target}"
+                             Value="{Binding Value}"
+                             Height="14" />
+
+                                                        <TextBlock Text="{Binding ProgressDisplay}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="11"
+                           FontWeight="SemiBold" />
+                                                    </Grid>
                                                 </Grid>
                                             </Grid>
                                         </Border>
