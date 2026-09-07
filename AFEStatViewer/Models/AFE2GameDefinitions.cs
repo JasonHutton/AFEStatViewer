@@ -59,7 +59,7 @@ namespace AFEStatViewer.Models
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
         {
-            new AchievementDefinition("Spilled Milk", "Eliminate 1000 Synthetics.", "Any", "BasicKills|Synths", 1000),
+            new AchievementDefinition("Spilled Milk", "Eliminate 1000 Synthetics.", "Any", "Kills|Synths", 1000),
             //new AchievementDefinition("Well Stocked Arsenal", "Level 10 weapons to at least two stars.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Reckoning", "Complete the \"Final Endeavor\" Campaign.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Legionnaire's Service Medal", "Complete all Campaigns on Casual or higher difficulty.", "[PLACEHOLDER]", XX),
@@ -93,10 +93,10 @@ namespace AFEStatViewer.Models
 
             //new AchievementDefinition("Overly Attached", "Collect 50 weapon attachments.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Custom Made Marine", "Complete 5 missions with the Specialist kit.", "[PLACEHOLDER]", XX),
-            new AchievementDefinition("Another Bug Hunt", "Eliminate 10000 Xenomorphs.", "Any", "BasicKills|Xenos", 10000),
+            new AchievementDefinition("Another Bug Hunt", "Eliminate 10000 Xenomorphs.", "Any", "Kills|Xenos", 10000),
 
             //new AchievementDefinition("Noble Soldier", "Complete a mission on Extreme difficulty.", "[PLACEHOLDER]", XX),
-            new AchievementDefinition("Decommission Mission", "Eliminate 1000 Combat Automatons.", "Any", "BasicKills|Hyperdyne", 1000),
+            new AchievementDefinition("Decommission Mission", "Eliminate 1000 Combat Automatons.", "Any", "Kills|Hyperdyne", 1000),
 
             //new AchievementDefinition("Fervent Warrior", "Complete a mission on Insane Difficulty.", "[PLACEHOLDER]", XX),
             //new AchievementDefinition("Pure Professionals", "Complete a mission on Intense Difficulty or above without anyone taking friendly fire damage.", "[PLACEHOLDER]", XX),
