@@ -627,6 +627,7 @@
                             </DataGrid.Resources>
 
                             <DataGrid.Columns>
+
                                 <DataGridTextColumn Header="Mission"
                                     Binding="{Binding MissionCode}"
                                     Width="Auto"
@@ -637,65 +638,156 @@
                                     Width="*"
                                     CanUserSort="False" />
 
+                                <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                    Width="Auto"
+                                    Width="115"
                                     CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
+                                                          IsEnabled="False"
+                                                          Margin="2,0"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
+                                <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                    Width="Auto"
+                                    Width="115"
                                     CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
+                                                          IsEnabled="False"
+                                                          Margin="2,0"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
+                                <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                    Width="Auto"
+                                    Width="115"
                                     CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
+                                                          IsEnabled="False"
+                                                          Margin="2,0"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
+                                <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                    Width="Auto"
+                                    Width="115"
                                     CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
+                                                          IsEnabled="False"
+                                                          Margin="2,0"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
+                                <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                    Width="Auto"
+                                    Width="115"
                                     CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
-                                              IsEnabled="False"
-                                              HorizontalAlignment="Center" />
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
+                                                          IsEnabled="False"
+                                                          Margin="2,0"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+
+                                <!-- Spacer -->
+                                <DataGridTemplateColumn Width="12"
+                                    CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>
