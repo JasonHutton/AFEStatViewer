@@ -59,7 +59,7 @@ namespace AFEStatViewer.Models
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
         {
             new AchievementDefinition("AFE1_High_Voltage", "High Voltage", "Kill 1000 enemies with electricity.", 1000, AchievementValueResolvers.CounterTracker("Any", "ElectricKills")),
-            new AchievementDefinition("AFE1_Get_Grappled", "I Think They Like Me", "Get grappled five times in the same mission.", 5, AchievementValueResolvers.CounterTracker("Any", "MostGrapplesPerMission")),
+            new AchievementDefinition("AFE1_I_Think_They_Like_Me", "I Think They Like Me", "Get grappled five times in the same mission.", 5, AchievementValueResolvers.CounterTracker("Any", "MostGrapplesPerMission")),
             new AchievementDefinition("AFE1_Improvised_Explosives", "Improvised Explosives", "Kill 50 enemies with explosive barrels or pods.", 50, AchievementValueResolvers.CounterTracker("Any", "ExplosiveBarrelsKills")),
             new AchievementDefinition("AFE1_Suturing_Expert", "Suturing Expert", "Heal your fireteam with an aid kit 100 times.", 100, AchievementValueResolvers.CounterTracker("Any", "MedkitsUsedOnAllies")),
             new AchievementDefinition("AFE1_Supportive_Squad", "Supportive Squad", "Complete 50 missions without anyone being downed.", 50, AchievementValueResolvers.CounterTracker("Any", "MissionsCompletedWithoutDownsOrDeaths")),
