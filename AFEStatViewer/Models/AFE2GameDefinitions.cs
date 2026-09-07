@@ -7,25 +7,25 @@ namespace AFEStatViewer.Models
     public static class AFE2GameDefinitions
     {
         public static readonly ClassKitVisualStyle ClassKitStyle = new(
-            CompleteColorHex: "#66FF66",
-            IncompleteColorHex: "#7A837A",
-            IconBackgroundColorHex: "#101010",
-            CompletionSectionBackgroundColorHex: "#555855",
-            CompletionTextColorHex: "#66FF66",
+            CompleteColorHex: "#1F6F3D",
+            IncompleteColorHex: "#6F531C",
+            IconBackgroundColorHex: "#00000000",
+            CompletionSectionBackgroundColorHex: "#00000000",
+            CompletionTextColorHex: "#C08A31",
             CompleteOpacity: 1.0,
-            IncompleteOpacity: 0.35,
-            IconBackgroundOpacity: 1.0,
+            IncompleteOpacity: 0.22,
+            IconBackgroundOpacity: 0.0,
             IconSize: 18.0
         );
 
         public static readonly IReadOnlyList<ClassKitDefinition> ClassKits = new[]
         {
-            new ClassKitDefinition("Duelist",     "Player_Gunner_V2"),
-            new ClassKitDefinition("Machinist",   "Player_Technician_V2"),
-            new ClassKitDefinition("Marauder",    "Player_Demolisher_V2"),
-            new ClassKitDefinition("Hunter",      "Player_Lancer_V2"),
-            new ClassKitDefinition("Medic",       "Player_Medic"),
-            new ClassKitDefinition("Specialist",  "Player_Custom"),
+            new ClassKitDefinition("Duelist",     "Player_Gunner_V2",       "AFE2_Class_Gunner.png"),
+            new ClassKitDefinition("Machinist",   "Player_Technician_V2",   "AFE2_Class_Technician.png"),
+            new ClassKitDefinition("Marauder",    "Player_Demolisher_V2",   "AFE2_Class_Demolisher.png"),
+            new ClassKitDefinition("Hunter",      "Player_Lancer_V2",       "AFE2_Class_Lancer.png"),
+            new ClassKitDefinition("Medic",       "Player_Medic",           "AFE2_Class_Doc.png"),
+            new ClassKitDefinition("Specialist",  "Player_Custom",          "AFE2_Class_Custom.png"),
         };
 
         public static readonly IReadOnlyList<CampaignDefinition> Campaigns = new[]

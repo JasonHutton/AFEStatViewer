@@ -665,6 +665,276 @@
 
             <!-- Aliens: Fireteam Elite 2 -->
             <TabItem Header="Aliens: Fireteam Elite 2">
+
+                <TabItem.Resources>
+
+                    <!-- Casual class-kit icon -->
+                    <DataTemplate x:Key="AFE2CasualClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding CasualIconBrush}"
+                                       Opacity="{Binding CasualIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding CasualCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Standard class-kit icon -->
+                    <DataTemplate x:Key="AFE2StandardClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding StandardIconBrush}"
+                                       Opacity="{Binding StandardIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding StandardCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Intense class-kit icon -->
+                    <DataTemplate x:Key="AFE2IntenseClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding IntenseIconBrush}"
+                                       Opacity="{Binding IntenseIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Extreme class-kit icon -->
+                    <DataTemplate x:Key="AFE2ExtremeClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding ExtremeIconBrush}"
+                                       Opacity="{Binding ExtremeIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Insane class-kit icon -->
+                    <DataTemplate x:Key="AFE2InsaneClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding InsaneIconBrush}"
+                                       Opacity="{Binding InsaneIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Normal Windows-style completion rows -->
+                    <Style x:Key="AFE2CompletionRowStyle"
+                           TargetType="{x:Type DataGridRow}">
+                        <Setter Property="IsHitTestVisible"
+                                Value="True" />
+                        <Setter Property="Focusable"
+                                Value="False" />
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="BorderBrush"
+                                Value="Transparent" />
+                        <Setter Property="BorderThickness"
+                                Value="0" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="Transparent" />
+                                <Setter Property="BorderBrush"
+                                        Value="Transparent" />
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="Transparent" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <!-- Normal Windows-style completion cells -->
+                    <Style x:Key="AFE2CompletionCellStyle"
+                           TargetType="{x:Type DataGridCell}">
+                        <Setter Property="Focusable"
+                                Value="False" />
+                        <Setter Property="BorderThickness"
+                                Value="0" />
+                        <Setter Property="Background"
+                                Value="Transparent" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="Transparent" />
+                                <Setter Property="BorderBrush"
+                                        Value="Transparent" />
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="Transparent" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <!-- AFE2 mission/name text -->
+                    <Style x:Key="AFE2CompletionTextStyle"
+                           TargetType="TextBlock">
+                        <Setter Property="Foreground"
+                                Value="{Binding CompletionTextBrush}" />
+                    </Style>
+
+                </TabItem.Resources>
+
                 <Grid Margin="8">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -688,99 +958,38 @@
                                   CanUserSortColumns="False"
                                   SelectionUnit="Cell"
                                   SelectionMode="Single"
-                                  SelectedIndex="-1">
-
-                            <DataGrid.Resources>
-                                <Style TargetType="{x:Type DataGridRow}">
-                                    <Setter Property="IsHitTestVisible"
-                                            Value="True" />
-                                    <Setter Property="Focusable"
-                                            Value="False" />
-                                    <Setter Property="Background"
-                                            Value="Transparent" />
-                                    <Setter Property="BorderBrush"
-                                            Value="Transparent" />
-                                    <Setter Property="BorderThickness"
-                                            Value="0" />
-
-                                    <Style.Triggers>
-                                        <Trigger Property="IsSelected"
-                                                 Value="True">
-                                            <Setter Property="Background"
-                                                    Value="Transparent" />
-                                            <Setter Property="BorderBrush"
-                                                    Value="Transparent" />
-                                        </Trigger>
-
-                                        <Trigger Property="IsMouseOver"
-                                                 Value="True">
-                                            <Setter Property="Background"
-                                                    Value="Transparent" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-
-                                <Style TargetType="{x:Type DataGridCell}">
-                                    <Setter Property="Focusable"
-                                            Value="False" />
-                                    <Setter Property="BorderThickness"
-                                            Value="0" />
-                                    <Setter Property="Background"
-                                            Value="Transparent" />
-
-                                    <Style.Triggers>
-                                        <Trigger Property="IsSelected"
-                                                 Value="True">
-                                            <Setter Property="Background"
-                                                    Value="Transparent" />
-                                            <Setter Property="BorderBrush"
-                                                    Value="Transparent" />
-                                        </Trigger>
-
-                                        <Trigger Property="IsMouseOver"
-                                                 Value="True">
-                                            <Setter Property="Background"
-                                                    Value="Transparent" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </DataGrid.Resources>
+                                  SelectedIndex="-1"
+                                  RowStyle="{StaticResource AFE2CompletionRowStyle}"
+                                  CellStyle="{StaticResource AFE2CompletionCellStyle}">
 
                             <DataGrid.Columns>
 
                                 <DataGridTextColumn Header="Mission"
                                                     Binding="{Binding MissionCode}"
                                                     Width="Auto"
-                                                    CanUserSort="False" />
+                                                    CanUserSort="False"
+                                                    ElementStyle="{StaticResource AFE2CompletionTextStyle}" />
 
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding CampaignMissionName}"
                                                     Width="*"
-                                                    CanUserSort="False" />
+                                                    CanUserSort="False"
+                                                    ElementStyle="{StaticResource AFE2CompletionTextStyle}" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                                        Width="115"
+                                                        Width="145"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                          ItemTemplate="{StaticResource AFE2CasualClassKitTemplate}"
                                                           HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
                                                     </ItemsPanelTemplate>
                                                 </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
-                                                                  IsEnabled="False"
-                                                                  Margin="2,0"
-                                                                  HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
                                             </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -788,27 +997,18 @@
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                                        Width="115"
+                                                        Width="145"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                          ItemTemplate="{StaticResource AFE2StandardClassKitTemplate}"
                                                           HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
                                                     </ItemsPanelTemplate>
                                                 </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
-                                                                  IsEnabled="False"
-                                                                  Margin="2,0"
-                                                                  HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
                                             </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -816,27 +1016,18 @@
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                                        Width="115"
+                                                        Width="145"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                          ItemTemplate="{StaticResource AFE2IntenseClassKitTemplate}"
                                                           HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
                                                     </ItemsPanelTemplate>
                                                 </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
-                                                                  IsEnabled="False"
-                                                                  Margin="2,0"
-                                                                  HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
                                             </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -844,27 +1035,18 @@
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                                        Width="115"
+                                                        Width="145"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                          ItemTemplate="{StaticResource AFE2ExtremeClassKitTemplate}"
                                                           HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
                                                     </ItemsPanelTemplate>
                                                 </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
-                                                                  IsEnabled="False"
-                                                                  Margin="2,0"
-                                                                  HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
                                             </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -872,27 +1054,18 @@
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                                        Width="115"
+                                                        Width="145"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                          ItemTemplate="{StaticResource AFE2InsaneClassKitTemplate}"
                                                           HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
                                                     </ItemsPanelTemplate>
                                                 </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
-                                                                  IsEnabled="False"
-                                                                  Margin="2,0"
-                                                                  HorizontalAlignment="Center"
-                                                                  VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
                                             </ItemsControl>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

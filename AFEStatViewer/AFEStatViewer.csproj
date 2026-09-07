@@ -22,6 +22,12 @@
     <None Remove="Resources\ClassIcons\AFE1_Class_Phalanx.png" />
     <None Remove="Resources\ClassIcons\AFE1_Class_Recon.png" />
     <None Remove="Resources\ClassIcons\AFE1_Class_Technician.png" />
+    <None Remove="Resources\ClassIcons\AFE2_Class_Custom.png" />
+    <None Remove="Resources\ClassIcons\AFE2_Class_Demolisher.png" />
+    <None Remove="Resources\ClassIcons\AFE2_Class_Doc.png" />
+    <None Remove="Resources\ClassIcons\AFE2_Class_Gunner.png" />
+    <None Remove="Resources\ClassIcons\AFE2_Class_Lancer.png" />
+    <None Remove="Resources\ClassIcons\AFE2_Class_Technician.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +43,12 @@
     <Resource Include="Resources\ClassIcons\AFE1_Class_Phalanx.png" />
     <Resource Include="Resources\ClassIcons\AFE1_Class_Recon.png" />
     <Resource Include="Resources\ClassIcons\AFE1_Class_Technician.png" />
+    <Resource Include="Resources\ClassIcons\AFE2_Class_Custom.png" />
+    <Resource Include="Resources\ClassIcons\AFE2_Class_Demolisher.png" />
+    <Resource Include="Resources\ClassIcons\AFE2_Class_Doc.png" />
+    <Resource Include="Resources\ClassIcons\AFE2_Class_Gunner.png" />
+    <Resource Include="Resources\ClassIcons\AFE2_Class_Lancer.png" />
+    <Resource Include="Resources\ClassIcons\AFE2_Class_Technician.png" />
   </ItemGroup>
 
   <ItemGroup>
