@@ -13,12 +13,16 @@
   <ItemGroup>
     <None Remove="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Purge_The_Unclean_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Spilled_Milk_Complete.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\Achievements\AFE1_High_Voltage_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Purge_The_Unclean_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Spilled_Milk_Complete.png" />
   </ItemGroup>
 
   <ItemGroup>
