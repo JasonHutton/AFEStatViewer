@@ -11,7 +11,7 @@ namespace AFEStatViewer.Models
             IncompleteColorHex: "#6F531C",
             IconBackgroundColorHex: "#00000000",
             CompletionSectionBackgroundColorHex: "#00000000",
-            CompletionTextColorHex: "#C08A31",
+            CompletionTextColorHex: "#000000",
             CompleteOpacity: 1.0,
             IncompleteOpacity: 0.22,
             IconBackgroundOpacity: 0.0,
