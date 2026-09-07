@@ -9,15 +9,24 @@ namespace AFEStatViewer.Models
 {
     public static class AFE1GameDefinitions
     {
+        public static readonly ClassKitVisualStyle ClassKitStyle = new(
+            CompleteColorHex: "#66FF66",
+            IncompleteColorHex: "#7A837A",
+            IconBackgroundColorHex: "#FF101010",
+            CompleteOpacity: 1.0,
+            IncompleteOpacity: 0.35,
+            IconSize: 18.0
+        );
+
         public static readonly IReadOnlyList<ClassKitDefinition> ClassKits = new[]
         {
-            new ClassKitDefinition("Gunner",      "Player_Gunner"),
-            new ClassKitDefinition("Demolisher",  "Player_Demolisher"),
-            new ClassKitDefinition("Technician",  "Player_Technician"),
-            new ClassKitDefinition("Doc",         "Player_Doc"),
-            new ClassKitDefinition("Recon",       "Player_Recon"),
-            new ClassKitDefinition("Phalanx",     "Player_Phalanx"),
-            new ClassKitDefinition("Lancer",      "Player_Lancer"),
+            new ClassKitDefinition("Gunner",      "Player_Gunner",      "AFE1_Class_Gunner.png"),
+            new ClassKitDefinition("Demolisher",  "Player_Demolisher",  "AFE1_Class_Demolisher.png"),
+            new ClassKitDefinition("Technician",  "Player_Technician",  "AFE1_Class_Technician.png"),
+            new ClassKitDefinition("Doc",         "Player_Doc",         "AFE1_Class_Doc.png"),
+            new ClassKitDefinition("Recon",       "Player_Recon",       "AFE1_Class_Recon.png"),
+            new ClassKitDefinition("Phalanx",     "Player_Phalanx",     "AFE1_Class_Phalanx.png"),
+            new ClassKitDefinition("Lancer",      "Player_Lancer",      "AFE1_Class_Lancer.png"),
         };
 
         public static readonly IReadOnlyList<CampaignDefinition> Campaigns = new[]

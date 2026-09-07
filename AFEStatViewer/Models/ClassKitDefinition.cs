@@ -1,4 +1,4 @@
 ﻿namespace AFEStatViewer.Models
 {
-    public sealed record ClassKitDefinition(string Name, string SaveKey);
+    public sealed record ClassKitDefinition(string Name, string SaveKey, string? IconResourceName = null);
 }

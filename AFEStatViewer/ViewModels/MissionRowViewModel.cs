@@ -39,7 +39,8 @@ namespace AFEStatViewer.ViewModels
         public MissionRowViewModel(
             CampaignDefinition campaign,
             MissionDefinition mission,
-            IEnumerable<ClassKitDefinition> classKits)
+            IEnumerable<ClassKitDefinition> classKits,
+            ClassKitVisualStyle classKitStyle)
         {
             CampaignNumber = campaign.Number;
             CampaignName = campaign.Name;
@@ -47,7 +48,7 @@ namespace AFEStatViewer.ViewModels
 
             ClassKits = new ObservableCollection<ClassKitCompletionViewModel>(
                 classKits.Select(classKit =>
-                    new ClassKitCompletionViewModel(classKit, mission.SaveKey))
+                    new ClassKitCompletionViewModel(classKit, mission.SaveKey, classKitStyle))
             );
         }
     }

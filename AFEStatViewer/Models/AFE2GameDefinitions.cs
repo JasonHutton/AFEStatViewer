@@ -6,6 +6,15 @@ namespace AFEStatViewer.Models
 {
     public static class AFE2GameDefinitions
     {
+        public static readonly ClassKitVisualStyle ClassKitStyle = new(
+            CompleteColorHex: "#66FF66",
+            IncompleteColorHex: "#7A837A",
+            IconBackgroundColorHex: "#FF101010",
+            CompleteOpacity: 1.0,
+            IncompleteOpacity: 0.35,
+            IconSize: 18.0
+        );
+
         public static readonly IReadOnlyList<ClassKitDefinition> ClassKits = new[]
         {
             new ClassKitDefinition("Duelist",     "Player_Gunner_V2"),

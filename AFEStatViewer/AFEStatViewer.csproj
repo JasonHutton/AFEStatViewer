@@ -15,6 +15,13 @@
     <None Remove="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
     <None Remove="Resources\Achievements\AFE2_Purge_The_Unclean_Complete.png" />
     <None Remove="Resources\Achievements\AFE2_Spilled_Milk_Complete.png" />
+    <None Remove="Resources\ClassIcons\AFE1_Class_Demolisher.png" />
+    <None Remove="Resources\ClassIcons\AFE1_Class_Doc.png" />
+    <None Remove="Resources\ClassIcons\AFE1_Class_Gunner.png" />
+    <None Remove="Resources\ClassIcons\AFE1_Class_Lancer.png" />
+    <None Remove="Resources\ClassIcons\AFE1_Class_Phalanx.png" />
+    <None Remove="Resources\ClassIcons\AFE1_Class_Recon.png" />
+    <None Remove="Resources\ClassIcons\AFE1_Class_Technician.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +30,13 @@
     <Resource Include="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
     <Resource Include="Resources\Achievements\AFE2_Purge_The_Unclean_Complete.png" />
     <Resource Include="Resources\Achievements\AFE2_Spilled_Milk_Complete.png" />
+    <Resource Include="Resources\ClassIcons\AFE1_Class_Demolisher.png" />
+    <Resource Include="Resources\ClassIcons\AFE1_Class_Doc.png" />
+    <Resource Include="Resources\ClassIcons\AFE1_Class_Gunner.png" />
+    <Resource Include="Resources\ClassIcons\AFE1_Class_Lancer.png" />
+    <Resource Include="Resources\ClassIcons\AFE1_Class_Phalanx.png" />
+    <Resource Include="Resources\ClassIcons\AFE1_Class_Recon.png" />
+    <Resource Include="Resources\ClassIcons\AFE1_Class_Technician.png" />
   </ItemGroup>
 
   <ItemGroup>

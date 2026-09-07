@@ -15,6 +15,216 @@
 
             <!-- Aliens: Fireteam Elite -->
             <TabItem Header="Aliens: Fireteam Elite">
+
+                <TabItem.Resources>
+
+                    <!-- Casual class-kit icon -->
+                    <DataTemplate x:Key="AFE1CasualClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding CasualIconBrush}"
+                                       Opacity="{Binding CasualIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding CasualCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Standard class-kit icon -->
+                    <DataTemplate x:Key="AFE1StandardClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding StandardIconBrush}"
+                                       Opacity="{Binding StandardIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding StandardCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Intense class-kit icon -->
+                    <DataTemplate x:Key="AFE1IntenseClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding IntenseIconBrush}"
+                                       Opacity="{Binding IntenseIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Extreme class-kit icon -->
+                    <DataTemplate x:Key="AFE1ExtremeClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding ExtremeIconBrush}"
+                                       Opacity="{Binding ExtremeIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!-- Insane class-kit icon -->
+                    <DataTemplate x:Key="AFE1InsaneClassKitTemplate">
+                        <Grid Width="{Binding IconSize}"
+                              Height="{Binding IconSize}"
+                              Margin="2,0">
+
+                            <Rectangle x:Name="IconRect"
+                                       Width="{Binding IconSize}"
+                                       Height="{Binding IconSize}"
+                                       Fill="{Binding InsaneIconBrush}"
+                                       Opacity="{Binding InsaneIconOpacity}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding IconMask}"
+                                                Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <CheckBox x:Name="FallbackCheckBox"
+                                      IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
+                                      IsEnabled="False"
+                                      Visibility="Collapsed"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </Grid>
+
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding HasIcon}"
+                                         Value="False">
+                                <Setter TargetName="IconRect"
+                                        Property="Visibility"
+                                        Value="Collapsed" />
+
+                                <Setter TargetName="FallbackCheckBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                </TabItem.Resources>
+
                 <Grid Margin="8">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -24,56 +234,73 @@
 
                     <!-- Campaign completion -->
                     <GroupBox Grid.Row="0"
-                        Header="Campaign Completion"
-                        Margin="0,0,0,8">
+                              Header="Campaign Completion"
+                              Margin="0,0,0,8">
 
                         <DataGrid ItemsSource="{Binding Missions}"
-                          AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          CanUserAddRows="False"
-                          HeadersVisibility="Column"
-                          GridLinesVisibility="None"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          CanUserSortColumns="False"
-                          SelectionUnit="Cell"
-                          SelectionMode="Single"
-                          SelectedIndex="-1">
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="None"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  CanUserSortColumns="False"
+                                  SelectionUnit="Cell"
+                                  SelectionMode="Single"
+                                  SelectedIndex="-1">
 
-                            <!-- Kill the visual selection highlight, but still allow clicking/focus -->
                             <DataGrid.Resources>
                                 <Style TargetType="{x:Type DataGridRow}">
-                                    <Setter Property="IsHitTestVisible" Value="True" />
-                                    <Setter Property="Focusable" Value="False" />
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="BorderBrush" Value="Transparent" />
-                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="IsHitTestVisible"
+                                            Value="True" />
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderBrush"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderThickness"
+                                            Value="0" />
 
                                     <Style.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
+                                            <Setter Property="BorderBrush"
+                                                    Value="Transparent" />
                                         </Trigger>
 
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
 
                                 <Style TargetType="{x:Type DataGridCell}">
-                                    <Setter Property="Focusable" Value="False" />
-                                    <Setter Property="BorderThickness" Value="0" />
-                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="BorderThickness"
+                                            Value="0" />
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
 
                                     <Style.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
+                                            <Setter Property="BorderBrush"
+                                                    Value="Transparent" />
                                         </Trigger>
 
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -81,160 +308,150 @@
 
                             <DataGrid.Columns>
 
-                                <!-- Combined Campaign-Mission column -->
                                 <DataGridTextColumn Header="Mission"
-                                        Binding="{Binding MissionCode}"
-                                        Width="Auto"
-                                        CanUserSort="False" />
+                                                    Binding="{Binding MissionCode}"
+                                                    Width="Auto"
+                                                    CanUserSort="False" />
 
                                 <DataGridTextColumn Header="Name"
-                                        Binding="{Binding CampaignMissionName}"
-                                        Width="*"
-                                        CanUserSort="False" />
+                                                    Binding="{Binding CampaignMissionName}"
+                                                    Width="*"
+                                                    CanUserSort="False" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <!-- Continuous class-kit background -->
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1CasualClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1StandardClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1IntenseClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1ExtremeClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1InsaneClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Spacer -->
                                 <DataGridTemplateColumn Width="12"
-                                    CanUserSort="False">
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid />
@@ -248,56 +465,73 @@
 
                     <!-- Game Modes completion -->
                     <GroupBox Grid.Row="1"
-                      Header="Game Modes Completion"
-                      Margin="0,0,0,8">
+                              Header="Game Modes Completion"
+                              Margin="0,0,0,8">
 
                         <DataGrid ItemsSource="{Binding GameModeMissions}"
-                            AutoGenerateColumns="False"
-                            IsReadOnly="True"
-                            CanUserAddRows="False"
-                            HeadersVisibility="Column"
-                            GridLinesVisibility="None"
-                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                            CanUserSortColumns="False"
-                            SelectionUnit="Cell"
-                            SelectionMode="Single"
-                            SelectedIndex="-1">
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="None"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  CanUserSortColumns="False"
+                                  SelectionUnit="Cell"
+                                  SelectionMode="Single"
+                                  SelectedIndex="-1">
 
-                            <!-- Reuse the exact same selection-killing styles -->
                             <DataGrid.Resources>
                                 <Style TargetType="{x:Type DataGridRow}">
-                                    <Setter Property="IsHitTestVisible" Value="True" />
-                                    <Setter Property="Focusable" Value="False" />
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="BorderBrush" Value="Transparent" />
-                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="IsHitTestVisible"
+                                            Value="True" />
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderBrush"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderThickness"
+                                            Value="0" />
 
                                     <Style.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
+                                            <Setter Property="BorderBrush"
+                                                    Value="Transparent" />
                                         </Trigger>
 
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
 
                                 <Style TargetType="{x:Type DataGridCell}">
-                                    <Setter Property="Focusable" Value="False" />
-                                    <Setter Property="BorderThickness" Value="0" />
-                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="BorderThickness"
+                                            Value="0" />
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
 
                                     <Style.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
+                                            <Setter Property="BorderBrush"
+                                                    Value="Transparent" />
                                         </Trigger>
 
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -306,153 +540,143 @@
                             <DataGrid.Columns>
 
                                 <DataGridTextColumn Header="Name"
-                                        Binding="{Binding MissionName}"
-                                        Width="*"
-                                        CanUserSort="False" />
+                                                    Binding="{Binding MissionName}"
+                                                    Width="*"
+                                                    CanUserSort="False" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1CasualClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1StandardClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1IntenseClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1ExtremeClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                            Width="115"
-                                            CanUserSort="False">
+                                                        Width="165"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <ItemsControl ItemsSource="{Binding ClassKits}"
-                                              HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
+                                            <Grid HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
 
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
-                                                      IsEnabled="False"
-                                                      Margin="2,0"
-                                                      HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                                <Border Background="{Binding ClassKits[0].IconBackgroundBrush}"
+                                                        Opacity="{Binding ClassKits[0].IconBackgroundOpacity}" />
+
+                                                <ItemsControl ItemsSource="{Binding ClassKits}"
+                                                              ItemTemplate="{StaticResource AFE1InsaneClassKitTemplate}"
+                                                              HorizontalAlignment="Center">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                </ItemsControl>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Spacer -->
                                 <DataGridTemplateColumn Width="12"
-                        CanUserSort="False">
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid />
@@ -466,8 +690,8 @@
 
                     <!-- Achievements -->
                     <GroupBox Grid.Row="2"
-                      Header="Achievements"
-                      Margin="0">
+                              Header="Achievements"
+                              Margin="0">
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ItemsControl ItemsSource="{Binding Achievements.Items}">
@@ -480,11 +704,11 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border BorderBrush="#33000000"
-                                            BorderThickness="1"
-                                            CornerRadius="6"
-                                            Padding="8"
-                                            Margin="6"
-                                            Width="250">
+                                                BorderThickness="1"
+                                                CornerRadius="6"
+                                                Padding="8"
+                                                Margin="6"
+                                                Width="250">
 
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -494,14 +718,14 @@
 
                                                 <!-- Achievement icon -->
                                                 <Image Grid.Column="0"
-                                                   Source="{Binding Icon}"
-                                                   Opacity="{Binding IconOpacity}"
-                                                   Width="40"
-                                                   Height="40"
-                                                   Margin="0,0,8,0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   Stretch="Uniform" />
+                                                       Source="{Binding Icon}"
+                                                       Opacity="{Binding IconOpacity}"
+                                                       Width="40"
+                                                       Height="40"
+                                                       Margin="0,0,8,0"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Stretch="Uniform" />
 
                                                 <!-- Achievement information -->
                                                 <Grid Grid.Column="1">
@@ -510,7 +734,7 @@
                                                         <RowDefinition Height="Auto" />
                                                     </Grid.RowDefinitions>
 
-                                                    <!-- Name (left) + Percent (right) -->
+                                                    <!-- Name + percent -->
                                                     <Grid Grid.Row="0">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
@@ -518,40 +742,40 @@
                                                         </Grid.ColumnDefinitions>
 
                                                         <TextBlock Grid.Column="0"
-                                                           Text="{Binding Name}"
-                                                           FontWeight="SemiBold"
-                                                           TextTrimming="CharacterEllipsis"
-                                                           VerticalAlignment="Center">
+                                                                   Text="{Binding Name}"
+                                                                   FontWeight="SemiBold"
+                                                                   TextTrimming="CharacterEllipsis"
+                                                                   VerticalAlignment="Center">
 
                                                             <TextBlock.ToolTip>
                                                                 <ToolTip MaxWidth="420">
                                                                     <TextBlock Text="{Binding Description}"
-                                                                   TextWrapping="Wrap" />
+                                                                               TextWrapping="Wrap" />
                                                                 </ToolTip>
                                                             </TextBlock.ToolTip>
                                                         </TextBlock>
 
                                                         <TextBlock Grid.Column="1"
-                                                           Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
-                                                           FontWeight="SemiBold"
-                                                           Margin="8,0,0,0"
-                                                           VerticalAlignment="Center" />
+                                                                   Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
+                                                                   FontWeight="SemiBold"
+                                                                   Margin="8,0,0,0"
+                                                                   VerticalAlignment="Center" />
                                                     </Grid>
 
-                                                    <!-- Progress bar with overlay text -->
+                                                    <!-- Progress -->
                                                     <Grid Grid.Row="1"
-                                                        Margin="0,6,0,0">
+                                                          Margin="0,6,0,0">
 
                                                         <ProgressBar Minimum="0"
-                                                         Maximum="{Binding Target}"
-                                                         Value="{Binding Value}"
-                                                         Height="14" />
+                                                                     Maximum="{Binding Target}"
+                                                                     Value="{Binding Value}"
+                                                                     Height="14" />
 
                                                         <TextBlock Text="{Binding ProgressDisplay}"
-                                                           HorizontalAlignment="Center"
-                                                           VerticalAlignment="Center"
-                                                           FontSize="11"
-                                                           FontWeight="SemiBold" />
+                                                                   HorizontalAlignment="Center"
+                                                                   VerticalAlignment="Center"
+                                                                   FontSize="11"
+                                                                   FontWeight="SemiBold" />
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
@@ -561,6 +785,7 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </GroupBox>
+
                 </Grid>
             </TabItem>
 
@@ -575,52 +800,73 @@
 
                     <!-- Campaign completion -->
                     <GroupBox Grid.Row="0"
-                      Header="Campaign Completion"
-                      Margin="0,0,0,8">
+                              Header="Campaign Completion"
+                              Margin="0,0,0,8">
 
                         <DataGrid ItemsSource="{Binding AFE2Missions}"
-                          AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          CanUserAddRows="False"
-                          HeadersVisibility="Column"
-                          GridLinesVisibility="None"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          CanUserSortColumns="False"
-                          SelectionUnit="Cell"
-                          SelectionMode="Single"
-                          SelectedIndex="-1">
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  HeadersVisibility="Column"
+                                  GridLinesVisibility="None"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  CanUserSortColumns="False"
+                                  SelectionUnit="Cell"
+                                  SelectionMode="Single"
+                                  SelectedIndex="-1">
 
-                            <!-- Kill the visual selection highlight, but still allow clicking/focus -->
                             <DataGrid.Resources>
                                 <Style TargetType="{x:Type DataGridRow}">
-                                    <Setter Property="IsHitTestVisible" Value="True" />
-                                    <Setter Property="Focusable" Value="False" />
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="BorderBrush" Value="Transparent" />
-                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="IsHitTestVisible"
+                                            Value="True" />
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderBrush"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderThickness"
+                                            Value="0" />
+
                                     <Style.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
+                                            <Setter Property="BorderBrush"
+                                                    Value="Transparent" />
                                         </Trigger>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
+
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
 
                                 <Style TargetType="{x:Type DataGridCell}">
-                                    <Setter Property="Focusable" Value="False" />
-                                    <Setter Property="BorderThickness" Value="0" />
-                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="BorderThickness"
+                                            Value="0" />
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
+
                                     <Style.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Trigger Property="IsSelected"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
+                                            <Setter Property="BorderBrush"
+                                                    Value="Transparent" />
                                         </Trigger>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Transparent" />
+
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -629,23 +875,23 @@
                             <DataGrid.Columns>
 
                                 <DataGridTextColumn Header="Mission"
-                                    Binding="{Binding MissionCode}"
-                                    Width="Auto"
-                                    CanUserSort="False" />
+                                                    Binding="{Binding MissionCode}"
+                                                    Width="Auto"
+                                                    CanUserSort="False" />
 
                                 <DataGridTextColumn Header="Name"
-                                    Binding="{Binding CampaignMissionName}"
-                                    Width="*"
-                                    CanUserSort="False" />
+                                                    Binding="{Binding CampaignMissionName}"
+                                                    Width="*"
+                                                    CanUserSort="False" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                    Width="115"
-                                    CanUserSort="False">
+                                                        Width="115"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
-                                                HorizontalAlignment="Center">
+                                                          HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
@@ -655,10 +901,10 @@
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
                                                         <CheckBox IsChecked="{Binding CasualCompleted, Mode=OneWay}"
-                                                          IsEnabled="False"
-                                                          Margin="2,0"
-                                                          HorizontalAlignment="Center"
-                                                          VerticalAlignment="Center" />
+                                                                  IsEnabled="False"
+                                                                  Margin="2,0"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" />
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
@@ -668,12 +914,12 @@
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                    Width="115"
-                                    CanUserSort="False">
+                                                        Width="115"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
-                                                HorizontalAlignment="Center">
+                                                          HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
@@ -683,10 +929,10 @@
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
                                                         <CheckBox IsChecked="{Binding StandardCompleted, Mode=OneWay}"
-                                                          IsEnabled="False"
-                                                          Margin="2,0"
-                                                          HorizontalAlignment="Center"
-                                                          VerticalAlignment="Center" />
+                                                                  IsEnabled="False"
+                                                                  Margin="2,0"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" />
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
@@ -696,12 +942,12 @@
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                    Width="115"
-                                    CanUserSort="False">
+                                                        Width="115"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
-                                                HorizontalAlignment="Center">
+                                                          HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
@@ -711,10 +957,10 @@
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
                                                         <CheckBox IsChecked="{Binding IntenseCompleted, Mode=OneWay}"
-                                                          IsEnabled="False"
-                                                          Margin="2,0"
-                                                          HorizontalAlignment="Center"
-                                                          VerticalAlignment="Center" />
+                                                                  IsEnabled="False"
+                                                                  Margin="2,0"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" />
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
@@ -724,12 +970,12 @@
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                    Width="115"
-                                    CanUserSort="False">
+                                                        Width="115"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
-                                                HorizontalAlignment="Center">
+                                                          HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
@@ -739,10 +985,10 @@
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
                                                         <CheckBox IsChecked="{Binding ExtremeCompleted, Mode=OneWay}"
-                                                          IsEnabled="False"
-                                                          Margin="2,0"
-                                                          HorizontalAlignment="Center"
-                                                          VerticalAlignment="Center" />
+                                                                  IsEnabled="False"
+                                                                  Margin="2,0"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" />
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
@@ -752,12 +998,12 @@
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                    Width="115"
-                                    CanUserSort="False">
+                                                        Width="115"
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
-                                                HorizontalAlignment="Center">
+                                                          HorizontalAlignment="Center">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel Orientation="Horizontal" />
@@ -767,10 +1013,10 @@
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
                                                         <CheckBox IsChecked="{Binding InsaneCompleted, Mode=OneWay}"
-                                                          IsEnabled="False"
-                                                          Margin="2,0"
-                                                          HorizontalAlignment="Center"
-                                                          VerticalAlignment="Center" />
+                                                                  IsEnabled="False"
+                                                                  Margin="2,0"
+                                                                  HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" />
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
@@ -780,7 +1026,7 @@
 
                                 <!-- Spacer -->
                                 <DataGridTemplateColumn Width="12"
-                                    CanUserSort="False">
+                                                        CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid />
@@ -807,8 +1053,8 @@
 
                     <!-- Achievements -->
                     <GroupBox Grid.Row="2"
-                      Header="Achievements"
-                      Margin="0">
+                              Header="Achievements"
+                              Margin="0">
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ItemsControl ItemsSource="{Binding AFE2Achievements.Items}">
@@ -821,11 +1067,11 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border BorderBrush="#33000000"
-                                            BorderThickness="1"
-                                            CornerRadius="6"
-                                            Padding="8"
-                                            Margin="6"
-                                            Width="250">
+                                                BorderThickness="1"
+                                                CornerRadius="6"
+                                                Padding="8"
+                                                Margin="6"
+                                                Width="250">
 
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -835,14 +1081,14 @@
 
                                                 <!-- Achievement icon -->
                                                 <Image Grid.Column="0"
-                                                   Source="{Binding Icon}"
-                                                   Opacity="{Binding IconOpacity}"
-                                                   Width="40"
-                                                   Height="40"
-                                                   Margin="0,0,8,0"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   Stretch="Uniform" />
+                                                       Source="{Binding Icon}"
+                                                       Opacity="{Binding IconOpacity}"
+                                                       Width="40"
+                                                       Height="40"
+                                                       Margin="0,0,8,0"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Stretch="Uniform" />
 
                                                 <!-- Achievement information -->
                                                 <Grid Grid.Column="1">
@@ -858,39 +1104,39 @@
                                                         </Grid.ColumnDefinitions>
 
                                                         <TextBlock Grid.Column="0"
-                                                           Text="{Binding Name}"
-                                                           FontWeight="SemiBold"
-                                                           TextTrimming="CharacterEllipsis"
-                                                           VerticalAlignment="Center">
+                                                                   Text="{Binding Name}"
+                                                                   FontWeight="SemiBold"
+                                                                   TextTrimming="CharacterEllipsis"
+                                                                   VerticalAlignment="Center">
 
                                                             <TextBlock.ToolTip>
                                                                 <ToolTip MaxWidth="420">
                                                                     <TextBlock Text="{Binding Description}"
-                                                                        TextWrapping="Wrap" />
+                                                                               TextWrapping="Wrap" />
                                                                 </ToolTip>
                                                             </TextBlock.ToolTip>
                                                         </TextBlock>
 
                                                         <TextBlock Grid.Column="1"
-                                                           Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
-                                                           FontWeight="SemiBold"
-                                                           Margin="8,0,0,0"
-                                                           VerticalAlignment="Center" />
+                                                                   Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
+                                                                   FontWeight="SemiBold"
+                                                                   Margin="8,0,0,0"
+                                                                   VerticalAlignment="Center" />
                                                     </Grid>
 
                                                     <Grid Grid.Row="1"
-                                                        Margin="0,6,0,0">
+                                                          Margin="0,6,0,0">
 
                                                         <ProgressBar Minimum="0"
-                                                         Maximum="{Binding Target}"
-                                                         Value="{Binding Value}"
-                                                         Height="14" />
+                                                                     Maximum="{Binding Target}"
+                                                                     Value="{Binding Value}"
+                                                                     Height="14" />
 
                                                         <TextBlock Text="{Binding ProgressDisplay}"
-                                                           HorizontalAlignment="Center"
-                                                           VerticalAlignment="Center"
-                                                           FontSize="11"
-                                                           FontWeight="SemiBold" />
+                                                                   HorizontalAlignment="Center"
+                                                                   VerticalAlignment="Center"
+                                                                   FontSize="11"
+                                                                   FontWeight="SemiBold" />
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
@@ -900,6 +1146,7 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </GroupBox>
+
                 </Grid>
             </TabItem>
 
