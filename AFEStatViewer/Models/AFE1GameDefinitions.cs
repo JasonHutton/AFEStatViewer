@@ -9,6 +9,17 @@ namespace AFEStatViewer.Models
 {
     public static class AFE1GameDefinitions
     {
+        public static readonly IReadOnlyList<ClassKitDefinition> ClassKits = new[]
+        {
+            new ClassKitDefinition("Gunner",      "Player_Gunner"),
+            new ClassKitDefinition("Demolisher",  "Player_Demolisher"),
+            new ClassKitDefinition("Technician",  "Player_Technician"),
+            new ClassKitDefinition("Doc",         "Player_Doc"),
+            new ClassKitDefinition("Recon",       "Player_Recon"),
+            new ClassKitDefinition("Phalanx",     "Player_Phalanx"),
+            new ClassKitDefinition("Lancer",      "Player_Lancer"),
+        };
+
         public static readonly IReadOnlyList<CampaignDefinition> Campaigns = new[]
         {
             new CampaignDefinition(1, "Priority One", new[]

@@ -10,12 +10,19 @@ namespace AFEStatViewer.Services
 {
     public sealed class SaveGameParser
     {
-        public ModeProgress ParseModeProgress(string jsonString, IEnumerable<MissionDefinition> missions)
+        public ModeProgress ParseModeProgress(
+    string jsonString,
+    IEnumerable<MissionDefinition> missions,
+    IEnumerable<ClassKitDefinition> classKits)
         {
             if (jsonString == null)
                 throw new ArgumentNullException(nameof(jsonString));
+
             if (missions == null)
                 throw new ArgumentNullException(nameof(missions));
+
+            if (classKits == null)
+                throw new ArgumentNullException(nameof(classKits));
 
             var progress = new ModeProgress();
 
@@ -25,68 +32,37 @@ namespace AFEStatViewer.Services
             if (!root.TryGetProperty("CounterTracker", out var counterTracker) ||
                 !counterTracker.TryGetProperty("Sets", out var sets))
             {
-                // Save file doesn't contain campaign progress at all
                 return progress;
             }
 
-            // Materialize once (avoid re-enumerating IEnumerable multiple times)
             var missionList = missions as IList<MissionDefinition> ?? missions.ToList();
+            var classKitList = classKits as IList<ClassKitDefinition> ?? classKits.ToList();
 
-            // Split missions by type (Campaign vs Challenge)
-            var campaignMissions = missionList.Where(m => Difficulties.IsCampaignKey(m.SaveKey)).ToList();
-            var challengeMissions = missionList.Where(m => Difficulties.IsChallengeKey(m.SaveKey)).ToList();
-
-            // Ensure dictionary exists and set value
-            static void SetCount(ModeProgress p, string saveKey, Difficulty d, int value)
-            {
-                if (!p.Counts.TryGetValue(saveKey, out var byDifficulty))
-                {
-                    byDifficulty = new Dictionary<Difficulty, int>();
-                    p.Counts[saveKey] = byDifficulty;
-                }
-
-                byDifficulty[d] = value;
-            }
-
-            // Campaign missions: read from *|Campaign sets
             foreach (var difficulty in Difficulties.All)
             {
-                var difficultySetKey = Difficulties.ToCampaignSaveKey[difficulty];
-
-                if (!sets.TryGetProperty(difficultySetKey, out var difficultySet))
-                    continue;
-
-                if (!difficultySet.TryGetProperty("Vars", out var vars))
-                    continue;
-
-                foreach (var mission in campaignMissions)
+                foreach (var classKit in classKitList)
                 {
-                    int value = vars.TryGetProperty(mission.SaveKey, out var valueElement)
-                        ? valueElement.GetInt32()
-                        : 0;
+                    string setKey = $"{Difficulties.ToSaveKey[difficulty]}|{classKit.SaveKey}";
 
-                    SetCount(progress, mission.SaveKey, difficulty, value);
-                }
-            }
+                    if (!sets.TryGetProperty(setKey, out var difficultyClassSet))
+                        continue;
 
-            // Horde missions: read from *|Challenge sets
-            foreach (var difficulty in Difficulties.All)
-            {
-                var difficultySetKey = Difficulties.ToChallengeSaveKey[difficulty];
+                    if (!difficultyClassSet.TryGetProperty("Vars", out var vars))
+                        continue;
 
-                if (!sets.TryGetProperty(difficultySetKey, out var difficultySet))
-                    continue;
+                    foreach (var mission in missionList)
+                    {
+                        int value = vars.TryGetProperty(mission.SaveKey, out var valueElement)
+                            ? valueElement.GetInt32()
+                            : 0;
 
-                if (!difficultySet.TryGetProperty("Vars", out var vars))
-                    continue;
-
-                foreach (var mission in challengeMissions)
-                {
-                    int value = vars.TryGetProperty(mission.SaveKey, out var valueElement)
-                        ? valueElement.GetInt32()
-                        : 0;
-
-                    SetCount(progress, mission.SaveKey, difficulty, value);
+                        progress.SetCount(
+                            mission.SaveKey,
+                            difficulty,
+                            classKit.SaveKey,
+                            value
+                        );
+                    }
                 }
             }
 

@@ -1,5 +1,7 @@
 ﻿using AFEStatViewer.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace AFEStatViewer.ViewModels
 {
@@ -17,6 +19,8 @@ namespace AFEStatViewer.ViewModels
 
         public string CampaignMissionName => $"{CampaignName}: {MissionName}";
 
+        public ObservableCollection<ClassKitCompletionViewModel> ClassKits { get; }
+
         private ModeProgress? _progress;
         public ModeProgress? Progress
         {
@@ -24,25 +28,27 @@ namespace AFEStatViewer.ViewModels
             set
             {
                 if (!SetProperty(ref _progress, value)) return;
-                OnPropertyChanged(nameof(CasualCompleted));
-                OnPropertyChanged(nameof(StandardCompleted));
-                OnPropertyChanged(nameof(IntenseCompleted));
-                OnPropertyChanged(nameof(ExtremeCompleted));
-                OnPropertyChanged(nameof(InsaneCompleted));
+
+                foreach (var classKit in ClassKits)
+                {
+                    classKit.Progress = value;
+                }
             }
         }
 
-        public bool CasualCompleted => Progress?.GetCount(SaveKey, Difficulty.Casual) > 0;
-        public bool StandardCompleted => Progress?.GetCount(SaveKey, Difficulty.Standard) > 0;
-        public bool IntenseCompleted => Progress?.GetCount(SaveKey, Difficulty.Intense) > 0;
-        public bool ExtremeCompleted => Progress?.GetCount(SaveKey, Difficulty.Extreme) > 0;
-        public bool InsaneCompleted => Progress?.GetCount(SaveKey, Difficulty.Insane) > 0;
-
-        public MissionRowViewModel(CampaignDefinition campaign, MissionDefinition mission)
+        public MissionRowViewModel(
+            CampaignDefinition campaign,
+            MissionDefinition mission,
+            IEnumerable<ClassKitDefinition> classKits)
         {
             CampaignNumber = campaign.Number;
             CampaignName = campaign.Name;
             Mission = mission;
+
+            ClassKits = new ObservableCollection<ClassKitCompletionViewModel>(
+                classKits.Select(classKit =>
+                    new ClassKitCompletionViewModel(classKit, mission.SaveKey))
+            );
         }
     }
 }

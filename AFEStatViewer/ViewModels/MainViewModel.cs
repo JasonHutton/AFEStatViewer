@@ -56,7 +56,7 @@ namespace AFEStatViewer.ViewModels
                     .OrderBy(c => c.Number)
                     .SelectMany(c => c.Missions
                         .OrderBy(m => m.Number)
-                        .Select(m => new MissionRowViewModel(c, m)))
+                        .Select(m => new MissionRowViewModel(c, m, AFE1GameDefinitions.ClassKits)))
                     .ToList();
 
             Missions = new ObservableCollection<MissionRowViewModel>(campaignRows);
@@ -66,7 +66,7 @@ namespace AFEStatViewer.ViewModels
                     .OrderBy(c => c.Number)
                     .SelectMany(c => c.Missions
                         .OrderBy(m => m.Number)
-                        .Select(m => new MissionRowViewModel(c, m)))
+                        .Select(m => new MissionRowViewModel(c, m, AFE1GameDefinitions.ClassKits)))
                     .ToList();
 
             GameModeMissions = new ObservableCollection<MissionRowViewModel>(gameModeRows);
@@ -76,7 +76,7 @@ namespace AFEStatViewer.ViewModels
                     .OrderBy(c => c.Number)
                     .SelectMany(c => c.Missions
                         .OrderBy(m => m.Number)
-                        .Select(m => new MissionRowViewModel(c, m)))
+                        .Select(m => new MissionRowViewModel(c, m, AFE2GameDefinitions.ClassKits)))
                     .ToList();
 
             AFE2Missions = new ObservableCollection<MissionRowViewModel>(afe2CampaignRows);
@@ -89,7 +89,7 @@ namespace AFEStatViewer.ViewModels
         {
             if (jsonString == null) throw new ArgumentNullException(nameof(jsonString));
 
-            Progress = _parser.ParseModeProgress(jsonString, AFE1GameDefinitions.AllMissions);
+            Progress = _parser.ParseModeProgress(jsonString, AFE1GameDefinitions.AllMissions, AFE1GameDefinitions.ClassKits);
 
             if (parseAchievements)
             {
@@ -102,7 +102,7 @@ namespace AFEStatViewer.ViewModels
         {
             if (jsonString == null) throw new ArgumentNullException(nameof(jsonString));
 
-            AFE2Progress = _parser.ParseModeProgress(jsonString, AFE2GameDefinitions.CampaignOnlyMissions);
+            AFE2Progress = _parser.ParseModeProgress(jsonString, AFE2GameDefinitions.CampaignOnlyMissions, AFE2GameDefinitions.ClassKits);
 
             if (parseAchievements)
             {

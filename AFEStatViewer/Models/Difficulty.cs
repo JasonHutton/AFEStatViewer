@@ -55,5 +55,14 @@ namespace AFEStatViewer.Models
             Difficulty.Insane
         };
 
+        public static readonly IReadOnlyDictionary<Difficulty, string> ToSaveKey =
+            new Dictionary<Difficulty, string>
+            {
+                [Difficulty.Casual] = "Easy",
+                [Difficulty.Standard] = "Normal",
+                [Difficulty.Intense] = "Hard",
+                [Difficulty.Extreme] = "Extreme",
+                [Difficulty.Insane] = "Insane",
+            };
     }
 }
