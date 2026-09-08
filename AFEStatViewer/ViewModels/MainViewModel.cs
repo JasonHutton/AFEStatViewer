@@ -18,6 +18,7 @@ namespace AFEStatViewer.ViewModels
         public ObservableCollection<MissionRowViewModel> GameModeMissions { get; }
 
         public ObservableCollection<MissionRowViewModel> AFE2Missions { get; }
+        public ObservableCollection<MissionRowViewModel> AFE2GameModeMissions { get; }
 
         private CompletionSummary _afe1CampaignCompletion = new(0, 0);
         public CompletionSummary AFE1CampaignCompletion
@@ -153,7 +154,13 @@ namespace AFEStatViewer.ViewModels
                     row.Progress = value;
                 }
 
+                foreach (var row in AFE2GameModeMissions)
+                {
+                    row.Progress = value;
+                }
+
                 AFE2CampaignCompletion = GetSectionCompletion(AFE2Missions);
+                AFE2GameModesCompletion = GetSectionCompletion(AFE2GameModeMissions);
             }
         }
 
@@ -203,11 +210,18 @@ namespace AFEStatViewer.ViewModels
 
             AFE2Missions = new ObservableCollection<MissionRowViewModel>(afe2CampaignRows);
 
+            var afe2GameModeRows =
+                AFE2GameDefinitions.GameModes
+                    .OrderBy(c => c.Number)
+                    .SelectMany(c => c.Missions
+                        .OrderBy(m => m.Number)
+                        .Select(m => new MissionRowViewModel(c, m, AFE2GameDefinitions.ClassKits, AFE2GameDefinitions.ClassKitStyle)))
+                    .ToList();
+
+            AFE2GameModeMissions = new ObservableCollection<MissionRowViewModel>(afe2GameModeRows);
+
             Achievements = new AchievementsViewModel(AFE1GameDefinitions.Achievements);
             AFE2Achievements = new AchievementsViewModel(AFE2GameDefinitions.Achievements);
-
-            // AFE2 game modes are not implemented in the UI yet.
-            AFE2GameModesCompletion = new CompletionSummary(0, 0);
 
             // Achievement totals exist even before a save has been loaded.
             AFE1AchievementCompletion = CompletionCounter.Count(Achievements.Items.Select(achievement => achievement.IsComplete));
@@ -218,6 +232,7 @@ namespace AFEStatViewer.ViewModels
             AFE1GameModesCompletion = CompletionCounter.Count(GameModeMissions.SelectMany(mission => mission.CompletionStates));
 
             AFE2CampaignCompletion = CompletionCounter.Count(AFE2Missions.SelectMany(mission => mission.CompletionStates));
+            AFE2GameModesCompletion = CompletionCounter.Count(AFE2GameModeMissions.SelectMany(mission => mission.CompletionStates));
         }
 
         public void ApplyAFE1Json(string jsonString, bool parseAchievements)
@@ -251,7 +266,7 @@ namespace AFEStatViewer.ViewModels
 
             AFE2Progress = _parser.ParseModeProgress(
                 jsonString,
-                AFE2GameDefinitions.CampaignOnlyMissions,
+                AFE2GameDefinitions.AllMissions,
                 AFE2GameDefinitions.ClassKits
             );
 

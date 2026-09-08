@@ -1087,15 +1087,139 @@
 
                     <!-- Game Modes completion -->
                     <GroupBox Grid.Row="1"
-                              Header="{Binding AFE2GameModesCompletionHeader}"
-                              Margin="0,0,0,8">
+          Header="{Binding AFE2GameModesCompletionHeader}"
+          Margin="0,0,0,8">
 
-                        <Grid MinHeight="100">
-                            <TextBlock Text="AFE2 game modes completion"
-                                       Foreground="Gray"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" />
-                        </Grid>
+                        <DataGrid ItemsSource="{Binding AFE2GameModeMissions}"
+              AutoGenerateColumns="False"
+              IsReadOnly="True"
+              CanUserAddRows="False"
+              HeadersVisibility="Column"
+              GridLinesVisibility="None"
+              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+              CanUserSortColumns="False"
+              SelectionUnit="Cell"
+              SelectionMode="Single"
+              SelectedIndex="-1"
+              RowStyle="{StaticResource AFE2CompletionRowStyle}"
+              CellStyle="{StaticResource AFE2CompletionCellStyle}">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Name"
+                                Binding="{Binding MissionName}"
+                                Width="*"
+                                CanUserSort="False"
+                                ElementStyle="{StaticResource AFE2CompletionTextStyle}" />
+
+                                <!-- Casual -->
+                                <DataGridTemplateColumn Header="Casual"
+                                    Width="145"
+                                    CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                      ItemTemplate="{StaticResource AFE2CasualClassKitTemplate}"
+                                      HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!-- Standard -->
+                                <DataGridTemplateColumn Header="Standard"
+                                    Width="145"
+                                    CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                      ItemTemplate="{StaticResource AFE2StandardClassKitTemplate}"
+                                      HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!-- Intense -->
+                                <DataGridTemplateColumn Header="Intense"
+                                    Width="145"
+                                    CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                      ItemTemplate="{StaticResource AFE2IntenseClassKitTemplate}"
+                                      HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!-- Extreme -->
+                                <DataGridTemplateColumn Header="Extreme"
+                                    Width="145"
+                                    CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                      ItemTemplate="{StaticResource AFE2ExtremeClassKitTemplate}"
+                                      HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!-- Insane -->
+                                <DataGridTemplateColumn Header="Insane"
+                                    Width="145"
+                                    CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ItemsControl ItemsSource="{Binding ClassKits}"
+                                      ItemTemplate="{StaticResource AFE2InsaneClassKitTemplate}"
+                                      HorizontalAlignment="Center">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!-- Spacer -->
+                                <DataGridTemplateColumn Width="12"
+                                    CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </GroupBox>
 
                     <!-- Achievements -->

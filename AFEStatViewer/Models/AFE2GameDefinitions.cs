@@ -74,9 +74,9 @@ namespace AFEStatViewer.Models
         {
             new CampaignDefinition(0, "Game Modes", new[]
             {
-                new MissionDefinition(1, "Horde Mode: Crash Landed", "[PLACEHOLDER]"),
-                new MissionDefinition(2, "Horde Mode: Blacksite",     "[PLACEHOLDER]"),
-                new MissionDefinition(3, "Horde Mode: Crusher",       "[PLACEHOLDER]"),
+                new MissionDefinition(1, "Horde Mode: Crash Landed",    "Challenge|HordeMode1|ColonyHordeMode"),
+                new MissionDefinition(2, "Horde Mode: Blacksite",       "Challenge|HordeMode2|QuarryHordeMode"),
+                new MissionDefinition(3, "Horde Mode: Crusher",         "Challenge|HordeMode3|HordeMode-1"),
             }),
         };
 
@@ -102,7 +102,7 @@ namespace AFEStatViewer.Models
             //new AchievementDefinition("Hardened Trooper", "Complete a mission on Intense difficulty.", "[PLACEHOLDER]", XX),
 
             //new AchievementDefinition("Yellow Makes It Shoot Better", "Equip a colorway and three decals onto a gun.", "[PLACEHOLDER]", XX),
-            //new AchievementDefinition("Fully Loaded", "Equip a weapon with all attachments, including an Augment.", "[PLACEHOLDER]", XX),
+            new AchievementDefinition("AFE2_Fully_Loaded","Fully Loaded", "Equip a weapon with all attachments, including an Augment.", 5, AchievementValueResolvers.CounterTracker("Any", "MaxNumAttachmentsEquipped")),
 
             new AchievementDefinition("AFE2_Seasoned_Veteran", "Seasoned Veteran", "Level a Kit to Rank 10.", 10, AchievementValueResolvers.HighestKitLevel),
 
@@ -114,7 +114,7 @@ namespace AFEStatViewer.Models
             
             //new AchievementDefinition("Wave Goodbye", "Survive 5 waves in Horde Mode.", "[PLACEHOLDER]", XX),
 
-            //new AchievementDefinition("Overly Attached", "Collect 50 weapon attachments.", "[PLACEHOLDER]", XX),
+            new AchievementDefinition("AFE2_Overly_Attached","Overly Attached", "Collect 50 weapon attachments.", 50, AchievementValueResolvers.CounterTracker("Any", "A_Avo_Attachments_Collect_Many")),
             //new AchievementDefinition("Custom Made Marine", "Complete 5 missions with the Specialist kit.", "[PLACEHOLDER]", XX),
             new AchievementDefinition("AFE2_Another_Bug_Hunt", "Another Bug Hunt", "Eliminate 10000 Xenomorphs.", 10000, AchievementValueResolvers.CounterTracker("Any", "Kills|Xenos")),
 
