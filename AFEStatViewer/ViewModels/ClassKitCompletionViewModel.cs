@@ -1,6 +1,7 @@
 ﻿using AFEStatViewer.Models;
 using AFEStatViewer.Services;
 using System;
+using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace AFEStatViewer.ViewModels
@@ -41,6 +42,18 @@ namespace AFEStatViewer.ViewModels
         public bool IntenseCompleted => IsCompleted(Difficulty.Intense);
         public bool ExtremeCompleted => IsCompleted(Difficulty.Extreme);
         public bool InsaneCompleted => IsCompleted(Difficulty.Insane);
+
+        public IEnumerable<bool> CompletionStates
+        {
+            get
+            {
+                yield return CasualCompleted;
+                yield return StandardCompleted;
+                yield return IntenseCompleted;
+                yield return ExtremeCompleted;
+                yield return InsaneCompleted;
+            }
+        }
 
         public Brush CasualIconBrush => GetIconBrush(Difficulty.Casual);
         public Brush StandardIconBrush => GetIconBrush(Difficulty.Standard);

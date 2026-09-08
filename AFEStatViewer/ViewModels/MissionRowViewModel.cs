@@ -24,6 +24,16 @@ namespace AFEStatViewer.ViewModels
         public Brush CompletionSectionBackgroundBrush { get; }
         public Brush CompletionTextBrush { get; }
 
+        public bool IsComplete =>
+            ClassKits.Any(classKit =>
+                classKit.CasualCompleted ||
+                classKit.StandardCompleted ||
+                classKit.IntenseCompleted ||
+                classKit.ExtremeCompleted ||
+                classKit.InsaneCompleted);
+
+        public IEnumerable<bool> CompletionStates => ClassKits.SelectMany(classKit => classKit.CompletionStates);
+
         private ModeProgress? _progress;
         public ModeProgress? Progress
         {
@@ -36,6 +46,8 @@ namespace AFEStatViewer.ViewModels
                 {
                     classKit.Progress = value;
                 }
+
+                OnPropertyChanged(nameof(IsComplete));
             }
         }
 

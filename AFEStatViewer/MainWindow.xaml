@@ -287,7 +287,7 @@
 
                     <!-- Campaign completion -->
                     <GroupBox Grid.Row="0"
-                              Header="Campaign Completion"
+                              Header="{Binding AFE1CampaignCompletionHeader}"
                               Margin="0,0,0,8">
 
                         <DataGrid ItemsSource="{Binding Missions}"
@@ -428,7 +428,7 @@
 
                     <!-- Game Modes completion -->
                     <GroupBox Grid.Row="1"
-                              Header="Game Modes Completion"
+                              Header="{Binding AFE1GameModesCompletionHeader}"
                               Margin="0,0,0,8">
 
                         <DataGrid ItemsSource="{Binding GameModeMissions}"
@@ -564,7 +564,7 @@
 
                     <!-- Achievements -->
                     <GroupBox Grid.Row="2"
-                              Header="Achievements"
+                              Header="{Binding AFE1AchievementsHeader}"
                               Margin="0">
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -944,7 +944,7 @@
 
                     <!-- Campaign completion -->
                     <GroupBox Grid.Row="0"
-                              Header="Campaign Completion"
+                              Header="{Binding AFE2CampaignCompletionHeader}"
                               Margin="0,0,0,8">
 
                         <DataGrid ItemsSource="{Binding AFE2Missions}"
@@ -1087,7 +1087,7 @@
 
                     <!-- Game Modes completion -->
                     <GroupBox Grid.Row="1"
-                              Header="Game Modes Completion"
+                              Header="{Binding AFE2GameModesCompletionHeader}"
                               Margin="0,0,0,8">
 
                         <Grid MinHeight="100">
@@ -1100,7 +1100,7 @@
 
                     <!-- Achievements -->
                     <GroupBox Grid.Row="2"
-                              Header="Achievements"
+                              Header="{Binding AFE2AchievementsHeader}"
                               Margin="0">
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
