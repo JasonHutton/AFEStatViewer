@@ -5,8 +5,8 @@ A statistics viewer for Aliens: Fireteam Elite and Aliens: Fireteam Elite 2
 
 
 Expects savegame file to be at the default location:
-In AFE1 prior to Season 2, this was always: "%LOCALAPPDATA%\\Endeavor\\Saved\\SaveGames\\char.sav"
-In AFE1 Season 2 (and later) as well as AFE2 this can be: "%LOCALAPPDATA%\\Endeavor\\Saved\\SaveGames\\<SteamID>\\char.sav"
+In AFE1 prior to Season 2, this was always: `%LOCALAPPDATA%\Endeavor\Saved\SaveGames\char.sav`
+In AFE1 Season 2 (and later) as well as AFE2 this can be: `%LOCALAPPDATA%\Endeavor\Saved\SaveGames\<SteamID>\char.sav`
 
 AFE Statistics Viewer will automatically search for the most recently-accessed savegame, and read that.
 
