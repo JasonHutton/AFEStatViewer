@@ -47,5 +47,3 @@ Todo:
 AFE1 Hardcore Mode Tracking
 
 More Achievement support.
-
-Add scrollbars to the completion data areas when the window is shrunk fairly small and they no longer fit.
