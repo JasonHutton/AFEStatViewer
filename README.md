@@ -49,6 +49,3 @@ AFE1 Hardcore Mode Tracking
 More Achievement support.
 
 Add scrollbars to the completion data areas when the window is shrunk fairly small and they no longer fit.
-
-Expand the area where Achievement tooltips are active to the entire Achievement tile rather than just the text.
-

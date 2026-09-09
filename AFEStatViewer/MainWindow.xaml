@@ -580,9 +580,17 @@
                                         <Border BorderBrush="#33000000"
                                                 BorderThickness="1"
                                                 CornerRadius="6"
+                                                Background="Transparent"
                                                 Padding="8"
                                                 Margin="6"
                                                 Width="250">
+
+                                            <Border.ToolTip>
+                                                <ToolTip MaxWidth="420">
+                                                    <TextBlock Text="{Binding Description}"
+                                                               TextWrapping="Wrap" />
+                                                </ToolTip>
+                                            </Border.ToolTip>
 
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -619,15 +627,7 @@
                                                                    Text="{Binding Name}"
                                                                    FontWeight="SemiBold"
                                                                    TextTrimming="CharacterEllipsis"
-                                                                   VerticalAlignment="Center">
-
-                                                            <TextBlock.ToolTip>
-                                                                <ToolTip MaxWidth="420">
-                                                                    <TextBlock Text="{Binding Description}"
-                                                                               TextWrapping="Wrap" />
-                                                                </ToolTip>
-                                                            </TextBlock.ToolTip>
-                                                        </TextBlock>
+                                                                   VerticalAlignment="Center" />
 
                                                         <TextBlock Grid.Column="1"
                                                                    Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
@@ -1240,9 +1240,17 @@
                                         <Border BorderBrush="#33000000"
                                                 BorderThickness="1"
                                                 CornerRadius="6"
+                                                Background="Transparent"
                                                 Padding="8"
                                                 Margin="6"
                                                 Width="250">
+
+                                            <Border.ToolTip>
+                                                <ToolTip MaxWidth="420">
+                                                    <TextBlock Text="{Binding Description}"
+                                                               TextWrapping="Wrap" />
+                                                </ToolTip>
+                                            </Border.ToolTip>
 
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -1278,15 +1286,7 @@
                                                                    Text="{Binding Name}"
                                                                    FontWeight="SemiBold"
                                                                    TextTrimming="CharacterEllipsis"
-                                                                   VerticalAlignment="Center">
-
-                                                            <TextBlock.ToolTip>
-                                                                <ToolTip MaxWidth="420">
-                                                                    <TextBlock Text="{Binding Description}"
-                                                                               TextWrapping="Wrap" />
-                                                                </ToolTip>
-                                                            </TextBlock.ToolTip>
-                                                        </TextBlock>
+                                                                   VerticalAlignment="Center" />
 
                                                         <TextBlock Grid.Column="1"
                                                                    Text="{Binding PercentComplete, StringFormat={}{0:0}%}"
