@@ -114,7 +114,7 @@ namespace AFEStatViewer.Models
             
             //new AchievementDefinition("Wave Goodbye", "Survive 5 waves in Horde Mode.", "[PLACEHOLDER]", XX),
 
-            new AchievementDefinition("AFE2_Overly_Attached","Overly Attached", "Collect 50 weapon attachments.", 50, AchievementValueResolvers.CounterTracker("Any", "A_Avo_Attachments_Collect_Many")),
+            new AchievementDefinition("AFE2_Overly_Attached","Overly Attached", "Collect 50 weapon attachments.", 50, AchievementValueResolvers.WeaponAttachmentCollectionCount),
             //new AchievementDefinition("Custom Made Marine", "Complete 5 missions with the Specialist kit.", "[PLACEHOLDER]", XX),
             new AchievementDefinition("AFE2_Another_Bug_Hunt", "Another Bug Hunt", "Eliminate 10000 Xenomorphs.", 10000, AchievementValueResolvers.CounterTracker("Any", "Kills|Xenos")),
 

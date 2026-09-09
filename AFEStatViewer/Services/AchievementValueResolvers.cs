@@ -1,5 +1,6 @@
 ﻿using AFEStatViewer.Models;
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 
 namespace AFEStatViewer.Services
@@ -49,6 +50,44 @@ namespace AFEStatViewer.Services
             }
 
             return highestLevel;
+        }
+
+        public static int WeaponAttachmentCollectionCount(JsonElement root)
+        {
+            if (!root.TryGetProperty("ModInventory", out var modInventory) || !modInventory.TryGetProperty("UnlimitedModStorage", out var unlimitedModStorage))
+            {
+                return 0;
+            }
+
+            HashSet<string> collectedAttachments = new(StringComparer.Ordinal);
+
+            foreach (var slot in unlimitedModStorage.EnumerateArray())
+            {
+                if (!slot.TryGetProperty("ModDef", out var modDefElement))
+                {
+                    continue;
+                }
+
+                string? modDef = modDefElement.GetString();
+
+                if (string.IsNullOrEmpty(modDef))
+                {
+                    continue;
+                }
+
+                bool isAttachment = modDef.StartsWith("/Game/Blueprints/Venus_Weapons/Attachments/", StringComparison.Ordinal);
+
+                bool isWeaponTrait = modDef.StartsWith("/Game/Blueprints/Venus_Weapons/Perks/Mastery/", StringComparison.Ordinal);
+
+                bool isInternalAttachmentVariant = modDef.Contains("/Avo_Overclock_Explosive_Cryo.", StringComparison.Ordinal); // Unsure, I think this may be bugged though?
+
+                if ((isAttachment || isWeaponTrait) && !isInternalAttachmentVariant)
+                {
+                    collectedAttachments.Add(modDef);
+                }
+            }
+
+            return collectedAttachments.Count;
         }
     }
 }
