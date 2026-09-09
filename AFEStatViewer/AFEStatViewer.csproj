@@ -11,9 +11,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Achievements\AFE1_Anti_Mutation_Station_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Burn_Em_Out_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Glorified_Toasters_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Its_A_Bug_Hunt_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Keen_Eye_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Supportive_Squad_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Tower_Defense_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Another_Bug_Hunt_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Decommission_Mission_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Fully_Loaded_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Head_Hunter_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Overly_Attached_Complete.png" />
     <None Remove="Resources\Achievements\AFE2_Purge_The_Unclean_Complete.png" />
+    <None Remove="Resources\Achievements\AFE2_Seasoned_Veteran_Complete.png" />
     <None Remove="Resources\Achievements\AFE2_Spilled_Milk_Complete.png" />
     <None Remove="Resources\ClassIcons\AFE1_Class_Demolisher.png" />
     <None Remove="Resources\ClassIcons\AFE1_Class_Doc.png" />
@@ -31,10 +44,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Achievements\AFE1_Anti_Mutation_Station_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Burn_Em_Out_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Glorified_Toasters_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_High_Voltage_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Its_A_Bug_Hunt_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Keen_Eye_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Supportive_Squad_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Suturing_Expert_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Tower_Defense_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Another_Bug_Hunt_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Decommission_Mission_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Fully_Loaded_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Head_Hunter_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Overly_Attached_Complete.png" />
     <Resource Include="Resources\Achievements\AFE2_Purge_The_Unclean_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE2_Seasoned_Veteran_Complete.png" />
     <Resource Include="Resources\Achievements\AFE2_Spilled_Milk_Complete.png" />
     <Resource Include="Resources\ClassIcons\AFE1_Class_Demolisher.png" />
     <Resource Include="Resources\ClassIcons\AFE1_Class_Doc.png" />
