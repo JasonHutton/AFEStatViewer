@@ -81,7 +81,7 @@ namespace AFEStatViewer.Models
         };
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
-{
+        {
             new AchievementDefinition(
                 "AFE2_Welcoming_Committee",
                 "Welcoming Committee",
@@ -117,7 +117,7 @@ namespace AFEStatViewer.Models
                 "Next Top Marine",
                 "Equip cosmetics on your head, torso and legs.",
                 3,
-                AchievementValueResolvers.BodyCosmeticsEquipped),
+                AFE2AchievementValueResolvers.BodyCosmeticsEquipped),
 
             new AchievementDefinition(
                 "AFE2_Not_Just_For_Decoration",
@@ -134,7 +134,7 @@ namespace AFEStatViewer.Models
                 "Hell and Back",
                 "Level a weapon to four stars.",
                 1,
-                AchievementValueResolvers.WeaponsAtLeastLevel(5)),
+                AFE2AchievementValueResolvers.WeaponsAtLeastLevel(5)),
 
             new AchievementDefinition(
                 "AFE2_Worst_Party_Ever",
@@ -152,7 +152,7 @@ namespace AFEStatViewer.Models
                 "How Do You See Out Of These Things?",
                 "Collect 10 hats.",
                 10,
-                AchievementValueResolvers.HatCollectionCount),
+                AFE2AchievementValueResolvers.HatCollectionCount),
 
             new AchievementDefinition(
                 "AFE2_Canary",
@@ -170,7 +170,7 @@ namespace AFEStatViewer.Models
                 "Yellow Makes It Shoot Better",
                 "Equip a colorway and three decals onto a gun.",
                 4,
-                AchievementValueResolvers.MaximumGunCosmeticsEquipped),
+                AFE2AchievementValueResolvers.MaximumGunCosmeticsEquipped),
 
             new AchievementDefinition(
                 "AFE2_The_Story_Of_The_Quarry",
@@ -230,7 +230,7 @@ namespace AFEStatViewer.Models
                 "Seasoned Veteran",
                 "Level a Kit to Rank 10.",
                 10,
-                AchievementValueResolvers.HighestKitLevel),
+                AFE2AchievementValueResolvers.HighestKitLevel),
 
             new AchievementDefinition(
                 "AFE2_Hardened_Trooper",
@@ -266,7 +266,7 @@ namespace AFEStatViewer.Models
                 "Well Stocked Arsenal",
                 "Level 10 weapons to at least two stars.",
                 10,
-                AchievementValueResolvers.WeaponsAtLeastLevel(3)),
+                AFE2AchievementValueResolvers.WeaponsAtLeastLevel(3)),
 
             new AchievementDefinition(
                 "AFE2_Head_Hunter",
@@ -282,7 +282,7 @@ namespace AFEStatViewer.Models
                 "Wave Goodbye",
                 "Survive 5 waves in Horde Mode.",
                 5,
-                AchievementValueResolvers.AchievementCompleted(
+                AFE2AchievementValueResolvers.AchievementCompleted(
                     "A_Avo_HordeMode_Survive",
                     5)),
 
@@ -300,14 +300,14 @@ namespace AFEStatViewer.Models
                 "Overly Attached",
                 "Collect 50 weapon attachments.",
                 50,
-                AchievementValueResolvers.WeaponAttachmentCollectionCount),
+                AFE2AchievementValueResolvers.WeaponAttachmentCollectionCount),
 
             new AchievementDefinition(
                 "AFE2_Voided_Warranty",
                 "Voided Warranty",
                 "Collect 5 Augments.",
                 5,
-                AchievementValueResolvers.AugmentCollectionCount),
+                AFE2AchievementValueResolvers.AugmentCollectionCount),
 
             new AchievementDefinition(
                 "AFE2_Another_Bug_Hunt",

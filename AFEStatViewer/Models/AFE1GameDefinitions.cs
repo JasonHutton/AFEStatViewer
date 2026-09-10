@@ -80,7 +80,7 @@ namespace AFEStatViewer.Models
         };
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
-        {
+{
             new AchievementDefinition(
                 "AFE1_Red_Makes_It_Shoot_Faster",
                 "Red Makes It Shoot Faster",
@@ -173,7 +173,7 @@ namespace AFEStatViewer.Models
                 "Ready for Anything",
                 "Collect 25 attachments on a single character.",
                 25,
-                AchievementValueResolvers.AFE1AttachmentCollectionCount),
+                AFE1AchievementValueResolvers.AttachmentCollectionCount),
 
             new AchievementDefinition(
                 "AFE1_Anti_Mutation_Station",
@@ -199,7 +199,7 @@ namespace AFEStatViewer.Models
                 "State of the Art Firepower",
                 "Collect one attachment of every type on a single character.",
                 5,
-                AchievementValueResolvers.AFE1AttachmentTypeCount),
+                AFE1AchievementValueResolvers.AttachmentTypeCount),
 
             new AchievementDefinition(
                 "AFE1_Didnt_Break_A_Sweat",
@@ -264,14 +264,14 @@ namespace AFEStatViewer.Models
                 "Express Yourself",
                 "Collect 20 emotes on a single character.",
                 20,
-                AchievementValueResolvers.AFE1EmoteCollectionCount),
+                AFE1AchievementValueResolvers.EmoteCollectionCount),
 
             new AchievementDefinition(
                 "AFE1_Its_A_Cover_Not_A_Hat",
                 "It's a Cover, Not a Hat",
                 "Collect 20 hats on a single character.",
                 20,
-                AchievementValueResolvers.GeneralInventoryUniqueClassCount(
+                AFE1AchievementValueResolvers.GeneralInventoryUniqueClassCount(
                     "/Game/Blueprints/HeadGear/")),
 
             new AchievementDefinition(
@@ -279,7 +279,7 @@ namespace AFEStatViewer.Models
                 "It's Camouflage on Some Planet",
                 "Collect 40 weapon colors on a single character.",
                 40,
-                AchievementValueResolvers.GeneralInventoryUniqueClassCount(
+                AFE1AchievementValueResolvers.GeneralInventoryUniqueClassCount(
                     "/Game/Blueprints/Weapons/GunColorways/")),
 
             new AchievementDefinition(
@@ -324,7 +324,7 @@ namespace AFEStatViewer.Models
                 "Art Gallery",
                 "Collect 40 decals on a single character.",
                 40,
-                AchievementValueResolvers.GeneralInventoryUniqueClassCount(
+                AFE1AchievementValueResolvers.GeneralInventoryUniqueClassCount(
                     "/Game/Blueprints/Weapons/GunDecals/")),
 
             new AchievementDefinition(
@@ -435,7 +435,7 @@ namespace AFEStatViewer.Models
                 "Trigger Discipline",
                 "Complete a mission on Intense Difficulty or above without anyone taking friendly fire damage.",
                 1,
-                AchievementValueResolvers.AnyCounterThreshold(
+                AFE1AchievementValueResolvers.AnyCounterThreshold(
                     "MissionsCompletedWithoutFriendlyFire",
                     1,
                     "Hard|Any",
@@ -447,7 +447,7 @@ namespace AFEStatViewer.Models
                 "CMISRS Asset",
                 "Return 39 pieces of intel on a single character.",
                 39,
-                AchievementValueResolvers.GeneralInventoryUniqueClassCount(
+                AFE1AchievementValueResolvers.GeneralInventoryUniqueClassCount(
                     "/Game/Blueprints/HubLore/IntelItems/",
                     "/C5/")),
 
@@ -493,7 +493,7 @@ namespace AFEStatViewer.Models
                 "CMISRS Resource",
                 "Return 48 pieces of intel on a single character.",
                 48,
-                AchievementValueResolvers.GeneralInventoryUniqueClassCount(
+                AFE1AchievementValueResolvers.GeneralInventoryUniqueClassCount(
                     "/Game/Blueprints/HubLore/IntelItems/")),
 
             new AchievementDefinition(
