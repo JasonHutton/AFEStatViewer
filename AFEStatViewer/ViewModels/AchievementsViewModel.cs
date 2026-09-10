@@ -1,4 +1,5 @@
 ﻿using AFEStatViewer.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace AFEStatViewer.ViewModels
 
         public AchievementsViewModel(IEnumerable<AchievementDefinition> defs)
         {
-            Items = new ObservableCollection<AchievementViewModel>(defs.Select(d => new AchievementViewModel(d)));
+            Items = new ObservableCollection<AchievementViewModel>(defs.Select(d => new AchievementViewModel(d)).OrderBy(a => a.Name, StringComparer.CurrentCultureIgnoreCase));
         }
 
         public void Apply(AchievementProgress progress)
