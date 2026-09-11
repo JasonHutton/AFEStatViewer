@@ -688,7 +688,7 @@
                         <ScrollViewer VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled">
 
-                            <ItemsControl ItemsSource="{Binding Achievements.Items}"
+                            <ItemsControl ItemsSource="{Binding AFE1AchievementItems}"
                                           ItemTemplate="{StaticResource AchievementTemplate}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>

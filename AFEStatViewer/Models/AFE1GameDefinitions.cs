@@ -475,8 +475,11 @@ namespace AFEStatViewer.Models
                 AchievementValueResolvers.CompletedCampaignCount(
                     Campaigns.Take(4),
                     "Insane|Campaign")),
+        };
 
-            new AchievementDefinition(
+        public static readonly IReadOnlyList<AFE1HardcoreAchievementDefinition> HardcoreAchievements = new[]
+        {
+            new AFE1HardcoreAchievementDefinition(
                 "AFE1_I_Cant_Lie_About_Your_Chances",
                 "I Can't Lie About Your Chances",
                 "Finish a mission on Hardcore 10 Difficulty.",
@@ -489,5 +492,7 @@ namespace AFEStatViewer.Models
         public static IEnumerable<MissionDefinition> CampaignOnlyMissions => Campaigns.SelectMany(c => c.Missions);
         public static IEnumerable<MissionDefinition> HordeOnlyMissions => GameModes.SelectMany(c => c.Missions);
         public static IEnumerable<MissionDefinition> AllMissions => CampaignOnlyMissions.Concat(HordeOnlyMissions);
+
+        public static IEnumerable<AchievementDefinition> AllAchievements => Achievements.Cast<AchievementDefinition>().Concat(HardcoreAchievements);
     }
 }

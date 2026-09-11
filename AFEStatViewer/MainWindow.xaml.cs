@@ -34,8 +34,6 @@ namespace AFEStatViewer
         private SaveGameLoader afe1HardcoreSaveGameLoader;
         private SaveGameLoader afe2SaveGameLoader;
 
-        private string afe1HardcoreJson = string.Empty;
-
         private ViewModels.MainViewModel _vm;
 
         public MainWindow()
@@ -261,11 +259,7 @@ namespace AFEStatViewer
 
         private void ApplyAFE1HardcoreSaveGame(string jsonString)
         {
-            afe1HardcoreJson = jsonString;
-
-#if DEBUG
-            Debug.WriteLine("AFE1 Hardcore save game loaded.");
-#endif
+            _vm.ApplyAFE1HardcoreJson(jsonString);
         }
 
         private void ApplyAFE2SaveGame(string jsonString)

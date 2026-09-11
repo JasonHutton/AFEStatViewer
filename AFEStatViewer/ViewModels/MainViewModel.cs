@@ -12,7 +12,10 @@ namespace AFEStatViewer.ViewModels
         private readonly SaveGameParser _parser;
 
         public AchievementsViewModel Achievements { get; }
+        public AchievementsViewModel AFE1HardcoreAchievements { get; }
         public AchievementsViewModel AFE2Achievements { get; }
+
+        public ObservableCollection<AchievementViewModel> AFE1AchievementItems { get; }
 
         public ObservableCollection<MissionRowViewModel> Missions { get; }
         public ObservableCollection<MissionRowViewModel> GameModeMissions { get; }
@@ -221,10 +224,23 @@ namespace AFEStatViewer.ViewModels
             AFE2GameModeMissions = new ObservableCollection<MissionRowViewModel>(afe2GameModeRows);
 
             Achievements = new AchievementsViewModel(AFE1GameDefinitions.Achievements);
+
+            AFE1HardcoreAchievements = new AchievementsViewModel(AFE1GameDefinitions.HardcoreAchievements);
+
             AFE2Achievements = new AchievementsViewModel(AFE2GameDefinitions.Achievements);
 
+            AFE1AchievementItems =
+                new ObservableCollection<AchievementViewModel>(
+                    Achievements.Items
+                        .Concat(AFE1HardcoreAchievements.Items)
+                        .OrderBy(
+                            achievement => achievement.Name,
+                            StringComparer.CurrentCultureIgnoreCase)
+                );
+
             // Achievement totals exist even before a save has been loaded.
-            AFE1AchievementCompletion = CompletionCounter.Count(Achievements.Items.Select(achievement => achievement.IsComplete));
+            UpdateAFE1AchievementCompletion();
+
             AFE2AchievementCompletion = CompletionCounter.Count(AFE2Achievements.Items.Select(achievement => achievement.IsComplete));
 
             // Likewise, section totals can be established before progress is loaded.
@@ -255,8 +271,28 @@ namespace AFEStatViewer.ViewModels
 
                 Achievements.Apply(ap);
 
-                AFE1AchievementCompletion = CompletionCounter.Count(Achievements.Items.Select(achievement => achievement.IsComplete));
+                UpdateAFE1AchievementCompletion();
             }
+        }
+
+        public void ApplyAFE1HardcoreJson(string jsonString)
+        {
+            if (jsonString == null)
+                throw new ArgumentNullException(nameof(jsonString));
+
+            var ap = _parser.ParseAchievementProgress(
+                jsonString,
+                AFE1GameDefinitions.HardcoreAchievements
+            );
+
+            AFE1HardcoreAchievements.Apply(ap);
+
+            UpdateAFE1AchievementCompletion();
+        }
+
+        private void UpdateAFE1AchievementCompletion()
+        {
+            AFE1AchievementCompletion = CompletionCounter.Count(Achievements.Items.Concat(AFE1HardcoreAchievements.Items).Select(achievement => achievement.IsComplete));
         }
 
         public void ApplyAFE2Json(string jsonString, bool parseAchievements)
