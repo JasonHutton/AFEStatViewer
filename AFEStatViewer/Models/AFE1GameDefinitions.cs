@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AFEStatViewer.Services;
 
 namespace AFEStatViewer.Models
@@ -80,7 +77,7 @@ namespace AFEStatViewer.Models
         };
 
         public static readonly IReadOnlyList<AchievementDefinition> Achievements = new[]
-{
+        {
             new AchievementDefinition(
                 "AFE1_Red_Makes_It_Shoot_Faster",
                 "Red Makes It Shoot Faster",
@@ -95,11 +92,9 @@ namespace AFEStatViewer.Models
                 "AFE1_Priority_One",
                 "Priority One",
                 "Finish the \"Priority One\" Campaign.",
-                1,
-                AchievementValueResolvers.CounterTrackerThreshold(
-                    "Campaign",
-                    "Campaign|SC-C1|SC-C1M3",
-                    1)),
+                Campaigns[0].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[0])),
 
             new AchievementDefinition(
                 "AFE1_Confidence_Course",
@@ -143,21 +138,17 @@ namespace AFEStatViewer.Models
                 "AFE1_Giants_In_The_Earth",
                 "Giants in the Earth",
                 "Finish the \"Giants in the Earth\" Campaign.",
-                1,
-                AchievementValueResolvers.CounterTrackerThreshold(
-                    "Campaign",
-                    "Campaign|SC-C2|SC-C2M3",
-                    1)),
+                Campaigns[1].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[1])),
 
             new AchievementDefinition(
                 "AFE1_The_Gift_Of_Fire",
                 "The Gift of Fire",
                 "Finish the \"Gift of Fire\" Campaign.",
-                1,
-                AchievementValueResolvers.CounterTrackerThreshold(
-                    "Campaign",
-                    "Campaign|SC-C3|SC-C3M3",
-                    1)),
+                Campaigns[2].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[2])),
 
             new AchievementDefinition(
                 "AFE1_A_Personal_Friend_Of_Mine",
@@ -188,11 +179,9 @@ namespace AFEStatViewer.Models
                 "AFE1_The_Only_Way_To_Be_Sure",
                 "The Only Way to be Sure",
                 "Finish the \"Only Way to be Sure\" Campaign.",
-                1,
-                AchievementValueResolvers.CounterTrackerThreshold(
-                    "Campaign",
-                    "Campaign|SC-C4|SC-C4M3",
-                    1)),
+                Campaigns[3].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[3])),
 
             new AchievementDefinition(
                 "AFE1_State_Of_The_Art_Firepower",
@@ -224,21 +213,10 @@ namespace AFEStatViewer.Models
                 "AFE1_Expeditionary_Service_Ribbon",
                 "Expeditionary Service Ribbon",
                 "Finish all Campaigns on Standard Difficulty.",
-                12,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Normal|Campaign",
-                    "Campaign|SC-C1|SC-C1M1",
-                    "Campaign|SC-C1|SC_C1M2",
-                    "Campaign|SC-C1|SC-C1M3",
-                    "Campaign|SC-C2|SC-C2M1",
-                    "Campaign|SC-C2|SC-C2M2",
-                    "Campaign|SC-C2|SC-C2M3",
-                    "Campaign|SC-C3|SC-C3M1",
-                    "Campaign|SC-C3|SC-C3M2",
-                    "Campaign|SC-C3|SC-C3M3",
-                    "Campaign|SC-C4|SC-C4M1",
-                    "Campaign|SC-C4|SC-C4M2",
-                    "Campaign|SC-C4|SC-C4M3")),
+                4,
+                AchievementValueResolvers.CompletedCampaignCount(
+                    Campaigns.Take(4),
+                    "Normal|Campaign")),
 
             new AchievementDefinition(
                 "AFE1_Specialist",
@@ -304,11 +282,9 @@ namespace AFEStatViewer.Models
                 "AFE1_Promise_Of_A_Flower",
                 "Promise of a Flower",
                 "Finish the \"Promise of a Flower\" Campaign.",
-                1,
-                AchievementValueResolvers.CounterTrackerThreshold(
-                    "Campaign",
-                    "Campaign|SC-C5|SC-C5M3",
-                    1)),
+                Campaigns[4].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[4])),
 
             new AchievementDefinition(
                 "AFE1_Overwhelming_Confidence",
@@ -349,21 +325,10 @@ namespace AFEStatViewer.Models
                 "AFE1_LV_895_Service_Ribbon",
                 "LV-895 Service Ribbon",
                 "Finish all Campaigns on Intense Difficulty.",
-                12,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Hard|Campaign",
-                    "Campaign|SC-C1|SC-C1M1",
-                    "Campaign|SC-C1|SC_C1M2",
-                    "Campaign|SC-C1|SC-C1M3",
-                    "Campaign|SC-C2|SC-C2M1",
-                    "Campaign|SC-C2|SC-C2M2",
-                    "Campaign|SC-C2|SC-C2M3",
-                    "Campaign|SC-C3|SC-C3M1",
-                    "Campaign|SC-C3|SC-C3M2",
-                    "Campaign|SC-C3|SC-C3M3",
-                    "Campaign|SC-C4|SC-C4M1",
-                    "Campaign|SC-C4|SC-C4M2",
-                    "Campaign|SC-C4|SC-C4M3")),
+                4,
+                AchievementValueResolvers.CompletedCampaignCount(
+                    Campaigns.Take(4),
+                    "Hard|Campaign")),
 
             new AchievementDefinition(
                 "AFE1_Keen_Eye",
@@ -500,41 +465,19 @@ namespace AFEStatViewer.Models
                 "AFE1_LV_895_Campaign_Medal",
                 "LV-895 Campaign Medal",
                 "Finish all Campaigns on Extreme Difficulty.",
-                12,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Extreme|Campaign",
-                    "Campaign|SC-C1|SC-C1M1",
-                    "Campaign|SC-C1|SC_C1M2",
-                    "Campaign|SC-C1|SC-C1M3",
-                    "Campaign|SC-C2|SC-C2M1",
-                    "Campaign|SC-C2|SC-C2M2",
-                    "Campaign|SC-C2|SC-C2M3",
-                    "Campaign|SC-C3|SC-C3M1",
-                    "Campaign|SC-C3|SC-C3M2",
-                    "Campaign|SC-C3|SC-C3M3",
-                    "Campaign|SC-C4|SC-C4M1",
-                    "Campaign|SC-C4|SC-C4M2",
-                    "Campaign|SC-C4|SC-C4M3")),
+                4,
+                AchievementValueResolvers.CompletedCampaignCount(
+                    Campaigns.Take(4),
+                    "Extreme|Campaign")),
 
             new AchievementDefinition(
                 "AFE1_Reticulum_Theater_Medal",
                 "Reticulum Theater Medal",
                 "Finish all Campaigns on Insane Difficulty.",
-                12,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Insane|Campaign",
-                    "Campaign|SC-C1|SC-C1M1",
-                    "Campaign|SC-C1|SC_C1M2",
-                    "Campaign|SC-C1|SC-C1M3",
-                    "Campaign|SC-C2|SC-C2M1",
-                    "Campaign|SC-C2|SC-C2M2",
-                    "Campaign|SC-C2|SC-C2M3",
-                    "Campaign|SC-C3|SC-C3M1",
-                    "Campaign|SC-C3|SC-C3M2",
-                    "Campaign|SC-C3|SC-C3M3",
-                    "Campaign|SC-C4|SC-C4M1",
-                    "Campaign|SC-C4|SC-C4M2",
-                    "Campaign|SC-C4|SC-C4M3")),
+                4,
+                AchievementValueResolvers.CompletedCampaignCount(
+                    Campaigns.Take(4),
+                    "Insane|Campaign")),
 
             new AchievementDefinition(
                 "AFE1_I_Cant_Lie_About_Your_Chances",
@@ -550,5 +493,4 @@ namespace AFEStatViewer.Models
         public static IEnumerable<MissionDefinition> HordeOnlyMissions => GameModes.SelectMany(c => c.Missions);
         public static IEnumerable<MissionDefinition> AllMissions => CampaignOnlyMissions.Concat(HordeOnlyMissions);
     }
-
 }

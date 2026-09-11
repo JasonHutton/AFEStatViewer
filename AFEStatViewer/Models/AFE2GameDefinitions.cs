@@ -86,21 +86,17 @@ namespace AFEStatViewer.Models
                 "AFE2_Welcoming_Committee",
                 "Welcoming Committee",
                 "Complete the \"Prologue\" Campaign.",
-                1,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Campaign",
-                    "Campaign|AvoPrologue|AvoPrologue01")),
+                Campaigns[0].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[0])),
 
             new AchievementDefinition(
                 "AFE2_Its_A_Rescue_Mission",
                 "It's a rescue mission, you'll love it!",
                 "Complete the \"Rescue and Recovery\" Campaign.",
-                3,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Campaign",
-                    "Campaign|AVOColony|AVOColony1",
-                    "Campaign|AVOColony|AVOColony2",
-                    "Campaign|AVOColony|AVOColony3")),
+                Campaigns[1].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[1])),
 
             new AchievementDefinition(
                 "AFE2_Worthiness_Tested",
@@ -140,12 +136,9 @@ namespace AFEStatViewer.Models
                 "AFE2_Worst_Party_Ever",
                 "Worst Party Ever",
                 "Complete the \"Boarding Party\" Campaign.",
-                3,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Campaign",
-                    "Campaign|AVOSpaceCruiser|AVOSpaceCruiser1",
-                    "Campaign|AVOSpaceCruiser|AVOSpaceCruiser2",
-                    "Campaign|AVOSpaceCruiser|AVOSpaceCruiser3")),
+                Campaigns[2].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[2])),
 
             new AchievementDefinition(
                 "AFE2_How_Do_You_See_Out_Of_These_Things",
@@ -158,12 +151,9 @@ namespace AFEStatViewer.Models
                 "AFE2_Canary",
                 "Canary",
                 "Complete the \"Rock Bottom\" Campaign.",
-                3,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Campaign",
-                    "Campaign|AVOUnderbelly|AVOUnderbelly1",
-                    "Campaign|AVOUnderbelly|AVOUnderbelly2",
-                    "Campaign|AVOUnderbelly|AVOUnderbelly3")),
+                Campaigns[3].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[3])),
 
             new AchievementDefinition(
                 "AFE2_Yellow_Makes_It_Shoot_Better",
@@ -176,12 +166,9 @@ namespace AFEStatViewer.Models
                 "AFE2_The_Story_Of_The_Quarry",
                 "The Story of the Quarry",
                 "Complete the \"Ancient Anomaly\" Campaign.",
-                3,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Campaign",
-                    "Campaign|AVOEngineerShip|AVOEngineerShip1",
-                    "Campaign|AVOEngineerShip|AVOEngineerShip3",
-                    "Campaign|AVOEngineerShip|AVOEngineerShip5")),
+                Campaigns[4].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[4])),
 
             new AchievementDefinition(
                 "AFE2_Fully_Loaded",
@@ -196,34 +183,17 @@ namespace AFEStatViewer.Models
                 "AFE2_Reckoning",
                 "Reckoning",
                 "Complete the \"Final Endeavor\" Campaign.",
-                2,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Campaign",
-                    "Campaign|AVOQueenFight|AVOUnderbellyFinal",
-                    "Campaign|AVOQueenFight|AVOSpaceCruiserFinal")),
+                Campaigns[5].Missions.Count,
+                AchievementValueResolvers.CampaignCompletion(
+                    Campaigns[5])),
 
             new AchievementDefinition(
                 "AFE2_Legionnaires_Service_Medal",
                 "Legionnaire's Service Medal",
                 "Complete all Campaigns on Casual or higher difficulty.",
-                15,
-                AchievementValueResolvers.CompletedCounterKeys(
-                    "Campaign",
-                    "Campaign|AvoPrologue|AvoPrologue01",
-                    "Campaign|AVOColony|AVOColony1",
-                    "Campaign|AVOColony|AVOColony2",
-                    "Campaign|AVOColony|AVOColony3",
-                    "Campaign|AVOSpaceCruiser|AVOSpaceCruiser1",
-                    "Campaign|AVOSpaceCruiser|AVOSpaceCruiser2",
-                    "Campaign|AVOSpaceCruiser|AVOSpaceCruiser3",
-                    "Campaign|AVOUnderbelly|AVOUnderbelly1",
-                    "Campaign|AVOUnderbelly|AVOUnderbelly2",
-                    "Campaign|AVOUnderbelly|AVOUnderbelly3",
-                    "Campaign|AVOEngineerShip|AVOEngineerShip1",
-                    "Campaign|AVOEngineerShip|AVOEngineerShip3",
-                    "Campaign|AVOEngineerShip|AVOEngineerShip5",
-                    "Campaign|AVOQueenFight|AVOUnderbellyFinal",
-                    "Campaign|AVOQueenFight|AVOSpaceCruiserFinal")),
+                Campaigns.Count,
+                AchievementValueResolvers.CompletedCampaignCount(
+                    Campaigns)),
 
             new AchievementDefinition(
                 "AFE2_Seasoned_Veteran",

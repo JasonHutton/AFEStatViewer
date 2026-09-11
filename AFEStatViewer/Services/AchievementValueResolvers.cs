@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
+using AFEStatViewer.Models;
 
 namespace AFEStatViewer.Services
 {
@@ -60,6 +62,53 @@ namespace AFEStatViewer.Services
             }
 
             return 0;
+        }
+
+        public static Func<JsonElement, int> CampaignCompletion(CampaignDefinition campaign, string set = "Campaign")
+        {
+            return root =>
+            {
+                int completed = 0;
+
+                foreach (MissionDefinition mission in campaign.Missions)
+                {
+                    if (GetCounterValue(root, set, mission.SaveKey) > 0)
+                    {
+                        completed++;
+                    }
+                }
+
+                return completed;
+            };
+        }
+
+        public static Func<JsonElement, int> CompletedCampaignCount(IEnumerable<CampaignDefinition> campaigns, string set = "Campaign")
+        {
+            return root =>
+            {
+                int completedCampaigns = 0;
+
+                foreach (CampaignDefinition campaign in campaigns)
+                {
+                    bool complete = true;
+
+                    foreach (MissionDefinition mission in campaign.Missions)
+                    {
+                        if (GetCounterValue(root, set, mission.SaveKey) <= 0)
+                        {
+                            complete = false;
+                            break;
+                        }
+                    }
+
+                    if (complete)
+                    {
+                        completedCampaigns++;
+                    }
+                }
+
+                return completedCampaigns;
+            };
         }
     }
 }
