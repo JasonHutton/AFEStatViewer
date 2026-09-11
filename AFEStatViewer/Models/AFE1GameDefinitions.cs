@@ -120,9 +120,7 @@ namespace AFEStatViewer.Models
                 "Nukes, Knives, AND Sharp Sticks",
                 "Equip three attachments on a single weapon.",
                 3,
-                AchievementValueResolvers.CounterTracker(
-                    "Any",
-                    "MaxNumAttachmentsEquipped")),
+                AFE1AchievementValueResolvers.MaximumWeaponAttachmentsEquipped),
 
             new AchievementDefinition(
                 "AFE1_Fashion_Team",

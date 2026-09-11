@@ -201,5 +201,35 @@ namespace AFEStatViewer.Services
 
             return emotes.Count;
         }
+
+        public static int MaximumWeaponAttachmentsEquipped(JsonElement root)
+        {
+            if (!root.TryGetProperty("CounterTracker", out var counterTracker) ||
+                !counterTracker.TryGetProperty("Sets", out var sets))
+            {
+                return 0;
+            }
+
+            int maximum = 0;
+
+            foreach (var set in sets.EnumerateObject())
+            {
+                if (!set.Value.TryGetProperty("Vars", out var vars) ||
+                    !vars.TryGetProperty("MaxNumAttachmentsEquipped", out var valueElement) ||
+                    !valueElement.TryGetInt32(out int value))
+                {
+                    continue;
+                }
+
+                maximum = Math.Max(maximum, Math.Min(value, 3)); // There's some bad data in the savegame for this, so cap this at 3 to avoid weirdness.
+
+                if (maximum == 3)
+                {
+                    return 3;
+                }
+            }
+
+            return maximum;
+        }
     }
 }
