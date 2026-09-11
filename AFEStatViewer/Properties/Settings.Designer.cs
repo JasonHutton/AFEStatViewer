@@ -104,39 +104,30 @@ namespace AFEStatViewer.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("hardcore.sav")]
         public string AFE1_Hardcore_Filename {
             get {
                 return ((string)(this["AFE1_Hardcore_Filename"]));
             }
-            set {
-                this["AFE1_Hardcore_Filename"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("%LOCALAPPDATA%\\Endeavor\\Saved\\SaveGames\\")]
         public string AFE1_Hardcore_Path {
             get {
                 return ((string)(this["AFE1_Hardcore_Path"]));
             }
-            set {
-                this["AFE1_Hardcore_Path"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("hardcore_afe1.json")]
         public string AFE1_Hardcore_Output_Filename {
             get {
                 return ((string)(this["AFE1_Hardcore_Output_Filename"]));
-            }
-            set {
-                this["AFE1_Hardcore_Output_Filename"] = value;
             }
         }
     }
