@@ -12,7 +12,7 @@ namespace AFEStatViewer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "18.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -101,6 +101,42 @@ namespace AFEStatViewer.Properties {
         public int SaveGame_Change_DebounceMS {
             get {
                 return ((int)(this["SaveGame_Change_DebounceMS"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("hardcore.sav")]
+        public string AFE1_Hardcore_Filename {
+            get {
+                return ((string)(this["AFE1_Hardcore_Filename"]));
+            }
+            set {
+                this["AFE1_Hardcore_Filename"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%LOCALAPPDATA%\\Endeavor\\Saved\\SaveGames\\")]
+        public string AFE1_Hardcore_Path {
+            get {
+                return ((string)(this["AFE1_Hardcore_Path"]));
+            }
+            set {
+                this["AFE1_Hardcore_Path"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("hardcore_afe1.json")]
+        public string AFE1_Hardcore_Output_Filename {
+            get {
+                return ((string)(this["AFE1_Hardcore_Output_Filename"]));
+            }
+            set {
+                this["AFE1_Hardcore_Output_Filename"] = value;
             }
         }
     }

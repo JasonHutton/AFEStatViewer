@@ -3,7 +3,6 @@ using AFEStatViewer.Services;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,15 +15,26 @@ namespace AFEStatViewer
     public partial class MainWindow : Window
     {
         private FileSystemWatcher afe1FSW;
+        private FileSystemWatcher afe1HardcoreFSW;
         private FileSystemWatcher afe2FSW;
+
         private Timer afe1SaveGameChangeTimer;
+        private Timer afe1HardcoreSaveGameChangeTimer;
         private Timer afe2SaveGameChangeTimer;
+
         private readonly object afe1SaveGameChangeLock = new object();
+        private readonly object afe1HardcoreSaveGameChangeLock = new object();
         private readonly object afe2SaveGameChangeLock = new object();
+
         private bool afe1SaveGameLoadInProgress = false;
+        private bool afe1HardcoreSaveGameLoadInProgress = false;
         private bool afe2SaveGameLoadInProgress = false;
+
         private SaveGameLoader afe1SaveGameLoader;
+        private SaveGameLoader afe1HardcoreSaveGameLoader;
         private SaveGameLoader afe2SaveGameLoader;
+
+        private string afe1HardcoreJson = string.Empty;
 
         private ViewModels.MainViewModel _vm;
 
@@ -38,6 +48,14 @@ namespace AFEStatViewer
                 ),
                 Properties.Settings.Default.AFE1_SaveGame_Filename,
                 Properties.Settings.Default.AFE1_SaveGame_Output_Filename
+            );
+
+            afe1HardcoreSaveGameLoader = new SaveGameLoader(
+                Environment.ExpandEnvironmentVariables(
+                    Properties.Settings.Default.AFE1_Hardcore_Path
+                ),
+                Properties.Settings.Default.AFE1_Hardcore_Filename,
+                Properties.Settings.Default.AFE1_Hardcore_Output_Filename
             );
 
             afe2SaveGameLoader = new SaveGameLoader(
@@ -74,6 +92,12 @@ namespace AFEStatViewer
             afe1FSW = CreateSaveGameWatcher(afe1SaveGameLoader, OnAFE1SaveGameChanged);
         }
 
+        public void WatchForAFE1HardcoreSaveGameChanges()
+        {
+            afe1HardcoreFSW?.Dispose();
+            afe1HardcoreFSW = CreateSaveGameWatcher(afe1HardcoreSaveGameLoader, OnAFE1HardcoreSaveGameChanged);
+        }
+
         public void WatchForAFE2SaveGameChanges()
         {
             afe2FSW?.Dispose();
@@ -87,6 +111,16 @@ namespace AFEStatViewer
                 afe1SaveGameChangeTimer?.Dispose();
 
                 afe1SaveGameChangeTimer = new Timer(_ => ReloadAFE1SaveGameAfterChange(), null, Properties.Settings.Default.SaveGame_Change_DebounceMS, Timeout.Infinite);
+            }
+        }
+
+        public void OnAFE1HardcoreSaveGameChanged(object source, FileSystemEventArgs e)
+        {
+            lock (afe1HardcoreSaveGameChangeLock)
+            {
+                afe1HardcoreSaveGameChangeTimer?.Dispose();
+
+                afe1HardcoreSaveGameChangeTimer = new Timer(_ => ReloadAFE1HardcoreSaveGameAfterChange(), null, Properties.Settings.Default.SaveGame_Change_DebounceMS, Timeout.Infinite);
             }
         }
 
@@ -170,6 +204,31 @@ namespace AFEStatViewer
             }
         }
 
+        private async void ReloadAFE1HardcoreSaveGameAfterChange()
+        {
+            lock (afe1HardcoreSaveGameChangeLock)
+            {
+                if (afe1HardcoreSaveGameLoadInProgress)
+                {
+                    return;
+                }
+
+                afe1HardcoreSaveGameLoadInProgress = true;
+            }
+
+            try
+            {
+                await ReloadSaveGameAfterChange("AFE1 Hardcore", afe1HardcoreSaveGameLoader, ApplyAFE1HardcoreSaveGame);
+            }
+            finally
+            {
+                lock (afe1HardcoreSaveGameChangeLock)
+                {
+                    afe1HardcoreSaveGameLoadInProgress = false;
+                }
+            }
+        }
+
         private async void ReloadAFE2SaveGameAfterChange()
         {
             lock (afe2SaveGameChangeLock)
@@ -200,6 +259,15 @@ namespace AFEStatViewer
             _vm.ApplyAFE1Json(jsonString, parseAchievements: true);
         }
 
+        private void ApplyAFE1HardcoreSaveGame(string jsonString)
+        {
+            afe1HardcoreJson = jsonString;
+
+#if DEBUG
+            Debug.WriteLine("AFE1 Hardcore save game loaded.");
+#endif
+        }
+
         private void ApplyAFE2SaveGame(string jsonString)
         {
             _vm.ApplyAFE2Json(jsonString, parseAchievements: true);
@@ -213,6 +281,11 @@ namespace AFEStatViewer
             if (LoadSaveGame("AFE1", afe1SaveGameLoader, ApplyAFE1SaveGame))
             {
                 WatchForAFE1SaveGameChanges();
+            }
+
+            if (LoadSaveGame("AFE1 Hardcore", afe1HardcoreSaveGameLoader, ApplyAFE1HardcoreSaveGame))
+            {
+                WatchForAFE1HardcoreSaveGameChanges();
             }
 
             if (LoadSaveGame("AFE2", afe2SaveGameLoader, ApplyAFE2SaveGame))
