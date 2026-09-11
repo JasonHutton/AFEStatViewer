@@ -320,7 +320,7 @@ namespace AFEStatViewer.Models
                     "DamageablesDestroyed|SporePod")),
 
             new AchievementDefinition(
-                "AFE1_LV_895_Service_Ribbon",
+                "AFE1_LV-895_Service_Ribbon",
                 "LV-895 Service Ribbon",
                 "Finish all Campaigns on Intense Difficulty.",
                 4,
@@ -459,7 +459,7 @@ namespace AFEStatViewer.Models
                     "/Game/Blueprints/HubLore/IntelItems/")),
 
             new AchievementDefinition(
-                "AFE1_LV_895_Campaign_Medal",
+                "AFE1_LV-895_Campaign_Medal",
                 "LV-895 Campaign Medal",
                 "Finish all Campaigns on Extreme Difficulty.",
                 4,
