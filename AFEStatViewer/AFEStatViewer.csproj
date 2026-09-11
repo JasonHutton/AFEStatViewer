@@ -27,8 +27,12 @@
     <None Remove="Resources\Achievements\AFE1_Fully_Rigged_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Giants_in_the_Earth_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Glorified_Toasters_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Got_All_I_Need_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Its_A_Bug_Hunt_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Its_a_Cover_Not_a_Hat_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Its_Camouflage_on_Some_Planet_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_I_Cant_Lie_About_Your_Chances_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Keen_Eye_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Supportive_Squad_Complete.png" />
@@ -76,9 +80,13 @@
     <Resource Include="Resources\Achievements\AFE1_Fully_Rigged_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Giants_in_the_Earth_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Glorified_Toasters_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Got_All_I_Need_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_High_Voltage_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Its_A_Bug_Hunt_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Its_a_Cover_Not_a_Hat_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Its_Camouflage_on_Some_Planet_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_I_Cant_Lie_About_Your_Chances_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_I_Think_They_Like_Me_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Keen_Eye_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Supportive_Squad_Complete.png" />
