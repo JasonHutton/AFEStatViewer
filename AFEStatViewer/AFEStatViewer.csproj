@@ -11,8 +11,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Achievements\AFE1_All_My_Personal_Friends_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Anti_Mutation_Station_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Art_Gallery_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_A_Personal_Friend_of_Mine_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_A_Stand_Up_Fight_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Burn_Em_Out_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_CMISRS_Asset_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_CMISRS_Resource_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Confidence_Course_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Didnt_Break_a_Sweat_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Expeditionary_Service_Ribbon_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Express_Yourself_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Fashion_Team_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Fully_Rigged_Complete.png" />
+    <None Remove="Resources\Achievements\AFE1_Giants_in_the_Earth_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Glorified_Toasters_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
     <None Remove="Resources\Achievements\AFE1_Its_A_Bug_Hunt_Complete.png" />
@@ -44,8 +57,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Achievements\AFE1_Fashion_Team_Complete.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Achievements\AFE1_All_My_Personal_Friends_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Anti_Mutation_Station_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Art_Gallery_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_A_Personal_Friend_of_Mine_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_A_Stand_Up_Fight_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Burn_Em_Out_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_CMISRS_Asset_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_CMISRS_Resource_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Confidence_Course_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Didnt_Break_a_Sweat_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Expeditionary_Service_Ribbon_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Express_Yourself_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Fully_Rigged_Complete.png" />
+    <Resource Include="Resources\Achievements\AFE1_Giants_in_the_Earth_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Glorified_Toasters_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_High_Voltage_Complete.png" />
     <Resource Include="Resources\Achievements\AFE1_Improvised_Explosives_Complete.png" />
