@@ -400,9 +400,8 @@ namespace AFEStatViewer.Models
                 "Trigger Discipline",
                 "Complete a mission on Intense Difficulty or above without anyone taking friendly fire damage.",
                 1,
-                AFE1AchievementValueResolvers.AnyCounterThreshold(
+                AchievementValueResolvers.SumCounters(
                     "MissionsCompletedWithoutFriendlyFire",
-                    1,
                     "Hard|Any",
                     "Extreme|Any",
                     "Insane|Any")),

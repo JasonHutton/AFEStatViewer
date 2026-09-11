@@ -331,10 +331,9 @@ namespace AFEStatViewer.Models
                 "Pure Professionals",
                 "Complete a mission on Intense Difficulty or above without anyone taking friendly fire damage.",
                 1,
-                AchievementValueResolvers.CounterTrackerThreshold(
+                AchievementValueResolvers.CounterTracker(
                     "Any",
-                    "MissionsCompletedWithoutFriendlyFire",
-                    1)),
+                    "MissionsCompletedWithoutFriendlyFire")),
         };
 
         public static IEnumerable<MissionDefinition> CampaignOnlyMissions => Campaigns.SelectMany(c => c.Missions);

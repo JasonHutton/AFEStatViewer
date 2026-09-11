@@ -110,5 +110,20 @@ namespace AFEStatViewer.Services
                 return completedCampaigns;
             };
         }
+
+        public static Func<JsonElement, int> SumCounters(string key, params string[] sets)
+        {
+            return root =>
+            {
+                int total = 0;
+
+                foreach (string set in sets)
+                {
+                    total += GetCounterValue(root, set, key);
+                }
+
+                return total;
+            };
+        }
     }
 }
