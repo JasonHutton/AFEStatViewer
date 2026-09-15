@@ -7,25 +7,46 @@
         Loaded="Window_Loaded"
         Title="Aliens: Fireteam Elite - Statistics Viewer"
         Height="920"
-        Width="1240"
-        MinHeight="560"
-        MinWidth="760">
+        Width="1400"
+        MinHeight="700"
+        MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        FontSize="14"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display">
 
     <Window.Resources>
+
+        <!-- Horizontal class-kit layout -->
+        <ItemsPanelTemplate x:Key="CompletionItemsPanel">
+            <StackPanel Orientation="Horizontal" />
+        </ItemsPanelTemplate>
+
+        <Style x:Key="CompletionItemsControlStyle"
+               TargetType="{x:Type ItemsControl}">
+            <Setter Property="ItemsPanel"
+                    Value="{StaticResource CompletionItemsPanel}" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
 
         <!-- Casual class-kit icon -->
         <DataTemplate x:Key="CasualClassKitTemplate">
             <Grid Width="{Binding IconSize}"
                   Height="{Binding IconSize}"
-                  Margin="2,0">
+                  MinWidth="20"
+                  MinHeight="20"
+                  Margin="1">
 
                 <Rectangle x:Name="IconRect"
-                           Width="{Binding IconSize}"
-                           Height="{Binding IconSize}"
                            Fill="{Binding CasualIconBrush}"
                            Opacity="{Binding CasualIconOpacity}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           RenderOptions.BitmapScalingMode="HighQuality">
                     <Rectangle.OpacityMask>
                         <ImageBrush ImageSource="{Binding IconMask}"
                                     Stretch="Uniform" />
@@ -57,15 +78,16 @@
         <DataTemplate x:Key="StandardClassKitTemplate">
             <Grid Width="{Binding IconSize}"
                   Height="{Binding IconSize}"
-                  Margin="2,0">
+                  MinWidth="20"
+                  MinHeight="20"
+                  Margin="1">
 
                 <Rectangle x:Name="IconRect"
-                           Width="{Binding IconSize}"
-                           Height="{Binding IconSize}"
                            Fill="{Binding StandardIconBrush}"
                            Opacity="{Binding StandardIconOpacity}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           RenderOptions.BitmapScalingMode="HighQuality">
                     <Rectangle.OpacityMask>
                         <ImageBrush ImageSource="{Binding IconMask}"
                                     Stretch="Uniform" />
@@ -97,15 +119,16 @@
         <DataTemplate x:Key="IntenseClassKitTemplate">
             <Grid Width="{Binding IconSize}"
                   Height="{Binding IconSize}"
-                  Margin="2,0">
+                  MinWidth="20"
+                  MinHeight="20"
+                  Margin="1">
 
                 <Rectangle x:Name="IconRect"
-                           Width="{Binding IconSize}"
-                           Height="{Binding IconSize}"
                            Fill="{Binding IntenseIconBrush}"
                            Opacity="{Binding IntenseIconOpacity}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           RenderOptions.BitmapScalingMode="HighQuality">
                     <Rectangle.OpacityMask>
                         <ImageBrush ImageSource="{Binding IconMask}"
                                     Stretch="Uniform" />
@@ -137,15 +160,16 @@
         <DataTemplate x:Key="ExtremeClassKitTemplate">
             <Grid Width="{Binding IconSize}"
                   Height="{Binding IconSize}"
-                  Margin="2,0">
+                  MinWidth="20"
+                  MinHeight="20"
+                  Margin="1">
 
                 <Rectangle x:Name="IconRect"
-                           Width="{Binding IconSize}"
-                           Height="{Binding IconSize}"
                            Fill="{Binding ExtremeIconBrush}"
                            Opacity="{Binding ExtremeIconOpacity}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           RenderOptions.BitmapScalingMode="HighQuality">
                     <Rectangle.OpacityMask>
                         <ImageBrush ImageSource="{Binding IconMask}"
                                     Stretch="Uniform" />
@@ -177,15 +201,16 @@
         <DataTemplate x:Key="InsaneClassKitTemplate">
             <Grid Width="{Binding IconSize}"
                   Height="{Binding IconSize}"
-                  Margin="2,0">
+                  MinWidth="20"
+                  MinHeight="20"
+                  Margin="1">
 
                 <Rectangle x:Name="IconRect"
-                           Width="{Binding IconSize}"
-                           Height="{Binding IconSize}"
                            Fill="{Binding InsaneIconBrush}"
                            Opacity="{Binding InsaneIconOpacity}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center">
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                           RenderOptions.BitmapScalingMode="HighQuality">
                     <Rectangle.OpacityMask>
                         <ImageBrush ImageSource="{Binding IconMask}"
                                     Stretch="Uniform" />
@@ -226,6 +251,8 @@
                     Value="Transparent" />
             <Setter Property="BorderThickness"
                     Value="0" />
+            <Setter Property="MinHeight"
+                    Value="24" />
 
             <Style.Triggers>
                 <Trigger Property="IsSelected"
@@ -253,6 +280,10 @@
                     Value="0" />
             <Setter Property="Background"
                     Value="Transparent" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="Padding"
+                    Value="0" />
 
             <Style.Triggers>
                 <Trigger Property="IsSelected"
@@ -271,6 +302,38 @@
             </Style.Triggers>
         </Style>
 
+        <!-- Completion column headers -->
+        <Style x:Key="CompletionColumnHeaderStyle"
+               TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="Padding"
+                    Value="6,3" />
+            <Setter Property="MinHeight"
+                    Value="28" />
+        </Style>
+
+        <!-- Completion text -->
+        <Style x:Key="CompletionTextStyle"
+               TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="TextTrimming"
+                    Value="CharacterEllipsis" />
+            <Setter Property="Margin"
+                    Value="4,0" />
+        </Style>
+
+        <!-- AFE2 mission/name text -->
+        <Style x:Key="AFE2CompletionTextStyle"
+               TargetType="{x:Type TextBlock}"
+               BasedOn="{StaticResource CompletionTextStyle}">
+            <Setter Property="Foreground"
+                    Value="{Binding CompletionTextBrush}" />
+        </Style>
+
         <!-- Common completion DataGrid behavior -->
         <Style x:Key="CompletionDataGridStyle"
                TargetType="{x:Type DataGrid}">
@@ -280,6 +343,10 @@
                     Value="True" />
             <Setter Property="CanUserAddRows"
                     Value="False" />
+            <Setter Property="CanUserDeleteRows"
+                    Value="False" />
+            <Setter Property="CanUserReorderColumns"
+                    Value="False" />
             <Setter Property="HeadersVisibility"
                     Value="Column" />
             <Setter Property="GridLinesVisibility"
@@ -288,6 +355,8 @@
                     Value="Auto" />
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                     Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll"
+                    Value="True" />
             <Setter Property="CanUserSortColumns"
                     Value="False" />
             <Setter Property="CanUserResizeColumns"
@@ -302,17 +371,18 @@
                     Value="Stretch" />
             <Setter Property="HorizontalAlignment"
                     Value="Stretch" />
+            <Setter Property="RowHeaderWidth"
+                    Value="0" />
+            <Setter Property="EnableRowVirtualization"
+                    Value="True" />
+            <Setter Property="EnableColumnVirtualization"
+                    Value="True" />
+            <Setter Property="ColumnHeaderStyle"
+                    Value="{StaticResource CompletionColumnHeaderStyle}" />
             <Setter Property="RowStyle"
                     Value="{StaticResource CompletionRowStyle}" />
             <Setter Property="CellStyle"
                     Value="{StaticResource CompletionCellStyle}" />
-        </Style>
-
-        <!-- AFE2 mission/name text -->
-        <Style x:Key="AFE2CompletionTextStyle"
-               TargetType="TextBlock">
-            <Setter Property="Foreground"
-                    Value="{Binding CompletionTextBrush}" />
         </Style>
 
         <!-- Achievement tile -->
@@ -321,12 +391,13 @@
                     BorderThickness="1"
                     CornerRadius="6"
                     Background="Transparent"
-                    Padding="8"
+                    Padding="9"
                     Margin="6"
-                    Width="250">
+                    Width="276"
+                    MinHeight="70">
 
                 <Border.ToolTip>
-                    <ToolTip MaxWidth="420">
+                    <ToolTip MaxWidth="480">
                         <TextBlock Text="{Binding Description}"
                                    TextWrapping="Wrap" />
                     </ToolTip>
@@ -334,7 +405,7 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition Width="56" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
@@ -342,12 +413,13 @@
                     <Image Grid.Column="0"
                            Source="{Binding Icon}"
                            Opacity="{Binding IconOpacity}"
-                           Width="40"
-                           Height="40"
+                           Width="48"
+                           Height="48"
                            Margin="0,0,8,0"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           Stretch="Uniform" />
+                           Stretch="Uniform"
+                           RenderOptions.BitmapScalingMode="HighQuality" />
 
                     <!-- Achievement information -->
                     <Grid Grid.Column="1">
@@ -383,12 +455,12 @@
                             <ProgressBar Minimum="0"
                                          Maximum="{Binding Target}"
                                          Value="{Binding Value}"
-                                         Height="14" />
+                                         Height="16" />
 
                             <TextBlock Text="{Binding ProgressDisplay}"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontSize="11"
+                                       FontSize="12"
                                        FontWeight="SemiBold" />
                         </Grid>
                     </Grid>
@@ -407,9 +479,14 @@
 
                 <Grid Margin="8">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="5*" />
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="4*" />
+
+                        <!-- Campaign and Game Modes take exactly the height
+                             required by their content. Achievements receives
+                             the remaining space and may scroll. -->
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+
                     </Grid.RowDefinitions>
 
                     <!-- Campaign completion -->
@@ -425,118 +502,90 @@
                                 <DataGridTextColumn Header="Mission"
                                                     Binding="{Binding MissionCode}"
                                                     Width="Auto"
-                                                    MinWidth="55"
-                                                    CanUserSort="False" />
+                                                    MinWidth="60"
+                                                    CanUserSort="False"
+                                                    ElementStyle="{StaticResource CompletionTextStyle}" />
 
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding CampaignMissionName}"
-                                                    Width="*"
-                                                    MinWidth="160"
-                                                    CanUserSort="False" />
+                                                    Width="2*"
+                                                    MinWidth="200"
+                                                    CanUserSort="False"
+                                                    ElementStyle="{StaticResource CompletionTextStyle}" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource CasualClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource StandardClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource IntenseClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource ExtremeClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource InsaneClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Spacer -->
-                                <DataGridTemplateColumn Width="12"
-                                                        MinWidth="12"
+                                <DataGridTemplateColumn Width="10"
+                                                        MinWidth="10"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -561,113 +610,84 @@
 
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding MissionName}"
-                                                    Width="*"
-                                                    MinWidth="180"
-                                                    CanUserSort="False" />
+                                                    Width="2*"
+                                                    MinWidth="260"
+                                                    CanUserSort="False"
+                                                    ElementStyle="{StaticResource CompletionTextStyle}" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource CasualClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource StandardClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource IntenseClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource ExtremeClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                                        Width="165"
-                                                        MinWidth="165"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource InsaneClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Spacer -->
-                                <DataGridTemplateColumn Width="12"
-                                                        MinWidth="12"
+                                <DataGridTemplateColumn Width="10"
+                                                        MinWidth="10"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -686,15 +706,18 @@
                               Margin="0">
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                      HorizontalScrollBarVisibility="Disabled">
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      PanningMode="VerticalOnly">
 
                             <ItemsControl ItemsSource="{Binding AFE1AchievementItems}"
                                           ItemTemplate="{StaticResource AchievementTemplate}">
+
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
+
                             </ItemsControl>
 
                         </ScrollViewer>
@@ -708,9 +731,14 @@
 
                 <Grid Margin="8">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="5*" />
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="4*" />
+
+                        <!-- Campaign and Game Modes take exactly the height
+                             required by their content. Achievements receives
+                             the remaining space and may scroll. -->
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+
                     </Grid.RowDefinitions>
 
                     <!-- Campaign completion -->
@@ -726,120 +754,90 @@
                                 <DataGridTextColumn Header="Mission"
                                                     Binding="{Binding MissionCode}"
                                                     Width="Auto"
-                                                    MinWidth="55"
+                                                    MinWidth="60"
                                                     CanUserSort="False"
                                                     ElementStyle="{StaticResource AFE2CompletionTextStyle}" />
 
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding CampaignMissionName}"
-                                                    Width="*"
-                                                    MinWidth="160"
+                                                    Width="2*"
+                                                    MinWidth="200"
                                                     CanUserSort="False"
                                                     ElementStyle="{StaticResource AFE2CompletionTextStyle}" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource CasualClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource StandardClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource IntenseClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource ExtremeClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource InsaneClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Spacer -->
-                                <DataGridTemplateColumn Width="12"
-                                                        MinWidth="12"
+                                <DataGridTemplateColumn Width="10"
+                                                        MinWidth="10"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -864,114 +862,84 @@
 
                                 <DataGridTextColumn Header="Name"
                                                     Binding="{Binding MissionName}"
-                                                    Width="*"
-                                                    MinWidth="180"
+                                                    Width="2*"
+                                                    MinWidth="260"
                                                     CanUserSort="False"
                                                     ElementStyle="{StaticResource AFE2CompletionTextStyle}" />
 
                                 <!-- Casual -->
                                 <DataGridTemplateColumn Header="Casual"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource CasualClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Standard -->
                                 <DataGridTemplateColumn Header="Standard"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource StandardClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Intense -->
                                 <DataGridTemplateColumn Header="Intense"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource IntenseClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Extreme -->
                                 <DataGridTemplateColumn Header="Extreme"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource ExtremeClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Insane -->
                                 <DataGridTemplateColumn Header="Insane"
-                                                        Width="145"
-                                                        MinWidth="145"
+                                                        Width="*"
+                                                        MinWidth="150"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ItemsControl ItemsSource="{Binding ClassKits}"
                                                           ItemTemplate="{StaticResource InsaneClassKitTemplate}"
-                                                          HorizontalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal" />
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                            </ItemsControl>
+                                                          Style="{StaticResource CompletionItemsControlStyle}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
 
                                 <!-- Spacer -->
-                                <DataGridTemplateColumn Width="12"
-                                                        MinWidth="12"
+                                <DataGridTemplateColumn Width="10"
+                                                        MinWidth="10"
                                                         CanUserSort="False">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -990,15 +958,18 @@
                               Margin="0">
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                      HorizontalScrollBarVisibility="Disabled">
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      PanningMode="VerticalOnly">
 
                             <ItemsControl ItemsSource="{Binding AFE2Achievements.Items}"
                                           ItemTemplate="{StaticResource AchievementTemplate}">
+
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
+
                             </ItemsControl>
 
                         </ScrollViewer>
