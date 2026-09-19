@@ -246,7 +246,7 @@
             <Setter Property="Focusable"
                     Value="False" />
             <Setter Property="Background"
-                    Value="Transparent" />
+                    Value="#F3F3F3" />
             <Setter Property="BorderBrush"
                     Value="Transparent" />
             <Setter Property="BorderThickness"
@@ -255,19 +255,21 @@
                     Value="24" />
 
             <Style.Triggers>
+
+                <!-- Alternating row -->
+                <Trigger Property="AlternationIndex"
+                         Value="1">
+                    <Setter Property="Background"
+                            Value="#E2E2E2" />
+                </Trigger>
+
+                <!-- Keep selection from replacing the alternating colour, even though we're not allowing selection for now -->
                 <Trigger Property="IsSelected"
                          Value="True">
-                    <Setter Property="Background"
-                            Value="Transparent" />
                     <Setter Property="BorderBrush"
                             Value="Transparent" />
                 </Trigger>
 
-                <Trigger Property="IsMouseOver"
-                         Value="True">
-                    <Setter Property="Background"
-                            Value="Transparent" />
-                </Trigger>
             </Style.Triggers>
         </Style>
 
@@ -383,6 +385,8 @@
                     Value="{StaticResource CompletionRowStyle}" />
             <Setter Property="CellStyle"
                     Value="{StaticResource CompletionCellStyle}" />
+            <Setter Property="AlternationCount"
+                    Value="2" />
         </Style>
 
         <!-- Achievement tile -->
