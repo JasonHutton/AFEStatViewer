@@ -38,13 +38,13 @@ namespace AFEStatViewer.Models
             new CampaignDefinition(2, "Rescue and Recovery", new[]
             {
                 new MissionDefinition(1, "Piping Hot", ["Campaign|AVOColony|AVOColony1"]),
-                new MissionDefinition(2, "Breaking and Entering", ["Campaign|AVOColony|AVOColony2"]),
+                new MissionDefinition(2, "Breaking and Entering", ["Campaign|AVOColony|AVOColony2", "Campaign|AVOColony|AvoColony2"]),
                 new MissionDefinition(3, "Synth Headache", ["Campaign|AVOColony|AVOColony3"]),
             }),
 
             new CampaignDefinition(3, "Boarding Party", new[]
             {
-                new MissionDefinition(1, "Bomb Squad", ["Campaign|AVOSpaceCruiser|AVOSpaceCruiser1"]),
+                new MissionDefinition(1, "Bomb Squad", ["Campaign|AVOSpaceCruiser|AVOSpaceCruiser1", "Campaign|AVOSpacecruiser|AVOSpacecruiser1"]),
                 new MissionDefinition(2, "Dumpster Diving", ["Campaign|AVOSpaceCruiser|AVOSpaceCruiser2"]),
                 new MissionDefinition(3, "Sleep Study", ["Campaign|AVOSpaceCruiser|AVOSpaceCruiser3"]),
             }),
