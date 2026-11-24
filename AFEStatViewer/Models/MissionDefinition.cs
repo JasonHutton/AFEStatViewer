@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace AFEStatViewer.Models
 {
-    public sealed record MissionDefinition(int Number, string Name, string SaveKey);
+    public sealed record MissionDefinition(int Number, string Name, params string[] SaveKeys);
 }

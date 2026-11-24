@@ -2,6 +2,7 @@
 using AFEStatViewer.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Media;
 
 namespace AFEStatViewer.ViewModels
@@ -12,7 +13,7 @@ namespace AFEStatViewer.ViewModels
 
         public string Name => ClassKit.Name;
         public string SaveKey => ClassKit.SaveKey;
-        public string MissionSaveKey { get; }
+        public string[] MissionSaveKeys { get; }
 
         public ImageSource? IconMask { get; }
         public bool HasIcon => IconMask != null;
@@ -71,11 +72,11 @@ namespace AFEStatViewer.ViewModels
 
         public ClassKitCompletionViewModel(
             ClassKitDefinition classKit,
-            string missionSaveKey,
+            string[] missionSaveKeys,
             ClassKitVisualStyle visualStyle)
         {
             ClassKit = classKit ?? throw new ArgumentNullException(nameof(classKit));
-            MissionSaveKey = missionSaveKey ?? throw new ArgumentNullException(nameof(missionSaveKey));
+            MissionSaveKeys = missionSaveKeys ?? throw new ArgumentNullException(nameof(missionSaveKeys));
 
             IconMask = ResourceImageCache.LoadClassIcon(classKit.IconResourceName);
             IconSize = visualStyle.IconSize;
@@ -91,7 +92,7 @@ namespace AFEStatViewer.ViewModels
 
         private bool IsCompleted(Difficulty difficulty)
         {
-            return Progress?.GetCount(MissionSaveKey, difficulty, ClassKit.SaveKey) > 0;
+            return MissionSaveKeys.Any(key => Progress?.GetCount(key, difficulty, ClassKit.SaveKey) > 0);
         }
 
         private Brush GetIconBrush(Difficulty difficulty)

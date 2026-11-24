@@ -52,16 +52,34 @@ namespace AFEStatViewer.Services
 
                     foreach (var mission in missionList)
                     {
-                        int value = vars.TryGetProperty(mission.SaveKey, out var valueElement)
-                            ? valueElement.GetInt32()
-                            : 0;
+                        int maximum = 0;
 
-                        progress.SetCount(
-                            mission.SaveKey,
-                            difficulty,
-                            classKit.SaveKey,
-                            value
-                        );
+                        foreach (string key in mission.SaveKeys)
+                        {
+                            if (!vars.TryGetProperty(key, out var valueElement) || valueElement.ValueKind != JsonValueKind.Number)
+                            {
+                                continue;
+                            }
+
+                            if (valueElement.TryGetInt32(out int intValue))
+                            {
+                                maximum = Math.Max(maximum, intValue);
+                            }
+                            else if (valueElement.TryGetDouble(out double doubleValue))
+                            {
+                                maximum = Math.Max(maximum, (int)Math.Floor(doubleValue));
+                            }
+                        }
+
+                        foreach (string key in mission.SaveKeys)
+                        {
+                            progress.SetCount(
+                                key,
+                                difficulty,
+                                classKit.SaveKey,
+                                maximum
+                            );
+                        }
                     }
                 }
             }

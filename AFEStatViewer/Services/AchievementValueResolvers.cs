@@ -7,14 +7,19 @@ namespace AFEStatViewer.Services
 {
     public abstract class AchievementValueResolvers
     {
-        public static Func<JsonElement, int> CounterTracker(string set, string key)
+        public static Func<JsonElement, int> CounterTracker(string set, params string[] keys)
         {
-            return root => GetCounterValue(root, set, key);
+            return root => GetCounterValue(root, set, keys);
         }
 
         public static Func<JsonElement, int> CounterTrackerThreshold(string set, string key, int threshold)
         {
             return root => GetCounterValue(root, set, key) >= threshold ? 1 : 0;
+        }
+
+        public static Func<JsonElement, int> CounterTrackerThreshold(string set, int threshold, params string[] keys)
+        {
+            return root => GetCounterValue(root, set, keys) >= threshold ? 1 : 0;
         }
 
         public static Func<JsonElement, int> CompletedCounterKeys(string set, params string[] keys)
@@ -35,33 +40,36 @@ namespace AFEStatViewer.Services
             };
         }
 
-        protected static int GetCounterValue(JsonElement root, string set, string key)
+        protected static int GetCounterValue(JsonElement root, string set, params string[] keys)
         {
+            int maximum = 0;
+
             if (!root.TryGetProperty("CounterTracker", out var counterTracker) ||
                 !counterTracker.TryGetProperty("Sets", out var sets) ||
                 !sets.TryGetProperty(set, out var counterSet) ||
-                !counterSet.TryGetProperty("Vars", out var vars) ||
-                !vars.TryGetProperty(key, out var valueElement))
+                !counterSet.TryGetProperty("Vars", out var vars))
             {
-                return 0;
+                return maximum;
             }
 
-            if (valueElement.ValueKind != JsonValueKind.Number)
+            foreach (string key in keys)
             {
-                return 0;
+                if (!vars.TryGetProperty(key, out var valueElement) || valueElement.ValueKind != JsonValueKind.Number)
+                {
+                    continue;
+                }
+
+                if (valueElement.TryGetInt32(out int intValue))
+                {
+                    maximum = Math.Max(maximum, intValue);
+                }
+                else if (valueElement.TryGetDouble(out double doubleValue))
+                {
+                    maximum = Math.Max(maximum, (int)Math.Floor(doubleValue));
+                }
             }
 
-            if (valueElement.TryGetInt32(out int intValue))
-            {
-                return intValue;
-            }
-
-            if (valueElement.TryGetDouble(out double doubleValue))
-            {
-                return (int)Math.Floor(doubleValue);
-            }
-
-            return 0;
+            return maximum;
         }
 
         public static Func<JsonElement, int> CampaignCompletion(CampaignDefinition campaign, string set = "Campaign")
@@ -72,7 +80,7 @@ namespace AFEStatViewer.Services
 
                 foreach (MissionDefinition mission in campaign.Missions)
                 {
-                    if (GetCounterValue(root, set, mission.SaveKey) > 0)
+                    if (GetCounterValue(root, set, mission.SaveKeys) > 0)
                     {
                         completed++;
                     }
@@ -94,7 +102,7 @@ namespace AFEStatViewer.Services
 
                     foreach (MissionDefinition mission in campaign.Missions)
                     {
-                        if (GetCounterValue(root, set, mission.SaveKey) <= 0)
+                        if (GetCounterValue(root, set, mission.SaveKeys) <= 0)
                         {
                             complete = false;
                             break;

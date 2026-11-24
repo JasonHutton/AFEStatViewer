@@ -15,7 +15,7 @@ namespace AFEStatViewer.ViewModels
 
         public int MissionNumber => Mission.Number;
         public string MissionName => Mission.Name;
-        public string SaveKey => Mission.SaveKey;
+        public string[] SaveKeys => Mission.SaveKeys;
         public string MissionCode => $"{CampaignNumber}-{MissionNumber}";
 
         public string CampaignMissionName => $"{CampaignName}: {MissionName}";
@@ -67,7 +67,7 @@ namespace AFEStatViewer.ViewModels
 
             ClassKits = new ObservableCollection<ClassKitCompletionViewModel>(
                 classKits.Select(classKit =>
-                    new ClassKitCompletionViewModel(classKit, mission.SaveKey, classKitStyle))
+                    new ClassKitCompletionViewModel(classKit, mission.SaveKeys, classKitStyle))
             );
         }
 
